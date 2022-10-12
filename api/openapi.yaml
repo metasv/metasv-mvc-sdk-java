@@ -1,0 +1,2460 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: heqiming@metasv.com
+    name: MetaSV team
+  description: API definition for MetaSV provided apis
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  title: MetaSV API Spec
+  version: 2.2.0
+servers:
+- url: https://api-mvc-testnet.metasv.com
+- url: https://api-mvc.metasv.com
+tags:
+- description: block related apis
+  name: block
+- description: transaction related apis
+  name: tx
+- description: address related apis
+  name: address
+- description: output spent status (outpoint of vin) apis
+  name: outpoint
+- description: merchant apis
+  name: merchant
+- description: xpub related apis
+  name: xpub
+- description: contract related apis
+  name: contract
+- description: user account related apis
+  name: user
+paths:
+  /block/info:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockchainInfo'
+          description: Get blockchain info success.
+      security:
+      - bearerAuth: []
+      summary: Get current blockchain info from full node.
+      tags:
+      - block
+      x-accepts: application/json
+  /block:
+    get:
+      parameters:
+      - description: paging flag, height of last item in last page
+        explode: true
+        in: query
+        name: last
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BlockHeader'
+                maxItems: 100
+                type: array
+          description: successfully get lists
+      security:
+      - bearerAuth: []
+      summary: Get recent block list by paging. 30 items per page.
+      tags:
+      - block
+      x-accepts: application/json
+  /block/{blockId}:
+    get:
+      parameters:
+      - description: The block id, height or hash acceptable.
+        explode: false
+        in: path
+        name: blockId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockHeader'
+          description: get block info success
+        "404":
+          description: block info not found
+      security:
+      - bearerAuth: []
+      summary: Get block request by height or hash
+      tags:
+      - block
+      x-accepts: application/json
+  /tx/{txid}:
+    get:
+      description: This api is parsed from raw hex, you can use /tx/{txid}/raw to
+        parse tx by yourself, If you want detail input info, use '/vin/{txid}' to
+        get detailed input info including address and value.
+      parameters:
+      - description: the request ID to search, txhash
+        explode: false
+        in: path
+        name: txid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Return source script code or not (default false).
+        explode: true
+        in: query
+        name: showScript
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TxDetail'
+          description: Get transaction detail success.
+        "404":
+          description: Transaction not found
+      security:
+      - bearerAuth: []
+      summary: Get transaction detail by specific txid.
+      tags:
+      - tx
+      x-accepts: application/json
+  /tx/{txid}/raw:
+    get:
+      parameters:
+      - description: the request ID to search, txhash
+        explode: false
+        in: path
+        name: txid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TxRaw'
+          description: Get transaction raw hex success.
+        "404":
+          description: Transaction not found
+      security:
+      - bearerAuth: []
+      summary: Get transaction raw hex by specific txid.
+      tags:
+      - tx
+      x-accepts: application/json
+  /tx/{txid}/seen:
+    get:
+      parameters:
+      - description: the request ID to search, txhash
+        explode: false
+        in: path
+        name: txid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: boolean
+          description: Return true if the transaction is found.
+        "404":
+          description: Transaction not found.
+      security:
+      - bearerAuth: []
+      summary: Whether MetaSV have seen this tx before. This is a fast approach to
+        know if the tx exist or not.
+      tags:
+      - tx
+      x-accepts: application/json
+  /tx/broadcast:
+    post:
+      description: This api will broadcast to metasv fullnode directly.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TxRaw'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastResult'
+          description: Broadcast success, txid returned
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BroadcastResult'
+          description: Broadcast Failed
+      security:
+      - bearerAuth: []
+      summary: Broadcast tx to metasv fullnode.
+      tags:
+      - tx
+      x-contentType: application/json
+      x-accepts: application/json
+  /address/{address}/balance:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressBalance'
+          description: Get address detail success.
+      security:
+      - bearerAuth: []
+      summary: Get address balance by specific address.
+      tags:
+      - address
+      x-accepts: application/json
+  /address/{address}/utxo:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The last id of the last query(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AddressUtxo'
+                maxItems: 100
+                type: array
+          description: Get address utxos success.
+      security:
+      - bearerAuth: []
+      summary: Get address utxos by specific address(100 per page).
+      tags:
+      - address
+      x-accepts: application/json
+  /address/{address}/tx:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The last id of the last query(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: (default true) fetch confirmed tx, fetch unconfirmed tx if false
+        explode: true
+        in: query
+        name: confirmed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AddressTx'
+                maxItems: 100
+                type: array
+          description: Get address transaction history success.
+      security:
+      - bearerAuth: []
+      summary: Get address history by specific address(recent 10 days available).
+      tags:
+      - address
+      x-accepts: application/json
+  /outpoint/{txid}/{index}:
+    get:
+      description: Get detailed info for a utxo(or txo if spent), Only outputs spent
+        no longer than one month are available. (Premium feature will support full
+        history)
+      parameters:
+      - description: The txid of the output
+        explode: false
+        in: path
+        name: txid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The index of the output in the tx.
+        explode: false
+        in: path
+        name: index
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutputInfo'
+          description: Get outpoint success.
+      security:
+      - bearerAuth: []
+      summary: Get tx output(outpoint for vin) spent status.
+      tags:
+      - outpoint
+      x-accepts: application/json
+  /vin/{txid}/detail:
+    get:
+      description: Search output points by spent txid. Use this api to get detailed
+        inputs for the tx.
+      parameters:
+      - description: The txid of the vins
+        explode: false
+        in: path
+        name: txid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OutputInfoDetail'
+                type: array
+          description: Get vin list success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all output point of vins in the tx with detailed output script.
+      tags:
+      - tx
+      x-accepts: application/json
+  /merchant/utxo:
+    post:
+      description: Selects a set of Utxos with total value higher than the given amount
+        from a given address list . In case of HD wallets, multiple addresses can
+        be specified.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UtxoPickRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AddressUtxo'
+                type: array
+          description: utxo pick success
+      security:
+      - bearerAuth: []
+      summary: Pick utxos by addresses and amount.
+      tags:
+      - merchant
+      x-contentType: application/json
+      x-accepts: application/json
+  /xpubLite/{xpub}/utxo:
+    get:
+      parameters:
+      - description: the requested xpub
+        explode: false
+        in: path
+        name: xpub
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The max items returned in this query(default 300), not bigger
+          than 5000.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/XpubUtxo'
+                maxItems: 300
+                type: array
+          description: Get xpub utxos success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get xpub utxos by specific xpub(300 per page).
+      tags:
+      - xpub
+      x-accepts: application/json
+  /xpubLite/{xpub}/address/{address}:
+    get:
+      parameters:
+      - description: the requested xpub
+        explode: false
+        in: path
+        name: xpub
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XpubAddress'
+          description: Get xpub address success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+        "404":
+          description: Address not found in the xpub.
+      security:
+      - bearerAuth: []
+      summary: Get xpub address type and index. Only index under /0/70 /1/30 is valid.
+        Otherwise not found.
+      tags:
+      - xpub
+      x-accepts: application/json
+  /xpubLite/{xpub}/balance:
+    get:
+      description: This api returns confirmed balance(same as address balance), not
+        sumed utxos.
+      parameters:
+      - description: the xpub to search
+        explode: false
+        in: path
+        name: xpub
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/XpubLiteBalance'
+          description: Get xpub balance success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get xpub balances including confirmed and unconfirmed.
+      tags:
+      - xpub
+      x-accepts: application/json
+  /contract/unique/genesis/{codeHash}/{genesis}/utxo:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractUniqueUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract unique utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get contract unique utxos by codeHash and genesisId.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/ft/address/{address}/utxo:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The flag of the last query Item(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractFtUtxo'
+                maxItems: 100
+                type: array
+          description: Get contract ft utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract token utxos for specific address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/ft/address/{address}/balance:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractFtBalance'
+                maxItems: 100
+                type: array
+          description: Get contract ft balances success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract token balances for specific address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/ft/address/{address}/balance/confirmed:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: int64
+                type: integer
+          description: Get contract ft balances succes（ingore unconfirmed txs）.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract token balances for specific address ignoring all unconfirmed
+        txs.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/address/{address}/utxo:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit the return count(no more than 300)
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The flag of the last query Item(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract nft token utxos for specific address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/address/{address}/summary:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftAddressSummary'
+                maxItems: 300
+                type: array
+          description: Get contract nft utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get nft summary(NFT count group by genesis) for address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/address/{address}/count/confirmed:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: integer
+          description: Get contract nft utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get confirmed utxo count for specific nft(ignore all unconfirmed txs).
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/genesis/{codeHash}/{genesis}/utxo:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Find exact token Index.
+        explode: true
+        in: query
+        name: tokenIndex
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not bigger than this(include this).
+        explode: true
+        in: query
+        name: max
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not less than this(include this).
+        explode: true
+        in: query
+        name: min
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract nft token utxos by codeHash and genesisId.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/genesis/{codeHash}/{genesis}/summary:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftGenesisSummary'
+                maxItems: 300
+                type: array
+          description: Get contract nft utxo success(result cached for 60s)..
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get nft summary(count group by address) for specific codeHash and genesisId(result
+        cached for 60s).
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/sell/address/{address}/utxo:
+    get:
+      parameters:
+      - description: Owner address.
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The flag of the last query Item(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftSellUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft sell utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract sell sell utxos for specific address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/sell/genesis/{codeHash}/{genesis}/utxo:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Find exact token Index.
+        explode: true
+        in: query
+        name: tokenIndex
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not bigger than this(include this).
+        explode: true
+        in: query
+        name: max
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not less than this(include this).
+        explode: true
+        in: query
+        name: min
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftSellUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft sell utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract nft token utxos by codeHash and genesisId.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/sellV2/address/{address}/utxo:
+    get:
+      parameters:
+      - description: Owner address.
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: true
+        in: query
+        name: codeHash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by contract genesis
+        explode: true
+        in: query
+        name: genesis
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The flag of the last query Item(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft sell utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract sell sell utxos for specific address.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Find exact token Index.
+        explode: true
+        in: query
+        name: tokenIndex
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not bigger than this(include this).
+        explode: true
+        in: query
+        name: max
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Token index not less than this(include this).
+        explode: true
+        in: query
+        name: min
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft sell utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract nft token utxos by codeHash and genesisId.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo:
+    get:
+      parameters:
+      - description: Code hash of the token.
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Nft id of this auction.
+        explode: false
+        in: path
+        name: nftId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractNftAuctionUtxo'
+                maxItems: 300
+                type: array
+          description: Get contract nft sell utxo success.
+        "401":
+          $ref: '#/components/schemas/UnauthorizedError'
+      security:
+      - bearerAuth: []
+      summary: Get all contract nft token utxos by codeHash and genesisId.
+      tags:
+      - contract
+      x-accepts: application/json
+components:
+  schemas:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    BlockchainInfo:
+      example:
+        difficulty: difficulty
+        headers: 6
+        chain: chain
+        chainwork: chainwork
+        medianTime: 1
+        blocks: 0
+        bestBlockHash: bestBlockHash
+      properties:
+        chain:
+          description: mainnet or testnet
+          type: string
+        blocks:
+          description: current block count
+          type: integer
+        headers:
+          description: current block header count
+          type: integer
+        bestBlockHash:
+          description: current highest blockhash
+          type: string
+        difficulty:
+          description: decimal string for current difficulty
+          type: string
+        medianTime:
+          description: current median time
+          format: int64
+          type: integer
+        chainwork:
+          description: current pow
+          type: string
+      type: object
+    BlockHeader:
+      example:
+        reward: 5
+        minerAddress: minerAddress
+        blockHash: blockHash
+        outputCount: 9
+        bits: 2
+        merkleRoot: merkleRoot
+        version: 6
+        nonce: 4
+        miner: miner
+        medianTime: 5
+        coinbase: coinbase
+        size: 3
+        txCount: 2
+        prevBlockHash: prevBlockHash
+        height: 0
+        timestamp: 1
+        inputCount: 7
+      properties:
+        height:
+          description: Block height.
+          format: int64
+          type: integer
+        blockHash:
+          description: Block hash.
+          type: string
+        version:
+          description: Block version.
+          format: int64
+          type: integer
+        prevBlockHash:
+          description: The block hash of the previous block.
+          type: string
+        merkleRoot:
+          description: Hex formatted block merkle root.
+          type: string
+        timestamp:
+          description: Block timestamp.
+          format: int64
+          type: integer
+        medianTime:
+          description: Block median timestamp.
+          format: int64
+          type: integer
+        reward:
+          description: Miner total rewards, including miner fee.
+          format: int64
+          type: integer
+        miner:
+          description: Guessed miner name.
+          type: string
+        minerAddress:
+          description: Miner address that received rewards.
+          type: string
+        txCount:
+          description: Total txs count included in the block.
+          format: int64
+          type: integer
+        inputCount:
+          description: Total input count in the block.
+          format: int64
+          type: integer
+        outputCount:
+          description: Total output count in the block
+          format: int64
+          type: integer
+        size:
+          description: Size of the block
+          format: int64
+          type: integer
+        bits:
+          description: Target bits.
+          format: int64
+          type: integer
+        nonce:
+          description: Block nonce
+          format: int64
+          type: integer
+        coinbase:
+          description: Hex formated coinbase info.
+          type: string
+      type: object
+    BlockTx:
+      description: Tx simple info for block tx list.
+      example:
+        blockHash: blockHash
+        outputCount: 5
+        size: 6
+        lockTime: 5
+        fee: 2
+        txid: txid
+        confirmations: 7
+        height: 0
+        inputCount: 1
+        timestamp: 9
+      properties:
+        txid:
+          description: Transaction hash.
+          type: string
+        height:
+          description: Block height of this tx.
+          type: integer
+        blockHash:
+          description: Hash of the block
+          type: string
+        size:
+          description: transaction size
+          format: int64
+          type: integer
+        inputCount:
+          description: Input count in this transaction
+          type: integer
+        outputCount:
+          description: Output count in this transaction.
+          type: integer
+        lockTime:
+          description: Lock time of this transaction
+          format: int64
+          type: integer
+        fee:
+          description: Trasaction fee.
+          format: int64
+          type: integer
+        confirmations:
+          description: Confirmations of this transaction, -1 if unconfirmed.
+          type: integer
+        timestamp:
+          description: Block timestamp for the transaction, confirmed tx only.
+          format: int64
+          type: integer
+      type: object
+    TxDetail:
+      description: Parsed tx info
+      example:
+        outputs:
+        - address: address
+          lockScript: lockScript
+          index: 7
+          value: 1
+        - address: address
+          lockScript: lockScript
+          index: 7
+          value: 1
+        txDetail:
+          blockHash: blockHash
+          outputCount: 5
+          size: 6
+          lockTime: 5
+          fee: 2
+          txid: txid
+          confirmations: 7
+          height: 0
+          inputCount: 1
+          timestamp: 9
+        inputs:
+        - utxoIndex: 2
+          utxoTxid: utxoTxid
+          address: address
+          unlockScript: unlockScript
+          index: 3
+          value: 4
+        - utxoIndex: 2
+          utxoTxid: utxoTxid
+          address: address
+          unlockScript: unlockScript
+          index: 3
+          value: 4
+      properties:
+        txDetail:
+          $ref: '#/components/schemas/BlockTx'
+        inputs:
+          items:
+            $ref: '#/components/schemas/TxInput'
+          type: array
+        outputs:
+          items:
+            $ref: '#/components/schemas/TxOutput'
+          type: array
+      type: object
+    TxInput:
+      description: Parsed inputs from raw tx. Use output api to get value and spent
+        info.
+      example:
+        utxoIndex: 2
+        utxoTxid: utxoTxid
+        address: address
+        unlockScript: unlockScript
+        index: 3
+        value: 4
+      properties:
+        index:
+          description: Input index of the tx.
+          type: integer
+        utxoTxid:
+          description: The outpoint utxo txid that this input spent
+          type: string
+        utxoIndex:
+          description: The outpoint utxo index that this input spent
+          type: integer
+        address:
+          description: Parsed address from pubkey(P2PKH input only).
+          type: string
+        value:
+          description: satoshi value of this input.
+          format: int64
+          type: integer
+        unlockScript:
+          description: The hex of the input script.
+          type: string
+      type: object
+    TxOutput:
+      description: Parsed outputs from raw tx.
+      example:
+        address: address
+        lockScript: lockScript
+        index: 7
+        value: 1
+      properties:
+        index:
+          description: Output index of the tx.
+          type: integer
+        value:
+          description: Bitcoin Value in this output.
+          format: int64
+          type: integer
+        address:
+          description: Parsed address from output
+          type: string
+        lockScript:
+          description: Hex formatted lockScript
+          type: string
+      type: object
+    TxRaw:
+      description: Raw hex formatted Tx returned.
+      example:
+        hex: hex
+      properties:
+        hex:
+          description: hex formatted raw tx.
+          type: string
+      type: object
+    BroadcastResult:
+      description: Broadcast result
+      example:
+        txid: txid
+        message: message
+      properties:
+        txid:
+          description: return txid if broadcast success
+          type: string
+        message:
+          description: return messages if broadcast failed
+          type: string
+      type: object
+    AsyncBroadcastResult:
+      description: Broadcast result
+      properties:
+        txid:
+          description: the txid of this tx
+          type: string
+        state:
+          description: the state of this tx, possible values PENDING, BROADCASTED,
+            INVALID, UNKNOWN
+          type: string
+        message:
+          description: return messages if broadcast failed
+          type: string
+      type: object
+    AddressBalance:
+      description: The current balance for a particular address
+      example:
+        unconfirmed: 6
+        address: address
+        confirmed: 0
+      properties:
+        address:
+          description: current address
+          type: string
+        confirmed:
+          description: confirmed balance
+          format: int64
+          type: integer
+        unconfirmed:
+          description: unconfirmed balance
+          format: int64
+          type: integer
+      type: object
+    AddressUtxo:
+      description: Utxos by address(or addresses) order by height asc.
+      example:
+        outIndex: 0
+        flag: flag
+        address: address
+        txid: txid
+        value: 6
+        height: 1
+      properties:
+        flag:
+          description: paging flag
+          type: string
+        address:
+          description: Address of the utxo
+          type: string
+        txid:
+          description: txid of the utxo
+          type: string
+        outIndex:
+          description: output index in the tx
+          type: integer
+        value:
+          description: Value of the utxo
+          format: int64
+          type: integer
+        height:
+          description: Height of the utxo, -1 if not confirmed
+          type: integer
+      type: object
+    AddressTx:
+      description: Transaction history of the address.
+      example:
+        income: 1
+        flag: flag
+        address: address
+        txid: txid
+        time: 0
+        outcome: 5
+        height: 6
+      properties:
+        flag:
+          description: Paging flag
+          type: string
+        address:
+          description: The address of the record
+          type: string
+        time:
+          description: timestamp of the tx
+          format: int64
+          type: integer
+        height:
+          description: Block Height of the tx, -1 if not confirmed
+          type: integer
+        income:
+          description: total income of the address from this tx
+          format: int64
+          type: integer
+        outcome:
+          description: total outcome of the address from this tx
+          format: int64
+          type: integer
+        txid:
+          description: txid of this record
+          type: string
+      type: object
+    OutputInfo:
+      description: spent status and value info of the output.
+      example:
+        address: address
+        spent: true
+        spentIndex: 1
+        txid: txid
+        index: 0
+        spentHeight: 5
+        spentTxid: spentTxid
+        value: 6
+      properties:
+        txid:
+          description: txid that this output is in.
+          type: string
+        index:
+          description: index of this output in the tx.
+          type: integer
+        address:
+          description: parsed address of this output, empty for non standard.
+          type: string
+        value:
+          description: value of this output
+          format: int64
+          type: integer
+        spent:
+          description: this output is spent or not, true if spent
+          type: boolean
+        spentTxid:
+          description: txid that spent this output
+          type: string
+        spentIndex:
+          description: vin index of the spent tx
+          type: integer
+        spentHeight:
+          description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
+          type: integer
+      type: object
+    OutputInfoDetail:
+      description: spent status and value info of the output with detailed output
+        script.
+      example:
+        address: address
+        spent: true
+        spentIndex: 1
+        txid: txid
+        index: 0
+        spentHeight: 5
+        spentTxid: spentTxid
+        value: 6
+        script: script
+      properties:
+        txid:
+          description: txid that this output is in.
+          type: string
+        index:
+          description: index of this output in the tx.
+          type: integer
+        script:
+          description: output scrypt in hex format
+          type: string
+        address:
+          description: parsed address of this output, empty for non standard.
+          type: string
+        value:
+          description: value of this output
+          format: int64
+          type: integer
+        spent:
+          description: this output is spent or not, true if spent
+          type: boolean
+        spentTxid:
+          description: txid that spent this output
+          type: string
+        spentIndex:
+          description: vin index of the spent tx
+          type: integer
+        spentHeight:
+          description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
+          type: integer
+      type: object
+    UtxoPickRequest:
+      description: Request object to batch pick utxo
+      example:
+        addresses:
+        - addresses
+        - addresses
+        amount: 0
+      properties:
+        addresses:
+          description: The address list to pick utxo from
+          items:
+            type: string
+          type: array
+        amount:
+          description: The total amount you want to pick
+          format: int64
+          type: integer
+      type: object
+    XpubRequest:
+      description: Request object to register(or delete) a new xpub
+      properties:
+        xpub:
+          description: The xpub to register.
+          type: string
+        skipHeight:
+          description: Skip transactions before this height. Default is 0. Ignore
+            this while deleting xpub.
+          type: integer
+        initReceiveIndex:
+          description: Set the init maxReceiveIndex to {initReceiveIndex}(less than
+            5000) before the initial crawl , default is 200. This could increase cost.
+          type: integer
+        initChangeIndex:
+          description: Set the init maxChangeIndex(less than 5000) before the initial
+            crawl , default is 200. This could increase cost.
+          type: integer
+      type: object
+    XpubResult:
+      description: XpubRegister result
+      properties:
+        xpub:
+          description: return xpub if broadcast success
+          type: string
+        message:
+          description: return messages if broadcast failed
+          type: string
+      type: object
+    XpubDetail:
+      description: Registered Xpub detail
+      properties:
+        xpub:
+          description: String encoded extended pubkey (xpub)
+          type: string
+        receiveIndex:
+          description: Next unused receive index, path /0/index
+          type: integer
+        maxReceiveIndex:
+          description: Max lookahead receive index.
+          type: integer
+        changeIndex:
+          description: Next unused change index, path /1/index
+          type: integer
+        maxChangeIndex:
+          description: Max lookahead change index.
+          type: integer
+        mode:
+          description: Current xpub process mode, 0 means preparing(not ready), 1
+            means synchronizing(ready)
+          type: integer
+        skipHeight:
+          description: Skip blocks before skipHeight while searching transactions.
+            This will speed up sync time.
+          type: integer
+        processHeight:
+          description: Xpub current processed height.
+          type: integer
+      type: object
+    XpubBalance:
+      description: Registered Xpub balance including confirmed and unconfirmed
+      properties:
+        confirmed:
+          description: confirmed balance
+          format: int64
+          type: integer
+        unconfirmed:
+          description: unconfirmed balance
+          format: int64
+          type: integer
+      type: object
+    XpubLiteBalance:
+      description: Balance for xpub lite wallet
+      example:
+        balance: 0
+      properties:
+        balance:
+          description: confirmed balance plus unconfirmed balance
+          format: int64
+          type: integer
+      type: object
+    XpubUtxo:
+      description: Utxo belongs to the specified xpub
+      example:
+        address: address
+        flag: 2
+        addressType: 0
+        addressIndex: 6
+        txid: txid
+        xpub: xpub
+        value: 5
+        txIndex: 1
+        height: 5
+      properties:
+        xpub:
+          description: xpub of the utxo
+          type: string
+        address:
+          description: Address string of this utxo
+          type: string
+        addressType:
+          description: Address type, 0 for receive address, 1 for change address.
+            path is {{addressType}}/{{addressIndex}}
+          type: integer
+        addressIndex:
+          description: Address index. Address path in the xpub is {{addressType}}/{{addressIndex}}
+          type: integer
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        value:
+          description: Satoshi value of the utxo.
+          format: int64
+          type: integer
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        flag:
+          description: The paging flag of utxo
+          format: int64
+          type: integer
+      type: object
+    XpubAddress:
+      description: Address detail in the wallet
+      example:
+        address: address
+        addressType: 0
+        addressIndex: 6
+        xpub: xpub
+      properties:
+        xpub:
+          description: xpub in the query
+          type: string
+        address:
+          description: Address in the query
+          type: string
+        addressType:
+          description: Address type, 0 for receive address, 1 for change address.
+            path is {{addressType}}/{{addressIndex}}
+          type: integer
+        addressIndex:
+          description: Address index. Address path in the xpub is {{addressType}}/{{addressIndex}}
+          type: integer
+      type: object
+    XPubTransaction:
+      description: Xpub transaction history
+      properties:
+        xpub:
+          description: query xpub
+          type: string
+        txid:
+          description: Txid for this transaction.
+          type: string
+        maxReceiveIndex:
+          description: Max lookahead receive index when processing this transaction.
+          type: integer
+        maxChangeIndex:
+          description: Max lookahead change index when processing this transaction.
+          type: integer
+        income:
+          description: Total received satoshis(Including all address)
+          format: int64
+          type: integer
+        outcome:
+          description: Total spent satoshis(Including all address)
+          format: int64
+          type: integer
+        height:
+          description: Height for this transaction. -1 for unconfirmed
+          type: integer
+        blockIndex:
+          description: Block index for this transaction, -1 for unconfirmed
+          type: integer
+        blockTime:
+          description: Block timestamp for this transaction, if unconfirmed, the time
+            is first seen time.
+          format: int64
+          type: integer
+        flag:
+          description: Paging flag, format blockTimestamp_blockIndex
+          type: string
+      type: object
+    ClientPubkeyRequest:
+      description: Request object to register(or delete) a new client public key.
+      properties:
+        pubkey:
+          description: The hex format public key to register. (i.e. 02fd17dd0c52e54e5eed4ebe1e75df5e48df422f81c26520d44380bef1691fdd98)
+          type: string
+      type: object
+    ClientPubkeyResult:
+      description: Client public key result
+      properties:
+        pubkey:
+          description: return pubkey if created successfully
+          type: string
+        message:
+          description: return messages if broadcast failed
+          type: string
+      type: object
+    ContractUniqueUtxo:
+      description: Contract unique Utxo indexed by codeHash and genesis.
+      example:
+        genesis: genesis
+        satoshi: 1
+        codeHash: codeHash
+        txid: txid
+        satoshiString: satoshiString
+        customData: customData
+        sensibleId: sensibleId
+        txIndex: 0
+        height: 6
+      properties:
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        customData:
+          description: The hex encoded customData
+          type: string
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+      type: object
+    ContractFtUtxo:
+      description: Contract fungible token Utxo belongs to the specified address
+      example:
+        symbol: symbol
+        satoshi: 5
+        address: address
+        flag: flag
+        codeHash: codeHash
+        txid: txid
+        sensibleId: sensibleId
+        genesis: genesis
+        valueString: valueString
+        name: name
+        satoshiString: satoshiString
+        decimal: 0
+        value: 1
+        txIndex: 6
+        height: 5
+      properties:
+        address:
+          description: Address string of this utxo
+          type: string
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        name:
+          description: Name of the token.
+          type: string
+        symbol:
+          description: Symbol of the token.
+          type: string
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        decimal:
+          description: The decimal position.
+          type: integer
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        value:
+          description: Token value of the utxo(Irrelavant to satoshi value).
+          format: int64
+          type: integer
+        valueString:
+          description: Token value of the utxo(In string format)
+          type: string
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        flag:
+          description: Flag used for paging
+          type: string
+      type: object
+    ContractFtBalance:
+      description: Contract fungible token balance
+      example:
+        utxoCount: 6
+        unconfirmed: 5
+        genesis: genesis
+        symbol: symbol
+        codeHash: codeHash
+        name: name
+        unconfirmedString: unconfirmedString
+        sensibleId: sensibleId
+        decimal: 0
+        confirmed: 1
+        confirmedString: confirmedString
+      properties:
+        codeHash:
+          description: Codehash of the token.
+          type: string
+        genesis:
+          description: Genesis of the token.
+          type: string
+        name:
+          description: Name of the token.
+          type: string
+        symbol:
+          description: Symbol of the token.
+          type: string
+        decimal:
+          description: The decimal position.
+          type: integer
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        utxoCount:
+          description: Number of utxos for this token.
+          type: integer
+        confirmed:
+          description: Confirmed balance of the token.
+          format: int64
+          type: integer
+        confirmedString:
+          description: Confirmed balance of the token(In string format).
+          type: string
+        unconfirmed:
+          description: Unconfirmed balance of the token.
+          format: int64
+          type: integer
+        unconfirmedString:
+          description: Unconfirmed balance of the token(In string format).
+          type: string
+      type: object
+    ContractNftUtxo:
+      description: Contract non fungible token Utxo belongs to the specified address
+      example:
+        metaTxid: metaTxid
+        satoshi: 2
+        address: address
+        flag: flag
+        metaOutputIndex: 1
+        codeHash: codeHash
+        txid: txid
+        tokenIndex: 5
+        sensibleId: sensibleId
+        genesis: genesis
+        tokenSupply: 5
+        satoshiString: satoshiString
+        txIndex: 0
+        height: 6
+      properties:
+        address:
+          description: Address string of this utxo
+          type: string
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        metaTxid:
+          description: The metanet tx describing the nft.
+          type: string
+        metaOutputIndex:
+          description: Symbol of the token.
+          type: integer
+        tokenSupply:
+          description: The total supply of this NFT.
+          format: int64
+          type: integer
+        tokenIndex:
+          description: The index of this NFT.
+          format: int64
+          type: integer
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+        flag:
+          description: Flag used for paging
+          type: string
+      type: object
+    ContractNftAddressSummary:
+      description: Get nft summary(count group by genesis) for specific address.
+      example:
+        genesis: genesis
+        metaTxid: metaTxid
+        metaOutputIndex: 0
+        codeHash: codeHash
+        tokenSupply: 6
+        count: 1
+        sensibleId: sensibleId
+      properties:
+        codeHash:
+          description: Codehash of this NFT series.
+          type: string
+        genesis:
+          description: Genesis of this NFT series..
+          type: string
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        metaTxid:
+          description: The metanet tx describing the nft.
+          type: string
+        metaOutputIndex:
+          description: Symbol of the token.
+          type: integer
+        tokenSupply:
+          description: The total supply of this NFT.
+          format: int64
+          type: integer
+        count:
+          description: The count of this nft that the address owns.
+          type: integer
+      type: object
+    ContractNftGenesisSummary:
+      description: Get summary(count group by address) for specific genesis.
+      example:
+        metaTxid: metaTxid
+        address: address
+        metaOutputIndex: 0
+        tokenSupply: 6
+        count: 1
+        sensibleId: sensibleId
+      properties:
+        address:
+          description: Owner address.
+          type: string
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        metaTxid:
+          description: The metanet tx describing the nft.
+          type: string
+        metaOutputIndex:
+          description: Symbol of the token.
+          type: integer
+        tokenSupply:
+          description: The total supply of this NFT.
+          format: int64
+          type: integer
+        count:
+          description: The count of this nft that the address owns.
+          type: integer
+      type: object
+    ContractNftSellUtxo:
+      description: Contract nft sell Utxo belongs to the specified address
+      example:
+        satoshi: 5
+        metaTxid: metaTxid
+        address: address
+        flag: flag
+        metaOutputIndex: 2
+        codeHash: codeHash
+        isReady: true
+        contractAddress: contractAddress
+        txid: txid
+        tokenIndex: 6
+        sensibleId: sensibleId
+        genesis: genesis
+        price: 1
+        tokenSupply: 7
+        satoshiString: satoshiString
+        txIndex: 0
+        height: 5
+      properties:
+        address:
+          description: Address string of this utxo
+          type: string
+        contractAddress:
+          description: Address calculated from contract hash(p2ch).
+          type: string
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        tokenIndex:
+          description: The index of this NFT.
+          format: int64
+          type: integer
+        price:
+          description: the price of nft.
+          format: int64
+          type: integer
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        isReady:
+          description: Is current nft transfered into sell contract, If not ready,
+            the following fields will be null
+          type: boolean
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        metaTxid:
+          description: The metanet tx describing the nft.
+          type: string
+        metaOutputIndex:
+          description: Symbol of the token.
+          type: integer
+        tokenSupply:
+          description: The total supply of this NFT.
+          format: int64
+          type: integer
+        flag:
+          description: Flag used for paging
+          type: string
+      type: object
+    ContractNftSellV2Utxo:
+      description: Contract nft sell v2 Utxo belongs to the specified address
+      example:
+        satoshi: 5
+        metaTxid: metaTxid
+        address: address
+        flag: flag
+        metaOutputIndex: 7
+        codeHash: codeHash
+        sellerAddressPkh: sellerAddressPkh
+        isReady: true
+        contractAddress: contractAddress
+        txid: txid
+        nftId: nftId
+        tokenIndex: 6
+        sensibleId: sensibleId
+        feeRate: 5
+        genesis: genesis
+        price: 1
+        tokenSupply: 9
+        satoshiString: satoshiString
+        feeAddressPkh: feeAddressPkh
+        txIndex: 0
+        height: 2
+      properties:
+        address:
+          description: Address string of this utxo
+          type: string
+        contractAddress:
+          description: Address calculated from contract hash(p2ch).
+          type: string
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        tokenIndex:
+          description: The index of this NFT.
+          format: int64
+          type: integer
+        price:
+          description: the price of nft.
+          format: int64
+          type: integer
+        feeAddressPkh:
+          description: The address to receive fees.
+          type: string
+        feeRate:
+          description: feeRate
+          type: integer
+        nftId:
+          description: nftId
+          type: string
+        sellerAddressPkh:
+          description: The address pkh of seller
+          type: string
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        isReady:
+          description: Is current nft transfered into sell contract, If not ready,
+            the following fields will be null
+          type: boolean
+        sensibleId:
+          description: SensibleId of the token
+          type: string
+        metaTxid:
+          description: The metanet tx describing the nft.
+          type: string
+        metaOutputIndex:
+          description: Symbol of the token.
+          type: integer
+        tokenSupply:
+          description: The total supply of this NFT.
+          format: int64
+          type: integer
+        flag:
+          description: Flag used for paging
+          type: string
+      type: object
+    ContractNftAuctionUtxo:
+      description: Contract nft auction Utxo belongs to the specified address
+      example:
+        bidMvcPrice: 6
+        satoshi: 3
+        address: address
+        bidTimestamp: 1
+        flag: flag
+        codeHash: codeHash
+        isReady: true
+        txid: txid
+        nftId: nftId
+        contractAddress: contractAddress
+        sensibleId: sensibleId
+        feeRate: 2
+        startMvcPrice: 9
+        senderAddressPkh: senderAddressPkh
+        genesis: genesis
+        feeAmount: 5
+        nftCodeHash: nftCodeHash
+        bidderAddressPkh: bidderAddressPkh
+        satoshiString: satoshiString
+        feeAddressPkh: feeAddressPkh
+        endTimestamp: 5
+        txIndex: 0
+        height: 7
+      properties:
+        address:
+          description: Address string of this utxo
+          type: string
+        txid:
+          description: Txid for this utxo.
+          type: string
+        txIndex:
+          description: Output index for the Utxo.
+          type: integer
+        bidMvcPrice:
+          description: bidMvcPrice
+          format: int64
+          type: integer
+        bidTimestamp:
+          description: bidTimestamp
+          format: int64
+          type: integer
+        bidderAddressPkh:
+          description: bidderAddressPkh
+          type: string
+        codeHash:
+          description: Codehash of this utxo.
+          type: string
+        genesis:
+          description: Genesis of this utxo.
+          type: string
+        endTimestamp:
+          description: endTimestamp
+          format: int64
+          type: integer
+        feeAddressPkh:
+          description: feeAddressPkh
+          type: string
+        feeAmount:
+          description: feeAmount
+          format: int64
+          type: integer
+        feeRate:
+          description: feeRate
+          type: integer
+        height:
+          description: The height of this utxo, -1 for unconfirmed utxo.
+          type: integer
+        nftCodeHash:
+          description: nftCodeHash
+          type: string
+        nftId:
+          description: nftId of the auctioning fnt
+          type: string
+        senderAddressPkh:
+          description: senderAddressPkh
+          type: string
+        sensibleId:
+          description: SensibleId of the utxo
+          type: string
+        startMvcPrice:
+          description: startMvcPrice
+          format: int64
+          type: integer
+        satoshi:
+          description: Mvc value of the utxo(Irrelavant to token value)
+          format: int64
+          type: integer
+        satoshiString:
+          description: Mvc value of the utxo(In string format)
+          type: string
+        contractAddress:
+          description: The hash160 of the script(p2ch address)
+          type: string
+        isReady:
+          description: this the nft send to this contract address
+          type: boolean
+        flag:
+          description: Flag used for paging
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+
