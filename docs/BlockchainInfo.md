@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **difficulty** | **String** | decimal string for current difficulty |  [optional]
 **medianTime** | **Long** | current median time |  [optional]
 **chainwork** | **String** | current pow |  [optional]
+**networkHashPerSecond** | **String** | estimated current network hash rate. |  [optional]
+**mempoolTxCount** | **Integer** | current mempool transaction count. |  [optional]
+**mempoolUsage** | **Long** | current mempool usage. |  [optional]
+**estimatedBlockSize** | **Long** | next estimated block size. |  [optional]
 
 
 

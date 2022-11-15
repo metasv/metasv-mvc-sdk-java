@@ -1,8 +1,8 @@
 # openapi-java-client
 
 MetaSV API Spec
-- API version: 2.2.0
-  - Build date: 2022-10-12T19:14:49.325014+09:00[Asia/Tokyo]
+- API version: 2.2.1
+  - Build date: 2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]
 
 API definition for MetaSV provided apis
 

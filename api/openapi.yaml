@@ -8,7 +8,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: MetaSV API Spec
-  version: 2.2.0
+  version: 2.2.1
 servers:
 - url: https://api-mvc-testnet.metasv.com
 - url: https://api-mvc.metasv.com
@@ -1204,12 +1204,16 @@ components:
     BlockchainInfo:
       example:
         difficulty: difficulty
+        mempoolTxCount: 5
         headers: 6
         chain: chain
         chainwork: chainwork
         medianTime: 1
+        networkHashPerSecond: networkHashPerSecond
         blocks: 0
+        estimatedBlockSize: 2
         bestBlockHash: bestBlockHash
+        mempoolUsage: 5
       properties:
         chain:
           description: mainnet or testnet
@@ -1233,6 +1237,20 @@ components:
         chainwork:
           description: current pow
           type: string
+        networkHashPerSecond:
+          description: estimated current network hash rate.
+          type: string
+        mempoolTxCount:
+          description: current mempool transaction count.
+          type: integer
+        mempoolUsage:
+          description: current mempool usage.
+          format: int64
+          type: integer
+        estimatedBlockSize:
+          description: next estimated block size.
+          format: int64
+          type: integer
       type: object
     BlockHeader:
       example:

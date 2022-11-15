@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: MetaSV API Spec
   description: API definition for MetaSV provided apis
-  version: 2.2.0
+  version: 2.2.1
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -1084,6 +1084,20 @@ components:
         chainwork:
           type: string
           description: current pow
+        networkHashPerSecond:
+          type: string
+          description: estimated current network hash rate.
+        mempoolTxCount:
+          type: integer
+          description: current mempool transaction count.
+        mempoolUsage:
+          type: integer
+          format: int64
+          description: current mempool usage.
+        estimatedBlockSize:
+          type: integer
+          format: int64
+          description: next estimated block size.
     BlockHeader:
       type: object
       properties:
