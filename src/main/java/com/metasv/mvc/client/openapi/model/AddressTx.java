@@ -28,7 +28,7 @@ import java.io.IOException;
  * Transaction history of the address.
  */
 @ApiModel(description = "Transaction history of the address.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]")
 public class AddressTx {
   public static final String SERIALIZED_NAME_FLAG = "flag";
   @SerializedName(SERIALIZED_NAME_FLAG)

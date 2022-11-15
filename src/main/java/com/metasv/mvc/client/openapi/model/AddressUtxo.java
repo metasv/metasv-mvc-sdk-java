@@ -28,7 +28,7 @@ import java.io.IOException;
  * Utxos by address(or addresses) order by height asc.
  */
 @ApiModel(description = "Utxos by address(or addresses) order by height asc.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]")
 public class AddressUtxo {
   public static final String SERIALIZED_NAME_FLAG = "flag";
   @SerializedName(SERIALIZED_NAME_FLAG)

@@ -28,7 +28,7 @@ import java.io.IOException;
  * Contract nft auction Utxo belongs to the specified address
  */
 @ApiModel(description = "Contract nft auction Utxo belongs to the specified address")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]")
 public class ContractNftAuctionUtxo {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)

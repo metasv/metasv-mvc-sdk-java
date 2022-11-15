@@ -28,7 +28,7 @@ import java.io.IOException;
  * Client public key result
  */
 @ApiModel(description = "Client public key result")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]")
 public class ClientPubkeyResult {
   public static final String SERIALIZED_NAME_PUBKEY = "pubkey";
   @SerializedName(SERIALIZED_NAME_PUBKEY)

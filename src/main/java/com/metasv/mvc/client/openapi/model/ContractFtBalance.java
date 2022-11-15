@@ -28,7 +28,7 @@ import java.io.IOException;
  * Contract fungible token balance
  */
 @ApiModel(description = "Contract fungible token balance")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:45:11.913879+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]")
 public class ContractFtBalance {
   public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
   @SerializedName(SERIALIZED_NAME_CODE_HASH)
