@@ -28,7 +28,7 @@ import java.io.IOException;
  * Tx simple info for block tx list.
  */
 @ApiModel(description = "Tx simple info for block tx list.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:23:45.479431+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:34:23.270603+09:00[Asia/Tokyo]")
 public class BlockTx {
   public static final String SERIALIZED_NAME_TXID = "txid";
   @SerializedName(SERIALIZED_NAME_TXID)

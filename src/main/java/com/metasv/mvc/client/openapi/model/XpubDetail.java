@@ -28,7 +28,7 @@ import java.io.IOException;
  * Registered Xpub detail
  */
 @ApiModel(description = "Registered Xpub detail")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:23:45.479431+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:34:23.270603+09:00[Asia/Tokyo]")
 public class XpubDetail {
   public static final String SERIALIZED_NAME_XPUB = "xpub";
   @SerializedName(SERIALIZED_NAME_XPUB)

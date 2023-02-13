@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'com.metasv.mvc'
-version = '2.2.1'
+version = '3.0.1'
 
 buildscript {
     repositories {

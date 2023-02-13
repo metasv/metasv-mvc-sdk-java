@@ -115,6 +115,3 @@ src/main/java/com/metasv/mvc/client/openapi/model/XpubLiteBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubRequest.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubResult.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubUtxo.java
-src/test/java/com/metasv/mvc/client/openapi/model/BlockHeaderIndexTest.java
-src/test/java/com/metasv/mvc/client/openapi/model/BlockHeaderPageTest.java
-src/test/java/com/metasv/mvc/client/openapi/model/ErrorResponseTest.java

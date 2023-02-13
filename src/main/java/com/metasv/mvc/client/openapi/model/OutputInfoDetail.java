@@ -28,7 +28,7 @@ import java.io.IOException;
  * spent status and value info of the output with detailed output script.
  */
 @ApiModel(description = "spent status and value info of the output with detailed output script.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:23:45.479431+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:34:23.270603+09:00[Asia/Tokyo]")
 public class OutputInfoDetail {
   public static final String SERIALIZED_NAME_TXID = "txid";
   @SerializedName(SERIALIZED_NAME_TXID)

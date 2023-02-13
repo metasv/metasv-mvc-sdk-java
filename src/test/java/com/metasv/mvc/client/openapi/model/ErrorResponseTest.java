@@ -27,49 +27,25 @@ import org.junit.Test;
 
 
 /**
- * Model tests for XpubAddress
+ * Model tests for ErrorResponse
  */
-public class XpubAddressTest {
-    private final XpubAddress model = new XpubAddress();
+public class ErrorResponseTest {
+    private final ErrorResponse model = new ErrorResponse();
 
     /**
-     * Model tests for XpubAddress
+     * Model tests for ErrorResponse
      */
     @Test
-    public void testXpubAddress() {
-        // TODO: test XpubAddress
+    public void testErrorResponse() {
+        // TODO: test ErrorResponse
     }
 
     /**
-     * Test the property 'xpub'
+     * Test the property 'message'
      */
     @Test
-    public void xpubTest() {
-        // TODO: test xpub
-    }
-
-    /**
-     * Test the property 'address'
-     */
-    @Test
-    public void addressTest() {
-        // TODO: test address
-    }
-
-    /**
-     * Test the property 'addressType'
-     */
-    @Test
-    public void addressTypeTest() {
-        // TODO: test addressType
-    }
-
-    /**
-     * Test the property 'addressIndex'
-     */
-    @Test
-    public void addressIndexTest() {
-        // TODO: test addressIndex
+    public void messageTest() {
+        // TODO: test message
     }
 
 }

@@ -28,7 +28,7 @@ import java.io.IOException;
  * Request object to register(or delete) a new xpub
  */
 @ApiModel(description = "Request object to register(or delete) a new xpub")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:23:45.479431+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-13T13:34:23.270603+09:00[Asia/Tokyo]")
 public class XpubRequest {
   public static final String SERIALIZED_NAME_XPUB = "xpub";
   @SerializedName(SERIALIZED_NAME_XPUB)
