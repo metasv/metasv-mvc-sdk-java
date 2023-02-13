@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="blockBlockIdGet"></a>
 # **blockBlockIdGet**
-> BlockHeader blockBlockIdGet(blockId)
+> BlockHeaderIndex blockBlockIdGet(blockId)
 
 Get block request by height or hash
 
@@ -37,7 +37,7 @@ public class Example {
     BlockApi apiInstance = new BlockApi(defaultClient);
     String blockId = "blockId_example"; // String | The block id, height or hash acceptable.
     try {
-      BlockHeader result = apiInstance.blockBlockIdGet(blockId);
+      BlockHeaderIndex result = apiInstance.blockBlockIdGet(blockId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BlockApi#blockBlockIdGet");
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockHeader**](BlockHeader.md)
+[**BlockHeaderIndex**](BlockHeaderIndex.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 <a name="blockGet"></a>
 # **blockGet**
-> List&lt;BlockHeader&gt; blockGet(last)
+> List&lt;BlockHeaderPage&gt; blockGet(last)
 
 Get recent block list by paging. 30 items per page.
 
@@ -103,7 +103,7 @@ public class Example {
     BlockApi apiInstance = new BlockApi(defaultClient);
     Long last = 56L; // Long | paging flag, height of last item in last page
     try {
-      List<BlockHeader> result = apiInstance.blockGet(last);
+      List<BlockHeaderPage> result = apiInstance.blockGet(last);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BlockApi#blockGet");
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;BlockHeader&gt;**](BlockHeader.md)
+[**List&lt;BlockHeaderPage&gt;**](BlockHeaderPage.md)
 
 ### Authorization
 

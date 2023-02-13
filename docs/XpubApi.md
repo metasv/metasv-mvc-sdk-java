@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub address success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 **404** | Address not found in the xpub. |  -  |
 
 <a name="xpubLiteXpubBalanceGet"></a>
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub balance success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="xpubLiteXpubUtxoGet"></a>
 # **xpubLiteXpubUtxoGet**
@@ -212,5 +212,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub utxos success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 

@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: MetaSV API Spec
+  title: MetaSV for MVC API Spec
   description: API definition for MetaSV provided apis
-  version: 2.2.1
+  version: 3.0.1
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -73,7 +73,7 @@ paths:
                 type: array
                 maxItems: 100
                 items:
-                  $ref: '#/components/schemas/BlockHeader'
+                  $ref: '#/components/schemas/BlockHeaderPage'
 
   '/block/{blockId}':
     get:
@@ -96,7 +96,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BlockHeader'
+                $ref: '#/components/schemas/BlockHeaderIndex'
         '404':
           description: block info not found
 
@@ -353,7 +353,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/OutputInfoDetail'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
 
   '/merchant/utxo':
@@ -410,7 +410,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/XpubUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/xpubLite/{xpub}/address/{address}':
     get:
@@ -439,8 +439,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/XpubAddress'
+
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: Address not found in the xpub.
   '/xpubLite/{xpub}/balance':
@@ -466,7 +467,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/XpubLiteBalance'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/unique/genesis/{codeHash}/{genesis}/utxo':
     get:
@@ -499,7 +500,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractUniqueUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
 
   '/contract/ft/address/{address}/utxo':
@@ -545,7 +546,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractFtUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/ft/address/{address}/balance':
     get:
@@ -584,7 +585,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractFtBalance'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/ft/address/{address}/balance/confirmed':
     get:
@@ -621,7 +622,7 @@ paths:
                 type: integer
                 format: int64
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/nft/address/{address}/utxo':
     get:
@@ -672,7 +673,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/address/{address}/summary':
     get:
       security:
@@ -698,7 +699,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftAddressSummary'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/address/{address}/count/confirmed':
     get:
       security:
@@ -733,7 +734,7 @@ paths:
               schema:
                 type: integer
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/genesis/{codeHash}/{genesis}/utxo':
     get:
       security:
@@ -786,7 +787,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/genesis/{codeHash}/{genesis}/summary':
     get:
       security:
@@ -818,7 +819,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftGenesisSummary'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/nft/sell/address/{address}/utxo':
     get:
@@ -863,7 +864,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftSellUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/sell/genesis/{codeHash}/{genesis}/utxo':
     get:
       security:
@@ -916,7 +917,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftSellUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/sellV2/address/{address}/utxo':
     get:
       security:
@@ -960,7 +961,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftSellV2Utxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
   '/contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo':
     get:
       security:
@@ -1013,7 +1014,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftSellV2Utxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
+          $ref: '#/components/responses/UnauthorizedError'
 
   '/contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo':
     get:
@@ -1046,8 +1047,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractNftAuctionUtxo'
         '401':
-          $ref: '#/components/schemas/UnauthorizedError'
-
+          $ref: '#/components/responses/UnauthorizedError'
 components:
   securitySchemes:
     # arbitrary name for the security scheme
@@ -1056,9 +1056,23 @@ components:
       scheme: bearer
       # optional, arbitrary value for documentation purposes
       bearerFormat: JWT
-  schemas:
+  responses:
     UnauthorizedError:
       description: Access token is missing or invalid
+      content:
+        application/json:
+          schema:
+            type: string
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      description: Error response.
+      type: object
+      properties:
+        message:
+          type: string
+          description: The reason for this error.
     BlockchainInfo:
       type: object
       properties:
@@ -1098,8 +1112,9 @@ components:
           type: integer
           format: int64
           description: next estimated block size.
-    BlockHeader:
+    BlockHeaderPage:
       type: object
+      description: block header saved by partition page
       properties:
         height:
           type: integer
@@ -1108,6 +1123,41 @@ components:
         blockHash:
           type: string
           description: Block hash.
+        timestamp:
+          type: integer
+          format: int64
+          description: Block timestamp.
+        medianTime:
+          type: integer
+          format: int64
+          description: current median time
+        reward:
+          type: integer
+          format: int64
+          description: Miner total rewards, including miner fee.
+        miner:
+          type: string
+          description: Guessed miner name.
+        txCount:
+          type: integer
+          description: Total txs count included in the block.
+        size:
+          type: integer
+          format: int64
+          description: Size of the block
+
+
+    BlockHeaderIndex:
+      type: object
+      description: Detailed block header info.
+      properties:
+        blockHash:
+          type: string
+          description: Block hash.
+        height:
+          type: integer
+          format: int64
+          description: Block height.
         version:
           type: integer
           format: int64
@@ -1138,15 +1188,12 @@ components:
           description: Miner address that received rewards.
         txCount:
           type: integer
-          format: int64
           description: Total txs count included in the block.
         inputCount:
           type: integer
-          format: int64
           description: Total input count in the block.
         outputCount:
           type: integer
-          format: int64
           description: Total output count in the block
         size:
           type: integer
@@ -1173,6 +1220,7 @@ components:
           description: Transaction hash.
         height:
           type: integer
+          format: int64
           description: Block height of this tx.
         blockHash:
           type: string
@@ -1197,6 +1245,7 @@ components:
           description: Trasaction fee.
         confirmations:
           type: integer
+          format: int64
           description: Confirmations of this transaction, -1 if unconfirmed.
         timestamp:
           type: integer
@@ -1328,6 +1377,7 @@ components:
           description: Value of the utxo
         height:
           type: integer
+          format: int64
           description: Height of the utxo, -1 if not confirmed
 
     AddressTx:
@@ -1346,6 +1396,7 @@ components:
           description: timestamp of the tx
         height:
           type: integer
+          format: int64
           description: Block Height of the tx, -1 if not confirmed
         income:
           type: integer
@@ -1388,6 +1439,7 @@ components:
         spentHeight:
           description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
           type: integer
+          format: int64
 
     OutputInfoDetail:
       description: spent status and value info of the output with detailed output script.
@@ -1421,6 +1473,7 @@ components:
         spentHeight:
           description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
           type: integer
+          format: int64
 
     UtxoPickRequest:
       description: Request object to batch pick utxo
@@ -1445,6 +1498,7 @@ components:
           description: The xpub to register.
         skipHeight:
           type: integer
+          format: int64
           description: Skip transactions before this height. Default is 0. Ignore this while deleting xpub.
         initReceiveIndex:
           type: integer
@@ -1489,9 +1543,11 @@ components:
         skipHeight:
           description: Skip blocks before skipHeight while searching transactions. This will speed up sync time.
           type: integer
+          format: int64
         processHeight:
           description: Xpub current processed height.
           type: integer
+          format: int64
 
     XpubBalance:
       description: Registered Xpub balance including confirmed and unconfirmed
@@ -1544,6 +1600,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         flag:
           description: The paging flag of utxo
           type: integer
@@ -1593,6 +1650,7 @@ components:
         height:
           description: Height for this transaction. -1 for unconfirmed
           type: integer
+          format: int64
         blockIndex:
           description: Block index for this transaction, -1 for unconfirmed
           type: integer
@@ -1645,6 +1703,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         customData:
           description: The hex encoded customData
           type: string
@@ -1704,6 +1763,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         flag:
           description: Flag used for paging
           type: string
@@ -1773,6 +1833,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         metaTxid:
           description: The metanet tx describing the nft.
           type: string
@@ -1889,6 +1950,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         isReady:
           description: Is current nft transfered into sell contract, If not ready, the following fields will be null
           type: boolean
@@ -1961,6 +2023,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         isReady:
           description: Is current nft transfered into sell contract, If not ready, the following fields will be null
           type: boolean
@@ -2028,6 +2091,7 @@ components:
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
           type: integer
+          format: int64
         nftCodeHash:
           description: nftCodeHash
           type: string

@@ -1,8 +1,8 @@
 # openapi-java-client
 
-MetaSV API Spec
-- API version: 2.2.1
-  - Build date: 2022-11-15T11:47:39.520276+09:00[Asia/Tokyo]
+MetaSV for MVC API Spec
+- API version: 3.0.1
+  - Build date: 2023-02-13T13:23:45.479431+09:00[Asia/Tokyo]
 
 API definition for MetaSV provided apis
 
@@ -150,7 +150,8 @@ Class | Method | HTTP request | Description
  - [AddressTx](docs/AddressTx.md)
  - [AddressUtxo](docs/AddressUtxo.md)
  - [AsyncBroadcastResult](docs/AsyncBroadcastResult.md)
- - [BlockHeader](docs/BlockHeader.md)
+ - [BlockHeaderIndex](docs/BlockHeaderIndex.md)
+ - [BlockHeaderPage](docs/BlockHeaderPage.md)
  - [BlockTx](docs/BlockTx.md)
  - [BlockchainInfo](docs/BlockchainInfo.md)
  - [BroadcastResult](docs/BroadcastResult.md)
@@ -165,6 +166,7 @@ Class | Method | HTTP request | Description
  - [ContractNftSellV2Utxo](docs/ContractNftSellV2Utxo.md)
  - [ContractNftUtxo](docs/ContractNftUtxo.md)
  - [ContractUniqueUtxo](docs/ContractUniqueUtxo.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
  - [OutputInfo](docs/OutputInfo.md)
  - [OutputInfoDetail](docs/OutputInfoDetail.md)
  - [TxDetail](docs/TxDetail.md)

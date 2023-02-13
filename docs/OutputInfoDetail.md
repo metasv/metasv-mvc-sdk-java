@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **spent** | **Boolean** | this output is spent or not, true if spent |  [optional]
 **spentTxid** | **String** | txid that spent this output |  [optional]
 **spentIndex** | **Integer** | vin index of the spent tx |  [optional]
-**spentHeight** | **Integer** | height of the spent tx(-1 if unconfirmed, 0 if unspent) |  [optional]
+**spentHeight** | **Long** | height of the spent tx(-1 if unconfirmed, 0 if unspent) |  [optional]
 
 
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **txid** | **String** | Txid for this utxo. |  [optional]
 **txIndex** | **Integer** | Output index for the Utxo. |  [optional]
 **value** | **Long** | Satoshi value of the utxo. |  [optional]
-**height** | **Integer** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
+**height** | **Long** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
 **flag** | **Long** | The paging flag of utxo |  [optional]
 
 

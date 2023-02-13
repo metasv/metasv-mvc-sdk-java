@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **valueString** | **String** | Token value of the utxo(In string format) |  [optional]
 **satoshi** | **Long** | Mvc value of the utxo(Irrelavant to token value) |  [optional]
 **satoshiString** | **String** | Mvc value of the utxo(In string format) |  [optional]
-**height** | **Integer** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
+**height** | **Long** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
 **flag** | **String** | Flag used for paging |  [optional]
 
 

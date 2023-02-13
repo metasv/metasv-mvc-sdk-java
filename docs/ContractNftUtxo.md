@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **codeHash** | **String** | Codehash of this utxo. |  [optional]
 **genesis** | **String** | Genesis of this utxo. |  [optional]
 **sensibleId** | **String** | SensibleId of the token |  [optional]
-**height** | **Integer** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
+**height** | **Long** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
 **metaTxid** | **String** | The metanet tx describing the nft. |  [optional]
 **metaOutputIndex** | **Integer** | Symbol of the token. |  [optional]
 **tokenSupply** | **Long** | The total supply of this NFT. |  [optional]

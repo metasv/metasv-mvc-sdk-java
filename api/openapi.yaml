@@ -7,8 +7,8 @@ info:
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
-  title: MetaSV API Spec
-  version: 2.2.1
+  title: MetaSV for MVC API Spec
+  version: 3.0.1
 servers:
 - url: https://api-mvc-testnet.metasv.com
 - url: https://api-mvc.metasv.com
@@ -63,7 +63,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/BlockHeader'
+                  $ref: '#/components/schemas/BlockHeaderPage'
                 maxItems: 100
                 type: array
           description: successfully get lists
@@ -89,7 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BlockHeader'
+                $ref: '#/components/schemas/BlockHeaderIndex'
           description: get block info success
         "404":
           description: block info not found
@@ -377,7 +377,13 @@ paths:
                 type: array
           description: Get vin list success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all output point of vins in the tx with detailed output script.
@@ -441,7 +447,13 @@ paths:
                 type: array
           description: Get xpub utxos success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get xpub utxos by specific xpub(300 per page).
@@ -475,7 +487,13 @@ paths:
                 $ref: '#/components/schemas/XpubAddress'
           description: Get xpub address success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
         "404":
           description: Address not found in the xpub.
       security:
@@ -506,7 +524,13 @@ paths:
                 $ref: '#/components/schemas/XpubLiteBalance'
           description: Get xpub balance success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get xpub balances including confirmed and unconfirmed.
@@ -543,7 +567,13 @@ paths:
                 type: array
           description: Get contract unique utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get contract unique utxos by codeHash and genesisId.
@@ -596,7 +626,13 @@ paths:
                 type: array
           description: Get contract ft utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract token utxos for specific address.
@@ -641,7 +677,13 @@ paths:
                 type: array
           description: Get contract ft balances success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract token balances for specific address.
@@ -684,7 +726,13 @@ paths:
                 type: integer
           description: Get contract ft balances succes（ingore unconfirmed txs）.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract token balances for specific address ignoring all unconfirmed
@@ -746,7 +794,13 @@ paths:
                 type: array
           description: Get contract nft utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract nft token utxos for specific address.
@@ -775,7 +829,13 @@ paths:
                 type: array
           description: Get contract nft utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get nft summary(NFT count group by genesis) for address.
@@ -817,7 +877,13 @@ paths:
                 type: integer
           description: Get contract nft utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get confirmed utxo count for specific nft(ignore all unconfirmed txs).
@@ -881,7 +947,13 @@ paths:
                 type: array
           description: Get contract nft utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract nft token utxos by codeHash and genesisId.
@@ -918,7 +990,13 @@ paths:
                 type: array
           description: Get contract nft utxo success(result cached for 60s)..
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get nft summary(count group by address) for specific codeHash and genesisId(result
@@ -972,7 +1050,13 @@ paths:
                 type: array
           description: Get contract nft sell utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract sell sell utxos for specific address.
@@ -1036,7 +1120,13 @@ paths:
                 type: array
           description: Get contract nft sell utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract nft token utxos by codeHash and genesisId.
@@ -1089,7 +1179,13 @@ paths:
                 type: array
           description: Get contract nft sell utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract sell sell utxos for specific address.
@@ -1153,7 +1249,13 @@ paths:
                 type: array
           description: Get contract nft sell utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract nft token utxos by codeHash and genesisId.
@@ -1190,7 +1292,13 @@ paths:
                 type: array
           description: Get contract nft sell utxo success.
         "401":
-          $ref: '#/components/schemas/UnauthorizedError'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
       security:
       - bearerAuth: []
       summary: Get all contract nft token utxos by codeHash and genesisId.
@@ -1198,9 +1306,23 @@ paths:
       - contract
       x-accepts: application/json
 components:
-  schemas:
+  responses:
     UnauthorizedError:
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+            type: array
       description: Access token is missing or invalid
+  schemas:
+    ErrorResponse:
+      description: Error response.
+      properties:
+        message:
+          description: The reason for this error.
+          type: string
+      type: object
     BlockchainInfo:
       example:
         difficulty: difficulty
@@ -1252,7 +1374,50 @@ components:
           format: int64
           type: integer
       type: object
-    BlockHeader:
+    BlockHeaderPage:
+      description: block header saved by partition page
+      example:
+        reward: 5
+        blockHash: blockHash
+        medianTime: 1
+        size: 2
+        txCount: 5
+        miner: miner
+        height: 0
+        timestamp: 6
+      properties:
+        height:
+          description: Block height.
+          format: int64
+          type: integer
+        blockHash:
+          description: Block hash.
+          type: string
+        timestamp:
+          description: Block timestamp.
+          format: int64
+          type: integer
+        medianTime:
+          description: current median time
+          format: int64
+          type: integer
+        reward:
+          description: Miner total rewards, including miner fee.
+          format: int64
+          type: integer
+        miner:
+          description: Guessed miner name.
+          type: string
+        txCount:
+          description: Total txs count included in the block.
+          type: integer
+        size:
+          description: Size of the block
+          format: int64
+          type: integer
+      type: object
+    BlockHeaderIndex:
+      description: Detailed block header info.
       example:
         reward: 5
         minerAddress: minerAddress
@@ -1272,13 +1437,13 @@ components:
         timestamp: 1
         inputCount: 7
       properties:
+        blockHash:
+          description: Block hash.
+          type: string
         height:
           description: Block height.
           format: int64
           type: integer
-        blockHash:
-          description: Block hash.
-          type: string
         version:
           description: Block version.
           format: int64
@@ -1309,15 +1474,12 @@ components:
           type: string
         txCount:
           description: Total txs count included in the block.
-          format: int64
           type: integer
         inputCount:
           description: Total input count in the block.
-          format: int64
           type: integer
         outputCount:
           description: Total output count in the block
-          format: int64
           type: integer
         size:
           description: Size of the block
@@ -1354,6 +1516,7 @@ components:
           type: string
         height:
           description: Block height of this tx.
+          format: int64
           type: integer
         blockHash:
           description: Hash of the block
@@ -1378,6 +1541,7 @@ components:
           type: integer
         confirmations:
           description: Confirmations of this transaction, -1 if unconfirmed.
+          format: int64
           type: integer
         timestamp:
           description: Block timestamp for the transaction, confirmed tx only.
@@ -1568,6 +1732,7 @@ components:
           type: integer
         height:
           description: Height of the utxo, -1 if not confirmed
+          format: int64
           type: integer
       type: object
     AddressTx:
@@ -1593,6 +1758,7 @@ components:
           type: integer
         height:
           description: Block Height of the tx, -1 if not confirmed
+          format: int64
           type: integer
         income:
           description: total income of the address from this tx
@@ -1642,6 +1808,7 @@ components:
           type: integer
         spentHeight:
           description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
+          format: int64
           type: integer
       type: object
     OutputInfoDetail:
@@ -1685,6 +1852,7 @@ components:
           type: integer
         spentHeight:
           description: height of the spent tx(-1 if unconfirmed, 0 if unspent)
+          format: int64
           type: integer
       type: object
     UtxoPickRequest:
@@ -1714,6 +1882,7 @@ components:
         skipHeight:
           description: Skip transactions before this height. Default is 0. Ignore
             this while deleting xpub.
+          format: int64
           type: integer
         initReceiveIndex:
           description: Set the init maxReceiveIndex to {initReceiveIndex}(less than
@@ -1759,9 +1928,11 @@ components:
         skipHeight:
           description: Skip blocks before skipHeight while searching transactions.
             This will speed up sync time.
+          format: int64
           type: integer
         processHeight:
           description: Xpub current processed height.
+          format: int64
           type: integer
       type: object
     XpubBalance:
@@ -1824,6 +1995,7 @@ components:
           type: integer
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         flag:
           description: The paging flag of utxo
@@ -1877,6 +2049,7 @@ components:
           type: integer
         height:
           description: Height for this transaction. -1 for unconfirmed
+          format: int64
           type: integer
         blockIndex:
           description: Block index for this transaction, -1 for unconfirmed
@@ -1937,6 +2110,7 @@ components:
           type: string
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         customData:
           description: The hex encoded customData
@@ -2011,6 +2185,7 @@ components:
           type: string
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         flag:
           description: Flag used for paging
@@ -2105,6 +2280,7 @@ components:
           type: string
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         metaTxid:
           description: The metanet tx describing the nft.
@@ -2251,6 +2427,7 @@ components:
           type: string
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         isReady:
           description: Is current nft transfered into sell contract, If not ready,
@@ -2345,6 +2522,7 @@ components:
           type: string
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         isReady:
           description: Is current nft transfered into sell contract, If not ready,
@@ -2436,6 +2614,7 @@ components:
           type: integer
         height:
           description: The height of this utxo, -1 for unconfirmed utxo.
+          format: int64
           type: integer
         nftCodeHash:
           description: nftCodeHash

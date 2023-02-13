@@ -9,7 +9,8 @@ docs/AddressTx.md
 docs/AddressUtxo.md
 docs/AsyncBroadcastResult.md
 docs/BlockApi.md
-docs/BlockHeader.md
+docs/BlockHeaderIndex.md
+docs/BlockHeaderPage.md
 docs/BlockTx.md
 docs/BlockchainInfo.md
 docs/BroadcastResult.md
@@ -25,6 +26,7 @@ docs/ContractNftSellUtxo.md
 docs/ContractNftSellV2Utxo.md
 docs/ContractNftUtxo.md
 docs/ContractUniqueUtxo.md
+docs/ErrorResponse.md
 docs/MerchantApi.md
 docs/OutpointApi.md
 docs/OutputInfo.md
@@ -81,7 +83,8 @@ src/main/java/com/metasv/mvc/client/openapi/model/AddressBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/AddressTx.java
 src/main/java/com/metasv/mvc/client/openapi/model/AddressUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/AsyncBroadcastResult.java
-src/main/java/com/metasv/mvc/client/openapi/model/BlockHeader.java
+src/main/java/com/metasv/mvc/client/openapi/model/BlockHeaderIndex.java
+src/main/java/com/metasv/mvc/client/openapi/model/BlockHeaderPage.java
 src/main/java/com/metasv/mvc/client/openapi/model/BlockTx.java
 src/main/java/com/metasv/mvc/client/openapi/model/BlockchainInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/BroadcastResult.java
@@ -96,6 +99,7 @@ src/main/java/com/metasv/mvc/client/openapi/model/ContractNftSellUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractNftSellV2Utxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractNftUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractUniqueUtxo.java
+src/main/java/com/metasv/mvc/client/openapi/model/ErrorResponse.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfoDetail.java
 src/main/java/com/metasv/mvc/client/openapi/model/TxDetail.java
@@ -111,3 +115,6 @@ src/main/java/com/metasv/mvc/client/openapi/model/XpubLiteBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubRequest.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubResult.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubUtxo.java
+src/test/java/com/metasv/mvc/client/openapi/model/BlockHeaderIndexTest.java
+src/test/java/com/metasv/mvc/client/openapi/model/BlockHeaderPageTest.java
+src/test/java/com/metasv/mvc/client/openapi/model/ErrorResponseTest.java

@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract ft balances succes（ingore unconfirmed txs）. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractFtAddressAddressBalanceGet"></a>
 # **contractFtAddressAddressBalanceGet**
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract ft balances success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractFtAddressAddressUtxoGet"></a>
 # **contractFtAddressAddressUtxoGet**
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract ft utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftAddressAddressCountConfirmedGet"></a>
 # **contractNftAddressAddressCountConfirmedGet**
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftAddressAddressSummaryGet"></a>
 # **contractNftAddressAddressSummaryGet**
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftAddressAddressUtxoGet"></a>
 # **contractNftAddressAddressUtxoGet**
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet"></a>
 # **contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet**
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft sell utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftGenesisCodeHashGenesisSummaryGet"></a>
 # **contractNftGenesisCodeHashGenesisSummaryGet**
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft utxo success(result cached for 60s).. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftGenesisCodeHashGenesisUtxoGet"></a>
 # **contractNftGenesisCodeHashGenesisUtxoGet**
@@ -650,7 +650,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftSellAddressAddressUtxoGet"></a>
 # **contractNftSellAddressAddressUtxoGet**
@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft sell utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftSellGenesisCodeHashGenesisUtxoGet"></a>
 # **contractNftSellGenesisCodeHashGenesisUtxoGet**
@@ -796,7 +796,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft sell utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftSellV2AddressAddressUtxoGet"></a>
 # **contractNftSellV2AddressAddressUtxoGet**
@@ -868,7 +868,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft sell utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractNftSellV2GenesisCodeHashGenesisUtxoGet"></a>
 # **contractNftSellV2GenesisCodeHashGenesisUtxoGet**
@@ -942,7 +942,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract nft sell utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 <a name="contractUniqueGenesisCodeHashGenesisUtxoGet"></a>
 # **contractUniqueGenesisCodeHashGenesisUtxoGet**
@@ -1010,5 +1010,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract unique utxo success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 

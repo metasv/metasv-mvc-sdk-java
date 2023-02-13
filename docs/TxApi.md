@@ -347,5 +347,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get vin list success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 

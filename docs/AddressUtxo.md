@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **txid** | **String** | txid of the utxo |  [optional]
 **outIndex** | **Integer** | output index in the tx |  [optional]
 **value** | **Long** | Value of the utxo |  [optional]
-**height** | **Integer** | Height of the utxo, -1 if not confirmed |  [optional]
+**height** | **Long** | Height of the utxo, -1 if not confirmed |  [optional]
 
 
 

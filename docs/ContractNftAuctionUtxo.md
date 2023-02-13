@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **feeAddressPkh** | **String** | feeAddressPkh |  [optional]
 **feeAmount** | **Long** | feeAmount |  [optional]
 **feeRate** | **Integer** | feeRate |  [optional]
-**height** | **Integer** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
+**height** | **Long** | The height of this utxo, -1 for unconfirmed utxo. |  [optional]
 **nftCodeHash** | **String** | nftCodeHash |  [optional]
 **nftId** | **String** | nftId of the auctioning fnt |  [optional]
 **senderAddressPkh** | **String** | senderAddressPkh |  [optional]
