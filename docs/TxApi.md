@@ -4,12 +4,80 @@ All URIs are relative to *https://api-mvc-testnet.metasv.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**txBroadcastBatchPost**](TxApi.md#txBroadcastBatchPost) | **POST** /tx/broadcast/batch | Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
 [**txBroadcastPost**](TxApi.md#txBroadcastPost) | **POST** /tx/broadcast | Broadcast tx to metasv fullnode.
 [**txTxidGet**](TxApi.md#txTxidGet) | **GET** /tx/{txid} | Get transaction detail by specific txid.
 [**txTxidRawGet**](TxApi.md#txTxidRawGet) | **GET** /tx/{txid}/raw | Get transaction raw hex by specific txid.
 [**txTxidSeenGet**](TxApi.md#txTxidSeenGet) | **GET** /tx/{txid}/seen | Whether MetaSV have seen this tx before. This is a fast approach to know if the tx exist or not.
 [**vinTxidDetailGet**](TxApi.md#vinTxidDetailGet) | **GET** /vin/{txid}/detail | Get all output point of vins in the tx with detailed output script.
 
+
+<a name="txBroadcastBatchPost"></a>
+# **txBroadcastBatchPost**
+> List&lt;BroadcastResult&gt; txBroadcastBatchPost(txRaw)
+
+Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+
+This api will broadcast to metasv fullnode directly.
+
+### Example
+```java
+// Import classes:
+import com.metasv.mvc.client.openapi.ApiClient;
+import com.metasv.mvc.client.openapi.ApiException;
+import com.metasv.mvc.client.openapi.Configuration;
+import com.metasv.mvc.client.openapi.auth.*;
+import com.metasv.mvc.client.openapi.models.*;
+import com.metasv.mvc.client.openapi.api.TxApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    TxApi apiInstance = new TxApi(defaultClient);
+    List<TxRaw> txRaw = Arrays.asList(); // List<TxRaw> | 
+    try {
+      List<BroadcastResult> result = apiInstance.txBroadcastBatchPost(txRaw);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TxApi#txBroadcastBatchPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **txRaw** | [**List&lt;TxRaw&gt;**](TxRaw.md)|  | [optional]
+
+### Return type
+
+[**List&lt;BroadcastResult&gt;**](BroadcastResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Broadcast result list, txid returned with the original order |  -  |
 
 <a name="txBroadcastPost"></a>
 # **txBroadcastPost**

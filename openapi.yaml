@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: MetaSV for MVC API Spec
   description: API definition for MetaSV provided apis
-  version: 3.0.1
+  version: 3.0.4
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -17,6 +17,8 @@ servers:
 tags:
   - name: block
     description: block related apis
+  - name: treasury
+    description: treasury related apis for auditing
   - name: tx
     description: transaction related apis
   - name: address
@@ -99,6 +101,38 @@ paths:
                 $ref: '#/components/schemas/BlockHeaderIndex'
         '404':
           description: block info not found
+
+  '/treasury':
+    get:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - treasury
+      summary: Get current treasury info.
+      responses:
+        '200':
+          description: Get treasury info success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreasuryInfo'
+  '/treasury/history':
+    get:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - treasury
+      summary: Get all treasury history.
+      responses:
+        '200':
+          description: successfully get lists
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 100
+                items:
+                  $ref: '#/components/schemas/TreasuryHistory'
 
 
   '/tx/{txid}':
@@ -206,6 +240,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BroadcastResult'
+
+  '/tx/broadcast/batch':
+    post:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - tx
+      summary: Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+      description: This api will broadcast to metasv fullnode directly.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TxRaw'
+      responses:
+        '200':
+          description: Broadcast result list, txid returned with the original order
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BroadcastResult'
 
 
   '/address/{address}/balance':
@@ -621,6 +680,51 @@ paths:
               schema:
                 type: integer
                 format: int64
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  '/contract/ft/address/{address}/{codeHash}/{genesis}/tx':
+    get:
+      security:
+        - bearerAuth: [ ]
+      tags:
+        - contract
+      summary: Get all contract token balances for specific address.
+      parameters:
+        - name: address
+          in: path
+          description: the requested address
+          required: true
+          schema:
+            type: string
+        - name: codeHash
+          in: path
+          description: Filter by contract code hash
+          required: true
+          schema:
+            type: string
+        - name: genesis
+          in: path
+          description: Filter by contract genesis
+          required: true
+          schema:
+            type: string
+        - name: flag
+          in: query
+          description: The last id of the last query(Paging flag)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get contract ft history success.
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 100
+                items:
+                  $ref: '#/components/schemas/ContractFtAddressTx'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 
@@ -1252,6 +1356,52 @@ components:
           format: int64
           description: Block timestamp for the transaction, confirmed tx only.
 
+    TreasuryInfo:
+      type: object
+      description: current treasury utxo info
+      properties:
+        txid:
+          type: string
+          description: current treasury utxo txid
+        index:
+          type: integer
+          description: current treasury utxo index
+        amount:
+          type: integer
+          format: int64
+          description: current treasury amount
+        height:
+          type: integer
+          format: int64
+          description: current treasury utxo height
+        blockHash:
+          type: string
+          description: current treasury utxo block hash
+        timestamp:
+          type: integer
+          format: int64
+          description: current treasury utxo timestamp
+    TreasuryHistory:
+      type: object
+      description: treasury transaction history
+      properties:
+        txid:
+          type: string
+          description: treasury transaction txid.
+        outcome:
+          type: integer
+          format: int64
+          description: treasury transaction spent outcome in satoshi.
+        timestamp:
+          type: integer
+          format: int64
+          description: treasury transaction timestamp.
+        reason:
+          type: string
+          description: Reason for treasury transaction.
+        announcementUrl:
+          type: string
+          description: Announcement link for treasury transaction.
 
     TxDetail:
       type: object
@@ -1807,6 +1957,43 @@ components:
         unconfirmedString:
           description: Unconfirmed balance of the token(In string format).
           type: string
+
+    ContractFtAddressTx:
+      type: object
+      description: Transaction history of the address for specific ft.
+      properties:
+        flag:
+          type: string
+          description: Paging flag
+        address:
+          type: string
+          description: The address of the record
+        codeHash:
+          type: string
+          description: Specific codeHash
+        genesis:
+          type: string
+          description: specific genesis
+        time:
+          type: integer
+          format: int64
+          description: timestamp of the tx
+        height:
+          type: integer
+          format: int64
+          description: Block Height of the tx, -1 if not confirmed
+        income:
+          type: integer
+          format: int64
+          description: total income of the address from this tx
+        outcome:
+          type: integer
+          format: int64
+          description: total outcome of the address from this tx
+        txid:
+          type: string
+          description: txid of this record
+
 
     ContractNftUtxo:
       description: Contract non fungible token Utxo belongs to the specified address

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**contractFtAddressAddressBalanceConfirmedGet**](ContractApi.md#contractFtAddressAddressBalanceConfirmedGet) | **GET** /contract/ft/address/{address}/balance/confirmed | Get all contract token balances for specific address ignoring all unconfirmed txs.
 [**contractFtAddressAddressBalanceGet**](ContractApi.md#contractFtAddressAddressBalanceGet) | **GET** /contract/ft/address/{address}/balance | Get all contract token balances for specific address.
+[**contractFtAddressAddressCodeHashGenesisTxGet**](ContractApi.md#contractFtAddressAddressCodeHashGenesisTxGet) | **GET** /contract/ft/address/{address}/{codeHash}/{genesis}/tx | Get all contract token balances for specific address.
 [**contractFtAddressAddressUtxoGet**](ContractApi.md#contractFtAddressAddressUtxoGet) | **GET** /contract/ft/address/{address}/utxo | Get all contract token utxos for specific address.
 [**contractNftAddressAddressCountConfirmedGet**](ContractApi.md#contractNftAddressAddressCountConfirmedGet) | **GET** /contract/nft/address/{address}/count/confirmed | Get confirmed utxo count for specific nft(ignore all unconfirmed txs).
 [**contractNftAddressAddressSummaryGet**](ContractApi.md#contractNftAddressAddressSummaryGet) | **GET** /contract/nft/address/{address}/summary | Get nft summary(NFT count group by genesis) for address.
@@ -158,6 +159,78 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get contract ft balances success. |  -  |
+**401** | Access token is missing or invalid |  -  |
+
+<a name="contractFtAddressAddressCodeHashGenesisTxGet"></a>
+# **contractFtAddressAddressCodeHashGenesisTxGet**
+> List&lt;ContractFtAddressTx&gt; contractFtAddressAddressCodeHashGenesisTxGet(address, codeHash, genesis, flag)
+
+Get all contract token balances for specific address.
+
+### Example
+```java
+// Import classes:
+import com.metasv.mvc.client.openapi.ApiClient;
+import com.metasv.mvc.client.openapi.ApiException;
+import com.metasv.mvc.client.openapi.Configuration;
+import com.metasv.mvc.client.openapi.auth.*;
+import com.metasv.mvc.client.openapi.models.*;
+import com.metasv.mvc.client.openapi.api.ContractApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    ContractApi apiInstance = new ContractApi(defaultClient);
+    String address = "address_example"; // String | the requested address
+    String codeHash = "codeHash_example"; // String | Filter by contract code hash
+    String genesis = "genesis_example"; // String | Filter by contract genesis
+    String flag = "flag_example"; // String | The last id of the last query(Paging flag)
+    try {
+      List<ContractFtAddressTx> result = apiInstance.contractFtAddressAddressCodeHashGenesisTxGet(address, codeHash, genesis, flag);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ContractApi#contractFtAddressAddressCodeHashGenesisTxGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **String**| the requested address |
+ **codeHash** | **String**| Filter by contract code hash |
+ **genesis** | **String**| Filter by contract genesis |
+ **flag** | **String**| The last id of the last query(Paging flag) | [optional]
+
+### Return type
+
+[**List&lt;ContractFtAddressTx&gt;**](ContractFtAddressTx.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Get contract ft history success. |  -  |
 **401** | Access token is missing or invalid |  -  |
 
 <a name="contractFtAddressAddressUtxoGet"></a>

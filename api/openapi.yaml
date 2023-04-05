@@ -8,13 +8,15 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: MetaSV for MVC API Spec
-  version: 3.0.1
+  version: 3.0.4
 servers:
 - url: https://api-mvc-testnet.metasv.com
 - url: https://api-mvc.metasv.com
 tags:
 - description: block related apis
   name: block
+- description: treasury related apis for auditing
+  name: treasury
 - description: transaction related apis
   name: tx
 - description: address related apis
@@ -98,6 +100,39 @@ paths:
       summary: Get block request by height or hash
       tags:
       - block
+      x-accepts: application/json
+  /treasury:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreasuryInfo'
+          description: Get treasury info success.
+      security:
+      - bearerAuth: []
+      summary: Get current treasury info.
+      tags:
+      - treasury
+      x-accepts: application/json
+  /treasury/history:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TreasuryHistory'
+                maxItems: 100
+                type: array
+          description: successfully get lists
+      security:
+      - bearerAuth: []
+      summary: Get all treasury history.
+      tags:
+      - treasury
       x-accepts: application/json
   /tx/{txid}:
     get:
@@ -213,6 +248,33 @@ paths:
       security:
       - bearerAuth: []
       summary: Broadcast tx to metasv fullnode.
+      tags:
+      - tx
+      x-contentType: application/json
+      x-accepts: application/json
+  /tx/broadcast/batch:
+    post:
+      description: This api will broadcast to metasv fullnode directly.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/TxRaw'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BroadcastResult'
+                type: array
+          description: Broadcast result list, txid returned with the original order
+      security:
+      - bearerAuth: []
+      summary: Broadcast a batch of tx to metasv fullnode. The tx will be processed
+        one by one.
       tags:
       - tx
       x-contentType: application/json
@@ -737,6 +799,65 @@ paths:
       - bearerAuth: []
       summary: Get all contract token balances for specific address ignoring all unconfirmed
         txs.
+      tags:
+      - contract
+      x-accepts: application/json
+  /contract/ft/address/{address}/{codeHash}/{genesis}/tx:
+    get:
+      parameters:
+      - description: the requested address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract code hash
+        explode: false
+        in: path
+        name: codeHash
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by contract genesis
+        explode: false
+        in: path
+        name: genesis
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The last id of the last query(Paging flag)
+        explode: true
+        in: query
+        name: flag
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContractFtAddressTx'
+                maxItems: 100
+                type: array
+          description: Get contract ft history success.
+        "401":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+                type: array
+          description: Access token is missing or invalid
+      security:
+      - bearerAuth: []
+      summary: Get all contract token balances for specific address.
       tags:
       - contract
       x-accepts: application/json
@@ -1548,6 +1669,65 @@ components:
           format: int64
           type: integer
       type: object
+    TreasuryInfo:
+      description: current treasury utxo info
+      example:
+        blockHash: blockHash
+        amount: 6
+        txid: txid
+        index: 0
+        height: 1
+        timestamp: 5
+      properties:
+        txid:
+          description: current treasury utxo txid
+          type: string
+        index:
+          description: current treasury utxo index
+          type: integer
+        amount:
+          description: current treasury amount
+          format: int64
+          type: integer
+        height:
+          description: current treasury utxo height
+          format: int64
+          type: integer
+        blockHash:
+          description: current treasury utxo block hash
+          type: string
+        timestamp:
+          description: current treasury utxo timestamp
+          format: int64
+          type: integer
+      type: object
+    TreasuryHistory:
+      description: treasury transaction history
+      example:
+        reason: reason
+        announcementUrl: announcementUrl
+        txid: txid
+        outcome: 0
+        timestamp: 6
+      properties:
+        txid:
+          description: treasury transaction txid.
+          type: string
+        outcome:
+          description: treasury transaction spent outcome in satoshi.
+          format: int64
+          type: integer
+        timestamp:
+          description: treasury transaction timestamp.
+          format: int64
+          type: integer
+        reason:
+          description: Reason for treasury transaction.
+          type: string
+        announcementUrl:
+          description: Announcement link for treasury transaction.
+          type: string
+      type: object
     TxDetail:
       description: Parsed tx info
       example:
@@ -2240,6 +2420,51 @@ components:
           type: integer
         unconfirmedString:
           description: Unconfirmed balance of the token(In string format).
+          type: string
+      type: object
+    ContractFtAddressTx:
+      description: Transaction history of the address for specific ft.
+      example:
+        income: 1
+        genesis: genesis
+        flag: flag
+        address: address
+        codeHash: codeHash
+        txid: txid
+        time: 0
+        outcome: 5
+        height: 6
+      properties:
+        flag:
+          description: Paging flag
+          type: string
+        address:
+          description: The address of the record
+          type: string
+        codeHash:
+          description: Specific codeHash
+          type: string
+        genesis:
+          description: specific genesis
+          type: string
+        time:
+          description: timestamp of the tx
+          format: int64
+          type: integer
+        height:
+          description: Block Height of the tx, -1 if not confirmed
+          format: int64
+          type: integer
+        income:
+          description: total income of the address from this tx
+          format: int64
+          type: integer
+        outcome:
+          description: total outcome of the address from this tx
+          format: int64
+          type: integer
+        txid:
+          description: txid of this record
           type: string
       type: object
     ContractNftUtxo:

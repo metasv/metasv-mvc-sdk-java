@@ -17,6 +17,7 @@ docs/BroadcastResult.md
 docs/ClientPubkeyRequest.md
 docs/ClientPubkeyResult.md
 docs/ContractApi.md
+docs/ContractFtAddressTx.md
 docs/ContractFtBalance.md
 docs/ContractFtUtxo.md
 docs/ContractNftAddressSummary.md
@@ -31,6 +32,9 @@ docs/MerchantApi.md
 docs/OutpointApi.md
 docs/OutputInfo.md
 docs/OutputInfoDetail.md
+docs/TreasuryApi.md
+docs/TreasuryHistory.md
+docs/TreasuryInfo.md
 docs/TxApi.md
 docs/TxDetail.md
 docs/TxInput.md
@@ -73,6 +77,7 @@ src/main/java/com/metasv/mvc/client/openapi/api/BlockApi.java
 src/main/java/com/metasv/mvc/client/openapi/api/ContractApi.java
 src/main/java/com/metasv/mvc/client/openapi/api/MerchantApi.java
 src/main/java/com/metasv/mvc/client/openapi/api/OutpointApi.java
+src/main/java/com/metasv/mvc/client/openapi/api/TreasuryApi.java
 src/main/java/com/metasv/mvc/client/openapi/api/TxApi.java
 src/main/java/com/metasv/mvc/client/openapi/api/XpubApi.java
 src/main/java/com/metasv/mvc/client/openapi/auth/ApiKeyAuth.java
@@ -90,6 +95,7 @@ src/main/java/com/metasv/mvc/client/openapi/model/BlockchainInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/BroadcastResult.java
 src/main/java/com/metasv/mvc/client/openapi/model/ClientPubkeyRequest.java
 src/main/java/com/metasv/mvc/client/openapi/model/ClientPubkeyResult.java
+src/main/java/com/metasv/mvc/client/openapi/model/ContractFtAddressTx.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractFtBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractFtUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractNftAddressSummary.java
@@ -102,6 +108,8 @@ src/main/java/com/metasv/mvc/client/openapi/model/ContractUniqueUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ErrorResponse.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfoDetail.java
+src/main/java/com/metasv/mvc/client/openapi/model/TreasuryHistory.java
+src/main/java/com/metasv/mvc/client/openapi/model/TreasuryInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/TxDetail.java
 src/main/java/com/metasv/mvc/client/openapi/model/TxInput.java
 src/main/java/com/metasv/mvc/client/openapi/model/TxOutput.java
@@ -115,3 +123,7 @@ src/main/java/com/metasv/mvc/client/openapi/model/XpubLiteBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubRequest.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubResult.java
 src/main/java/com/metasv/mvc/client/openapi/model/XpubUtxo.java
+src/test/java/com/metasv/mvc/client/openapi/api/TreasuryApiTest.java
+src/test/java/com/metasv/mvc/client/openapi/model/ContractFtAddressTxTest.java
+src/test/java/com/metasv/mvc/client/openapi/model/TreasuryHistoryTest.java
+src/test/java/com/metasv/mvc/client/openapi/model/TreasuryInfoTest.java

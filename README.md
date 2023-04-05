@@ -1,8 +1,8 @@
 # openapi-java-client
 
 MetaSV for MVC API Spec
-- API version: 3.0.1
-  - Build date: 2023-02-13T13:34:23.270603+09:00[Asia/Tokyo]
+- API version: 3.0.4
+  - Build date: 2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]
 
 API definition for MetaSV provided apis
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.metasv.mvc</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.metasv.mvc:openapi-java-client:3.0.1"
+compile "com.metasv.mvc:openapi-java-client:3.0.4"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/openapi-java-client-3.0.1.jar`
+* `target/openapi-java-client-3.0.4.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *BlockApi* | [**blockInfoGet**](docs/BlockApi.md#blockInfoGet) | **GET** /block/info | Get current blockchain info from full node.
 *ContractApi* | [**contractFtAddressAddressBalanceConfirmedGet**](docs/ContractApi.md#contractFtAddressAddressBalanceConfirmedGet) | **GET** /contract/ft/address/{address}/balance/confirmed | Get all contract token balances for specific address ignoring all unconfirmed txs.
 *ContractApi* | [**contractFtAddressAddressBalanceGet**](docs/ContractApi.md#contractFtAddressAddressBalanceGet) | **GET** /contract/ft/address/{address}/balance | Get all contract token balances for specific address.
+*ContractApi* | [**contractFtAddressAddressCodeHashGenesisTxGet**](docs/ContractApi.md#contractFtAddressAddressCodeHashGenesisTxGet) | **GET** /contract/ft/address/{address}/{codeHash}/{genesis}/tx | Get all contract token balances for specific address.
 *ContractApi* | [**contractFtAddressAddressUtxoGet**](docs/ContractApi.md#contractFtAddressAddressUtxoGet) | **GET** /contract/ft/address/{address}/utxo | Get all contract token utxos for specific address.
 *ContractApi* | [**contractNftAddressAddressCountConfirmedGet**](docs/ContractApi.md#contractNftAddressAddressCountConfirmedGet) | **GET** /contract/nft/address/{address}/count/confirmed | Get confirmed utxo count for specific nft(ignore all unconfirmed txs).
 *ContractApi* | [**contractNftAddressAddressSummaryGet**](docs/ContractApi.md#contractNftAddressAddressSummaryGet) | **GET** /contract/nft/address/{address}/summary | Get nft summary(NFT count group by genesis) for address.
@@ -134,6 +135,9 @@ Class | Method | HTTP request | Description
 *ContractApi* | [**contractUniqueGenesisCodeHashGenesisUtxoGet**](docs/ContractApi.md#contractUniqueGenesisCodeHashGenesisUtxoGet) | **GET** /contract/unique/genesis/{codeHash}/{genesis}/utxo | Get contract unique utxos by codeHash and genesisId.
 *MerchantApi* | [**merchantUtxoPost**](docs/MerchantApi.md#merchantUtxoPost) | **POST** /merchant/utxo | Pick utxos by addresses and amount.
 *OutpointApi* | [**outpointTxidIndexGet**](docs/OutpointApi.md#outpointTxidIndexGet) | **GET** /outpoint/{txid}/{index} | Get tx output(outpoint for vin) spent status.
+*TreasuryApi* | [**treasuryGet**](docs/TreasuryApi.md#treasuryGet) | **GET** /treasury | Get current treasury info.
+*TreasuryApi* | [**treasuryHistoryGet**](docs/TreasuryApi.md#treasuryHistoryGet) | **GET** /treasury/history | Get all treasury history.
+*TxApi* | [**txBroadcastBatchPost**](docs/TxApi.md#txBroadcastBatchPost) | **POST** /tx/broadcast/batch | Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
 *TxApi* | [**txBroadcastPost**](docs/TxApi.md#txBroadcastPost) | **POST** /tx/broadcast | Broadcast tx to metasv fullnode.
 *TxApi* | [**txTxidGet**](docs/TxApi.md#txTxidGet) | **GET** /tx/{txid} | Get transaction detail by specific txid.
 *TxApi* | [**txTxidRawGet**](docs/TxApi.md#txTxidRawGet) | **GET** /tx/{txid}/raw | Get transaction raw hex by specific txid.
@@ -157,6 +161,7 @@ Class | Method | HTTP request | Description
  - [BroadcastResult](docs/BroadcastResult.md)
  - [ClientPubkeyRequest](docs/ClientPubkeyRequest.md)
  - [ClientPubkeyResult](docs/ClientPubkeyResult.md)
+ - [ContractFtAddressTx](docs/ContractFtAddressTx.md)
  - [ContractFtBalance](docs/ContractFtBalance.md)
  - [ContractFtUtxo](docs/ContractFtUtxo.md)
  - [ContractNftAddressSummary](docs/ContractNftAddressSummary.md)
@@ -169,6 +174,8 @@ Class | Method | HTTP request | Description
  - [ErrorResponse](docs/ErrorResponse.md)
  - [OutputInfo](docs/OutputInfo.md)
  - [OutputInfoDetail](docs/OutputInfoDetail.md)
+ - [TreasuryHistory](docs/TreasuryHistory.md)
+ - [TreasuryInfo](docs/TreasuryInfo.md)
  - [TxDetail](docs/TxDetail.md)
  - [TxInput](docs/TxInput.md)
  - [TxOutput](docs/TxOutput.md)
