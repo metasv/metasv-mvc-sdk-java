@@ -15,23 +15,26 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Balance for xpub lite wallet
  */
 @ApiModel(description = "Balance for xpub lite wallet")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  XpubLiteBalance.JSON_PROPERTY_BALANCE
+})
+@JsonTypeName("XpubLiteBalance")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class XpubLiteBalance {
-  public static final String SERIALIZED_NAME_BALANCE = "balance";
-  @SerializedName(SERIALIZED_NAME_BALANCE)
+  public static final String JSON_PROPERTY_BALANCE = "balance";
   private Long balance;
 
 
@@ -47,6 +50,8 @@ public class XpubLiteBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "confirmed balance plus unconfirmed balance")
+  @JsonProperty(JSON_PROPERTY_BALANCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getBalance() {
     return balance;

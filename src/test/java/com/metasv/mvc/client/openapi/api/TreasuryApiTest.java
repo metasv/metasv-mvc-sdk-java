@@ -13,7 +13,6 @@
 
 package com.metasv.mvc.client.openapi.api;
 
-import com.metasv.mvc.client.openapi.ApiException;
 import com.metasv.mvc.client.openapi.model.TreasuryHistory;
 import com.metasv.mvc.client.openapi.model.TreasuryInfo;
 import org.junit.Test;
@@ -37,13 +36,10 @@ public class TreasuryApiTest {
      * Get current treasury info.
      *
      * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
      */
     @Test
-    public void treasuryGetTest() throws ApiException {
-        TreasuryInfo response = api.treasuryGet();
+    public void treasuryGetTest()  {
+        TreasuryInfo response = api.treasuryGet().block();
 
         // TODO: test validations
     }
@@ -52,13 +48,10 @@ public class TreasuryApiTest {
      * Get all treasury history.
      *
      * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
      */
     @Test
-    public void treasuryHistoryGetTest() throws ApiException {
-        List<TreasuryHistory> response = api.treasuryHistoryGet();
+    public void treasuryHistoryGetTest()  {
+        List<TreasuryHistory> response = api.treasuryHistoryGet().collectList().block();
 
         // TODO: test validations
     }

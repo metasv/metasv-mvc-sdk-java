@@ -15,63 +15,66 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Contract fungible token balance
  */
 @ApiModel(description = "Contract fungible token balance")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractFtBalance.JSON_PROPERTY_CODE_HASH,
+  ContractFtBalance.JSON_PROPERTY_GENESIS,
+  ContractFtBalance.JSON_PROPERTY_NAME,
+  ContractFtBalance.JSON_PROPERTY_SYMBOL,
+  ContractFtBalance.JSON_PROPERTY_DECIMAL,
+  ContractFtBalance.JSON_PROPERTY_SENSIBLE_ID,
+  ContractFtBalance.JSON_PROPERTY_UTXO_COUNT,
+  ContractFtBalance.JSON_PROPERTY_CONFIRMED,
+  ContractFtBalance.JSON_PROPERTY_CONFIRMED_STRING,
+  ContractFtBalance.JSON_PROPERTY_UNCONFIRMED,
+  ContractFtBalance.JSON_PROPERTY_UNCONFIRMED_STRING
+})
+@JsonTypeName("ContractFtBalance")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractFtBalance {
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_SYMBOL = "symbol";
-  @SerializedName(SERIALIZED_NAME_SYMBOL)
+  public static final String JSON_PROPERTY_SYMBOL = "symbol";
   private String symbol;
 
-  public static final String SERIALIZED_NAME_DECIMAL = "decimal";
-  @SerializedName(SERIALIZED_NAME_DECIMAL)
+  public static final String JSON_PROPERTY_DECIMAL = "decimal";
   private Integer decimal;
 
-  public static final String SERIALIZED_NAME_SENSIBLE_ID = "sensibleId";
-  @SerializedName(SERIALIZED_NAME_SENSIBLE_ID)
+  public static final String JSON_PROPERTY_SENSIBLE_ID = "sensibleId";
   private String sensibleId;
 
-  public static final String SERIALIZED_NAME_UTXO_COUNT = "utxoCount";
-  @SerializedName(SERIALIZED_NAME_UTXO_COUNT)
+  public static final String JSON_PROPERTY_UTXO_COUNT = "utxoCount";
   private Integer utxoCount;
 
-  public static final String SERIALIZED_NAME_CONFIRMED = "confirmed";
-  @SerializedName(SERIALIZED_NAME_CONFIRMED)
+  public static final String JSON_PROPERTY_CONFIRMED = "confirmed";
   private Long confirmed;
 
-  public static final String SERIALIZED_NAME_CONFIRMED_STRING = "confirmedString";
-  @SerializedName(SERIALIZED_NAME_CONFIRMED_STRING)
+  public static final String JSON_PROPERTY_CONFIRMED_STRING = "confirmedString";
   private String confirmedString;
 
-  public static final String SERIALIZED_NAME_UNCONFIRMED = "unconfirmed";
-  @SerializedName(SERIALIZED_NAME_UNCONFIRMED)
+  public static final String JSON_PROPERTY_UNCONFIRMED = "unconfirmed";
   private Long unconfirmed;
 
-  public static final String SERIALIZED_NAME_UNCONFIRMED_STRING = "unconfirmedString";
-  @SerializedName(SERIALIZED_NAME_UNCONFIRMED_STRING)
+  public static final String JSON_PROPERTY_UNCONFIRMED_STRING = "unconfirmedString";
   private String unconfirmedString;
 
 
@@ -87,6 +90,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Codehash of the token.")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -110,6 +115,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Genesis of the token.")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -133,6 +140,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Name of the token.")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -156,6 +165,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Symbol of the token.")
+  @JsonProperty(JSON_PROPERTY_SYMBOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSymbol() {
     return symbol;
@@ -179,6 +190,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The decimal position.")
+  @JsonProperty(JSON_PROPERTY_DECIMAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getDecimal() {
     return decimal;
@@ -202,6 +215,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SensibleId of the token")
+  @JsonProperty(JSON_PROPERTY_SENSIBLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSensibleId() {
     return sensibleId;
@@ -225,6 +240,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Number of utxos for this token.")
+  @JsonProperty(JSON_PROPERTY_UTXO_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getUtxoCount() {
     return utxoCount;
@@ -248,6 +265,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Confirmed balance of the token.")
+  @JsonProperty(JSON_PROPERTY_CONFIRMED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getConfirmed() {
     return confirmed;
@@ -271,6 +290,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Confirmed balance of the token(In string format).")
+  @JsonProperty(JSON_PROPERTY_CONFIRMED_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConfirmedString() {
     return confirmedString;
@@ -294,6 +315,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Unconfirmed balance of the token.")
+  @JsonProperty(JSON_PROPERTY_UNCONFIRMED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getUnconfirmed() {
     return unconfirmed;
@@ -317,6 +340,8 @@ public class ContractFtBalance {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Unconfirmed balance of the token(In string format).")
+  @JsonProperty(JSON_PROPERTY_UNCONFIRMED_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUnconfirmedString() {
     return unconfirmedString;

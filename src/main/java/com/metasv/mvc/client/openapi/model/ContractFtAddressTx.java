@@ -15,55 +15,58 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Transaction history of the address for specific ft.
  */
 @ApiModel(description = "Transaction history of the address for specific ft.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractFtAddressTx.JSON_PROPERTY_FLAG,
+  ContractFtAddressTx.JSON_PROPERTY_ADDRESS,
+  ContractFtAddressTx.JSON_PROPERTY_CODE_HASH,
+  ContractFtAddressTx.JSON_PROPERTY_GENESIS,
+  ContractFtAddressTx.JSON_PROPERTY_TIME,
+  ContractFtAddressTx.JSON_PROPERTY_HEIGHT,
+  ContractFtAddressTx.JSON_PROPERTY_INCOME,
+  ContractFtAddressTx.JSON_PROPERTY_OUTCOME,
+  ContractFtAddressTx.JSON_PROPERTY_TXID
+})
+@JsonTypeName("ContractFtAddressTx")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractFtAddressTx {
-  public static final String SERIALIZED_NAME_FLAG = "flag";
-  @SerializedName(SERIALIZED_NAME_FLAG)
+  public static final String JSON_PROPERTY_FLAG = "flag";
   private String flag;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_TIME = "time";
-  @SerializedName(SERIALIZED_NAME_TIME)
+  public static final String JSON_PROPERTY_TIME = "time";
   private Long time;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_INCOME = "income";
-  @SerializedName(SERIALIZED_NAME_INCOME)
+  public static final String JSON_PROPERTY_INCOME = "income";
   private Long income;
 
-  public static final String SERIALIZED_NAME_OUTCOME = "outcome";
-  @SerializedName(SERIALIZED_NAME_OUTCOME)
+  public static final String JSON_PROPERTY_OUTCOME = "outcome";
   private Long outcome;
 
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
 
@@ -79,6 +82,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Paging flag")
+  @JsonProperty(JSON_PROPERTY_FLAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlag() {
     return flag;
@@ -102,6 +107,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The address of the record")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -125,6 +132,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Specific codeHash")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -148,6 +157,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "specific genesis")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -171,6 +182,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "timestamp of the tx")
+  @JsonProperty(JSON_PROPERTY_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTime() {
     return time;
@@ -194,6 +207,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block Height of the tx, -1 if not confirmed")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -217,6 +232,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "total income of the address from this tx")
+  @JsonProperty(JSON_PROPERTY_INCOME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getIncome() {
     return income;
@@ -240,6 +257,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "total outcome of the address from this tx")
+  @JsonProperty(JSON_PROPERTY_OUTCOME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getOutcome() {
     return outcome;
@@ -263,6 +282,8 @@ public class ContractFtAddressTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "txid of this record")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;

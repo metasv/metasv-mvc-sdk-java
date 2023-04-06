@@ -15,43 +15,46 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * current treasury utxo info
  */
 @ApiModel(description = "current treasury utxo info")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  TreasuryInfo.JSON_PROPERTY_TXID,
+  TreasuryInfo.JSON_PROPERTY_INDEX,
+  TreasuryInfo.JSON_PROPERTY_AMOUNT,
+  TreasuryInfo.JSON_PROPERTY_HEIGHT,
+  TreasuryInfo.JSON_PROPERTY_BLOCK_HASH,
+  TreasuryInfo.JSON_PROPERTY_TIMESTAMP
+})
+@JsonTypeName("TreasuryInfo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class TreasuryInfo {
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private Integer index;
 
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  public static final String JSON_PROPERTY_AMOUNT = "amount";
   private Long amount;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_BLOCK_HASH = "blockHash";
-  @SerializedName(SERIALIZED_NAME_BLOCK_HASH)
+  public static final String JSON_PROPERTY_BLOCK_HASH = "blockHash";
   private String blockHash;
 
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
 
@@ -67,6 +70,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury utxo txid")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -90,6 +95,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury utxo index")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getIndex() {
     return index;
@@ -113,6 +120,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury amount")
+  @JsonProperty(JSON_PROPERTY_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getAmount() {
     return amount;
@@ -136,6 +145,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury utxo height")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -159,6 +170,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury utxo block hash")
+  @JsonProperty(JSON_PROPERTY_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBlockHash() {
     return blockHash;
@@ -182,6 +195,8 @@ public class TreasuryInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current treasury utxo timestamp")
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTimestamp() {
     return timestamp;

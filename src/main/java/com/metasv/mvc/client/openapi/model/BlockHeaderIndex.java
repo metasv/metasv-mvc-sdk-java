@@ -15,87 +15,90 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Detailed block header info.
  */
 @ApiModel(description = "Detailed block header info.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  BlockHeaderIndex.JSON_PROPERTY_BLOCK_HASH,
+  BlockHeaderIndex.JSON_PROPERTY_HEIGHT,
+  BlockHeaderIndex.JSON_PROPERTY_VERSION,
+  BlockHeaderIndex.JSON_PROPERTY_PREV_BLOCK_HASH,
+  BlockHeaderIndex.JSON_PROPERTY_MERKLE_ROOT,
+  BlockHeaderIndex.JSON_PROPERTY_TIMESTAMP,
+  BlockHeaderIndex.JSON_PROPERTY_MEDIAN_TIME,
+  BlockHeaderIndex.JSON_PROPERTY_REWARD,
+  BlockHeaderIndex.JSON_PROPERTY_MINER,
+  BlockHeaderIndex.JSON_PROPERTY_MINER_ADDRESS,
+  BlockHeaderIndex.JSON_PROPERTY_TX_COUNT,
+  BlockHeaderIndex.JSON_PROPERTY_INPUT_COUNT,
+  BlockHeaderIndex.JSON_PROPERTY_OUTPUT_COUNT,
+  BlockHeaderIndex.JSON_PROPERTY_SIZE,
+  BlockHeaderIndex.JSON_PROPERTY_BITS,
+  BlockHeaderIndex.JSON_PROPERTY_NONCE,
+  BlockHeaderIndex.JSON_PROPERTY_COINBASE
+})
+@JsonTypeName("BlockHeaderIndex")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class BlockHeaderIndex {
-  public static final String SERIALIZED_NAME_BLOCK_HASH = "blockHash";
-  @SerializedName(SERIALIZED_NAME_BLOCK_HASH)
+  public static final String JSON_PROPERTY_BLOCK_HASH = "blockHash";
   private String blockHash;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
+  public static final String JSON_PROPERTY_VERSION = "version";
   private Long version;
 
-  public static final String SERIALIZED_NAME_PREV_BLOCK_HASH = "prevBlockHash";
-  @SerializedName(SERIALIZED_NAME_PREV_BLOCK_HASH)
+  public static final String JSON_PROPERTY_PREV_BLOCK_HASH = "prevBlockHash";
   private String prevBlockHash;
 
-  public static final String SERIALIZED_NAME_MERKLE_ROOT = "merkleRoot";
-  @SerializedName(SERIALIZED_NAME_MERKLE_ROOT)
+  public static final String JSON_PROPERTY_MERKLE_ROOT = "merkleRoot";
   private String merkleRoot;
 
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public static final String SERIALIZED_NAME_MEDIAN_TIME = "medianTime";
-  @SerializedName(SERIALIZED_NAME_MEDIAN_TIME)
+  public static final String JSON_PROPERTY_MEDIAN_TIME = "medianTime";
   private Long medianTime;
 
-  public static final String SERIALIZED_NAME_REWARD = "reward";
-  @SerializedName(SERIALIZED_NAME_REWARD)
+  public static final String JSON_PROPERTY_REWARD = "reward";
   private Long reward;
 
-  public static final String SERIALIZED_NAME_MINER = "miner";
-  @SerializedName(SERIALIZED_NAME_MINER)
+  public static final String JSON_PROPERTY_MINER = "miner";
   private String miner;
 
-  public static final String SERIALIZED_NAME_MINER_ADDRESS = "minerAddress";
-  @SerializedName(SERIALIZED_NAME_MINER_ADDRESS)
+  public static final String JSON_PROPERTY_MINER_ADDRESS = "minerAddress";
   private String minerAddress;
 
-  public static final String SERIALIZED_NAME_TX_COUNT = "txCount";
-  @SerializedName(SERIALIZED_NAME_TX_COUNT)
+  public static final String JSON_PROPERTY_TX_COUNT = "txCount";
   private Integer txCount;
 
-  public static final String SERIALIZED_NAME_INPUT_COUNT = "inputCount";
-  @SerializedName(SERIALIZED_NAME_INPUT_COUNT)
+  public static final String JSON_PROPERTY_INPUT_COUNT = "inputCount";
   private Integer inputCount;
 
-  public static final String SERIALIZED_NAME_OUTPUT_COUNT = "outputCount";
-  @SerializedName(SERIALIZED_NAME_OUTPUT_COUNT)
+  public static final String JSON_PROPERTY_OUTPUT_COUNT = "outputCount";
   private Integer outputCount;
 
-  public static final String SERIALIZED_NAME_SIZE = "size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
+  public static final String JSON_PROPERTY_SIZE = "size";
   private Long size;
 
-  public static final String SERIALIZED_NAME_BITS = "bits";
-  @SerializedName(SERIALIZED_NAME_BITS)
+  public static final String JSON_PROPERTY_BITS = "bits";
   private Long bits;
 
-  public static final String SERIALIZED_NAME_NONCE = "nonce";
-  @SerializedName(SERIALIZED_NAME_NONCE)
+  public static final String JSON_PROPERTY_NONCE = "nonce";
   private Long nonce;
 
-  public static final String SERIALIZED_NAME_COINBASE = "coinbase";
-  @SerializedName(SERIALIZED_NAME_COINBASE)
+  public static final String JSON_PROPERTY_COINBASE = "coinbase";
   private String coinbase;
 
 
@@ -111,6 +114,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block hash.")
+  @JsonProperty(JSON_PROPERTY_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBlockHash() {
     return blockHash;
@@ -134,6 +139,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block height.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -157,6 +164,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block version.")
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getVersion() {
     return version;
@@ -180,6 +189,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The block hash of the previous block.")
+  @JsonProperty(JSON_PROPERTY_PREV_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPrevBlockHash() {
     return prevBlockHash;
@@ -203,6 +214,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Hex formatted block merkle root.")
+  @JsonProperty(JSON_PROPERTY_MERKLE_ROOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMerkleRoot() {
     return merkleRoot;
@@ -226,6 +239,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block timestamp.")
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTimestamp() {
     return timestamp;
@@ -249,6 +264,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block median timestamp.")
+  @JsonProperty(JSON_PROPERTY_MEDIAN_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getMedianTime() {
     return medianTime;
@@ -272,6 +289,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Miner total rewards, including miner fee.")
+  @JsonProperty(JSON_PROPERTY_REWARD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getReward() {
     return reward;
@@ -295,6 +314,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Guessed miner name.")
+  @JsonProperty(JSON_PROPERTY_MINER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMiner() {
     return miner;
@@ -318,6 +339,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Miner address that received rewards.")
+  @JsonProperty(JSON_PROPERTY_MINER_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMinerAddress() {
     return minerAddress;
@@ -341,6 +364,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total txs count included in the block.")
+  @JsonProperty(JSON_PROPERTY_TX_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTxCount() {
     return txCount;
@@ -364,6 +389,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total input count in the block.")
+  @JsonProperty(JSON_PROPERTY_INPUT_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getInputCount() {
     return inputCount;
@@ -387,6 +414,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total output count in the block")
+  @JsonProperty(JSON_PROPERTY_OUTPUT_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getOutputCount() {
     return outputCount;
@@ -410,6 +439,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Size of the block")
+  @JsonProperty(JSON_PROPERTY_SIZE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSize() {
     return size;
@@ -433,6 +464,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Target bits.")
+  @JsonProperty(JSON_PROPERTY_BITS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getBits() {
     return bits;
@@ -456,6 +489,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block nonce")
+  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getNonce() {
     return nonce;
@@ -479,6 +514,8 @@ public class BlockHeaderIndex {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Hex formated coinbase info.")
+  @JsonProperty(JSON_PROPERTY_COINBASE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCoinbase() {
     return coinbase;

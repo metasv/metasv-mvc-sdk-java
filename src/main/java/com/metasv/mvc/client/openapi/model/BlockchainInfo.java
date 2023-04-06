@@ -15,62 +15,65 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * BlockchainInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  BlockchainInfo.JSON_PROPERTY_CHAIN,
+  BlockchainInfo.JSON_PROPERTY_BLOCKS,
+  BlockchainInfo.JSON_PROPERTY_HEADERS,
+  BlockchainInfo.JSON_PROPERTY_BEST_BLOCK_HASH,
+  BlockchainInfo.JSON_PROPERTY_DIFFICULTY,
+  BlockchainInfo.JSON_PROPERTY_MEDIAN_TIME,
+  BlockchainInfo.JSON_PROPERTY_CHAINWORK,
+  BlockchainInfo.JSON_PROPERTY_NETWORK_HASH_PER_SECOND,
+  BlockchainInfo.JSON_PROPERTY_MEMPOOL_TX_COUNT,
+  BlockchainInfo.JSON_PROPERTY_MEMPOOL_USAGE,
+  BlockchainInfo.JSON_PROPERTY_ESTIMATED_BLOCK_SIZE
+})
+@JsonTypeName("BlockchainInfo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class BlockchainInfo {
-  public static final String SERIALIZED_NAME_CHAIN = "chain";
-  @SerializedName(SERIALIZED_NAME_CHAIN)
+  public static final String JSON_PROPERTY_CHAIN = "chain";
   private String chain;
 
-  public static final String SERIALIZED_NAME_BLOCKS = "blocks";
-  @SerializedName(SERIALIZED_NAME_BLOCKS)
+  public static final String JSON_PROPERTY_BLOCKS = "blocks";
   private Integer blocks;
 
-  public static final String SERIALIZED_NAME_HEADERS = "headers";
-  @SerializedName(SERIALIZED_NAME_HEADERS)
+  public static final String JSON_PROPERTY_HEADERS = "headers";
   private Integer headers;
 
-  public static final String SERIALIZED_NAME_BEST_BLOCK_HASH = "bestBlockHash";
-  @SerializedName(SERIALIZED_NAME_BEST_BLOCK_HASH)
+  public static final String JSON_PROPERTY_BEST_BLOCK_HASH = "bestBlockHash";
   private String bestBlockHash;
 
-  public static final String SERIALIZED_NAME_DIFFICULTY = "difficulty";
-  @SerializedName(SERIALIZED_NAME_DIFFICULTY)
+  public static final String JSON_PROPERTY_DIFFICULTY = "difficulty";
   private String difficulty;
 
-  public static final String SERIALIZED_NAME_MEDIAN_TIME = "medianTime";
-  @SerializedName(SERIALIZED_NAME_MEDIAN_TIME)
+  public static final String JSON_PROPERTY_MEDIAN_TIME = "medianTime";
   private Long medianTime;
 
-  public static final String SERIALIZED_NAME_CHAINWORK = "chainwork";
-  @SerializedName(SERIALIZED_NAME_CHAINWORK)
+  public static final String JSON_PROPERTY_CHAINWORK = "chainwork";
   private String chainwork;
 
-  public static final String SERIALIZED_NAME_NETWORK_HASH_PER_SECOND = "networkHashPerSecond";
-  @SerializedName(SERIALIZED_NAME_NETWORK_HASH_PER_SECOND)
+  public static final String JSON_PROPERTY_NETWORK_HASH_PER_SECOND = "networkHashPerSecond";
   private String networkHashPerSecond;
 
-  public static final String SERIALIZED_NAME_MEMPOOL_TX_COUNT = "mempoolTxCount";
-  @SerializedName(SERIALIZED_NAME_MEMPOOL_TX_COUNT)
+  public static final String JSON_PROPERTY_MEMPOOL_TX_COUNT = "mempoolTxCount";
   private Integer mempoolTxCount;
 
-  public static final String SERIALIZED_NAME_MEMPOOL_USAGE = "mempoolUsage";
-  @SerializedName(SERIALIZED_NAME_MEMPOOL_USAGE)
+  public static final String JSON_PROPERTY_MEMPOOL_USAGE = "mempoolUsage";
   private Long mempoolUsage;
 
-  public static final String SERIALIZED_NAME_ESTIMATED_BLOCK_SIZE = "estimatedBlockSize";
-  @SerializedName(SERIALIZED_NAME_ESTIMATED_BLOCK_SIZE)
+  public static final String JSON_PROPERTY_ESTIMATED_BLOCK_SIZE = "estimatedBlockSize";
   private Long estimatedBlockSize;
 
 
@@ -86,6 +89,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "mainnet or testnet")
+  @JsonProperty(JSON_PROPERTY_CHAIN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getChain() {
     return chain;
@@ -109,6 +114,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current block count")
+  @JsonProperty(JSON_PROPERTY_BLOCKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getBlocks() {
     return blocks;
@@ -132,6 +139,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current block header count")
+  @JsonProperty(JSON_PROPERTY_HEADERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getHeaders() {
     return headers;
@@ -155,6 +164,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current highest blockhash")
+  @JsonProperty(JSON_PROPERTY_BEST_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBestBlockHash() {
     return bestBlockHash;
@@ -178,6 +189,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "decimal string for current difficulty")
+  @JsonProperty(JSON_PROPERTY_DIFFICULTY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDifficulty() {
     return difficulty;
@@ -201,6 +214,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current median time")
+  @JsonProperty(JSON_PROPERTY_MEDIAN_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getMedianTime() {
     return medianTime;
@@ -224,6 +239,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current pow")
+  @JsonProperty(JSON_PROPERTY_CHAINWORK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getChainwork() {
     return chainwork;
@@ -247,6 +264,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "estimated current network hash rate.")
+  @JsonProperty(JSON_PROPERTY_NETWORK_HASH_PER_SECOND)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNetworkHashPerSecond() {
     return networkHashPerSecond;
@@ -270,6 +289,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current mempool transaction count.")
+  @JsonProperty(JSON_PROPERTY_MEMPOOL_TX_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMempoolTxCount() {
     return mempoolTxCount;
@@ -293,6 +314,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current mempool usage.")
+  @JsonProperty(JSON_PROPERTY_MEMPOOL_USAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getMempoolUsage() {
     return mempoolUsage;
@@ -316,6 +339,8 @@ public class BlockchainInfo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "next estimated block size.")
+  @JsonProperty(JSON_PROPERTY_ESTIMATED_BLOCK_SIZE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getEstimatedBlockSize() {
     return estimatedBlockSize;

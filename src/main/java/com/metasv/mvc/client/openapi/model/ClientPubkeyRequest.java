@@ -15,23 +15,26 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Request object to register(or delete) a new client public key.
  */
 @ApiModel(description = "Request object to register(or delete) a new client public key.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ClientPubkeyRequest.JSON_PROPERTY_PUBKEY
+})
+@JsonTypeName("ClientPubkeyRequest")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ClientPubkeyRequest {
-  public static final String SERIALIZED_NAME_PUBKEY = "pubkey";
-  @SerializedName(SERIALIZED_NAME_PUBKEY)
+  public static final String JSON_PROPERTY_PUBKEY = "pubkey";
   private String pubkey;
 
 
@@ -47,6 +50,8 @@ public class ClientPubkeyRequest {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The hex format public key to register. (i.e. 02fd17dd0c52e54e5eed4ebe1e75df5e48df422f81c26520d44380bef1691fdd98)")
+  @JsonProperty(JSON_PROPERTY_PUBKEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPubkey() {
     return pubkey;

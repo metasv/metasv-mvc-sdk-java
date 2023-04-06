@@ -15,111 +15,114 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Contract nft auction Utxo belongs to the specified address
  */
 @ApiModel(description = "Contract nft auction Utxo belongs to the specified address")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractNftAuctionUtxo.JSON_PROPERTY_ADDRESS,
+  ContractNftAuctionUtxo.JSON_PROPERTY_TXID,
+  ContractNftAuctionUtxo.JSON_PROPERTY_TX_INDEX,
+  ContractNftAuctionUtxo.JSON_PROPERTY_BID_MVC_PRICE,
+  ContractNftAuctionUtxo.JSON_PROPERTY_BID_TIMESTAMP,
+  ContractNftAuctionUtxo.JSON_PROPERTY_BIDDER_ADDRESS_PKH,
+  ContractNftAuctionUtxo.JSON_PROPERTY_CODE_HASH,
+  ContractNftAuctionUtxo.JSON_PROPERTY_GENESIS,
+  ContractNftAuctionUtxo.JSON_PROPERTY_END_TIMESTAMP,
+  ContractNftAuctionUtxo.JSON_PROPERTY_FEE_ADDRESS_PKH,
+  ContractNftAuctionUtxo.JSON_PROPERTY_FEE_AMOUNT,
+  ContractNftAuctionUtxo.JSON_PROPERTY_FEE_RATE,
+  ContractNftAuctionUtxo.JSON_PROPERTY_HEIGHT,
+  ContractNftAuctionUtxo.JSON_PROPERTY_NFT_CODE_HASH,
+  ContractNftAuctionUtxo.JSON_PROPERTY_NFT_ID,
+  ContractNftAuctionUtxo.JSON_PROPERTY_SENDER_ADDRESS_PKH,
+  ContractNftAuctionUtxo.JSON_PROPERTY_SENSIBLE_ID,
+  ContractNftAuctionUtxo.JSON_PROPERTY_START_MVC_PRICE,
+  ContractNftAuctionUtxo.JSON_PROPERTY_SATOSHI,
+  ContractNftAuctionUtxo.JSON_PROPERTY_SATOSHI_STRING,
+  ContractNftAuctionUtxo.JSON_PROPERTY_CONTRACT_ADDRESS,
+  ContractNftAuctionUtxo.JSON_PROPERTY_IS_READY,
+  ContractNftAuctionUtxo.JSON_PROPERTY_FLAG
+})
+@JsonTypeName("ContractNftAuctionUtxo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractNftAuctionUtxo {
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_TX_INDEX = "txIndex";
-  @SerializedName(SERIALIZED_NAME_TX_INDEX)
+  public static final String JSON_PROPERTY_TX_INDEX = "txIndex";
   private Integer txIndex;
 
-  public static final String SERIALIZED_NAME_BID_MVC_PRICE = "bidMvcPrice";
-  @SerializedName(SERIALIZED_NAME_BID_MVC_PRICE)
+  public static final String JSON_PROPERTY_BID_MVC_PRICE = "bidMvcPrice";
   private Long bidMvcPrice;
 
-  public static final String SERIALIZED_NAME_BID_TIMESTAMP = "bidTimestamp";
-  @SerializedName(SERIALIZED_NAME_BID_TIMESTAMP)
+  public static final String JSON_PROPERTY_BID_TIMESTAMP = "bidTimestamp";
   private Long bidTimestamp;
 
-  public static final String SERIALIZED_NAME_BIDDER_ADDRESS_PKH = "bidderAddressPkh";
-  @SerializedName(SERIALIZED_NAME_BIDDER_ADDRESS_PKH)
+  public static final String JSON_PROPERTY_BIDDER_ADDRESS_PKH = "bidderAddressPkh";
   private String bidderAddressPkh;
 
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_END_TIMESTAMP = "endTimestamp";
-  @SerializedName(SERIALIZED_NAME_END_TIMESTAMP)
+  public static final String JSON_PROPERTY_END_TIMESTAMP = "endTimestamp";
   private Long endTimestamp;
 
-  public static final String SERIALIZED_NAME_FEE_ADDRESS_PKH = "feeAddressPkh";
-  @SerializedName(SERIALIZED_NAME_FEE_ADDRESS_PKH)
+  public static final String JSON_PROPERTY_FEE_ADDRESS_PKH = "feeAddressPkh";
   private String feeAddressPkh;
 
-  public static final String SERIALIZED_NAME_FEE_AMOUNT = "feeAmount";
-  @SerializedName(SERIALIZED_NAME_FEE_AMOUNT)
+  public static final String JSON_PROPERTY_FEE_AMOUNT = "feeAmount";
   private Long feeAmount;
 
-  public static final String SERIALIZED_NAME_FEE_RATE = "feeRate";
-  @SerializedName(SERIALIZED_NAME_FEE_RATE)
+  public static final String JSON_PROPERTY_FEE_RATE = "feeRate";
   private Integer feeRate;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_NFT_CODE_HASH = "nftCodeHash";
-  @SerializedName(SERIALIZED_NAME_NFT_CODE_HASH)
+  public static final String JSON_PROPERTY_NFT_CODE_HASH = "nftCodeHash";
   private String nftCodeHash;
 
-  public static final String SERIALIZED_NAME_NFT_ID = "nftId";
-  @SerializedName(SERIALIZED_NAME_NFT_ID)
+  public static final String JSON_PROPERTY_NFT_ID = "nftId";
   private String nftId;
 
-  public static final String SERIALIZED_NAME_SENDER_ADDRESS_PKH = "senderAddressPkh";
-  @SerializedName(SERIALIZED_NAME_SENDER_ADDRESS_PKH)
+  public static final String JSON_PROPERTY_SENDER_ADDRESS_PKH = "senderAddressPkh";
   private String senderAddressPkh;
 
-  public static final String SERIALIZED_NAME_SENSIBLE_ID = "sensibleId";
-  @SerializedName(SERIALIZED_NAME_SENSIBLE_ID)
+  public static final String JSON_PROPERTY_SENSIBLE_ID = "sensibleId";
   private String sensibleId;
 
-  public static final String SERIALIZED_NAME_START_MVC_PRICE = "startMvcPrice";
-  @SerializedName(SERIALIZED_NAME_START_MVC_PRICE)
+  public static final String JSON_PROPERTY_START_MVC_PRICE = "startMvcPrice";
   private Long startMvcPrice;
 
-  public static final String SERIALIZED_NAME_SATOSHI = "satoshi";
-  @SerializedName(SERIALIZED_NAME_SATOSHI)
+  public static final String JSON_PROPERTY_SATOSHI = "satoshi";
   private Long satoshi;
 
-  public static final String SERIALIZED_NAME_SATOSHI_STRING = "satoshiString";
-  @SerializedName(SERIALIZED_NAME_SATOSHI_STRING)
+  public static final String JSON_PROPERTY_SATOSHI_STRING = "satoshiString";
   private String satoshiString;
 
-  public static final String SERIALIZED_NAME_CONTRACT_ADDRESS = "contractAddress";
-  @SerializedName(SERIALIZED_NAME_CONTRACT_ADDRESS)
+  public static final String JSON_PROPERTY_CONTRACT_ADDRESS = "contractAddress";
   private String contractAddress;
 
-  public static final String SERIALIZED_NAME_IS_READY = "isReady";
-  @SerializedName(SERIALIZED_NAME_IS_READY)
+  public static final String JSON_PROPERTY_IS_READY = "isReady";
   private Boolean isReady;
 
-  public static final String SERIALIZED_NAME_FLAG = "flag";
-  @SerializedName(SERIALIZED_NAME_FLAG)
+  public static final String JSON_PROPERTY_FLAG = "flag";
   private String flag;
 
 
@@ -135,6 +138,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address string of this utxo")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -158,6 +163,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Txid for this utxo.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -181,6 +188,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Output index for the Utxo.")
+  @JsonProperty(JSON_PROPERTY_TX_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTxIndex() {
     return txIndex;
@@ -204,6 +213,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "bidMvcPrice")
+  @JsonProperty(JSON_PROPERTY_BID_MVC_PRICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getBidMvcPrice() {
     return bidMvcPrice;
@@ -227,6 +238,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "bidTimestamp")
+  @JsonProperty(JSON_PROPERTY_BID_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getBidTimestamp() {
     return bidTimestamp;
@@ -250,6 +263,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "bidderAddressPkh")
+  @JsonProperty(JSON_PROPERTY_BIDDER_ADDRESS_PKH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBidderAddressPkh() {
     return bidderAddressPkh;
@@ -273,6 +288,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Codehash of this utxo.")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -296,6 +313,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Genesis of this utxo.")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -319,6 +338,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "endTimestamp")
+  @JsonProperty(JSON_PROPERTY_END_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getEndTimestamp() {
     return endTimestamp;
@@ -342,6 +363,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "feeAddressPkh")
+  @JsonProperty(JSON_PROPERTY_FEE_ADDRESS_PKH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFeeAddressPkh() {
     return feeAddressPkh;
@@ -365,6 +388,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "feeAmount")
+  @JsonProperty(JSON_PROPERTY_FEE_AMOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getFeeAmount() {
     return feeAmount;
@@ -388,6 +413,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "feeRate")
+  @JsonProperty(JSON_PROPERTY_FEE_RATE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getFeeRate() {
     return feeRate;
@@ -411,6 +438,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The height of this utxo, -1 for unconfirmed utxo.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -434,6 +463,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "nftCodeHash")
+  @JsonProperty(JSON_PROPERTY_NFT_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNftCodeHash() {
     return nftCodeHash;
@@ -457,6 +488,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "nftId of the auctioning fnt")
+  @JsonProperty(JSON_PROPERTY_NFT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNftId() {
     return nftId;
@@ -480,6 +513,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "senderAddressPkh")
+  @JsonProperty(JSON_PROPERTY_SENDER_ADDRESS_PKH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSenderAddressPkh() {
     return senderAddressPkh;
@@ -503,6 +538,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SensibleId of the utxo")
+  @JsonProperty(JSON_PROPERTY_SENSIBLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSensibleId() {
     return sensibleId;
@@ -526,6 +563,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "startMvcPrice")
+  @JsonProperty(JSON_PROPERTY_START_MVC_PRICE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getStartMvcPrice() {
     return startMvcPrice;
@@ -549,6 +588,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(Irrelavant to token value)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSatoshi() {
     return satoshi;
@@ -572,6 +613,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(In string format)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSatoshiString() {
     return satoshiString;
@@ -595,6 +638,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The hash160 of the script(p2ch address)")
+  @JsonProperty(JSON_PROPERTY_CONTRACT_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getContractAddress() {
     return contractAddress;
@@ -618,6 +663,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "this the nft send to this contract address")
+  @JsonProperty(JSON_PROPERTY_IS_READY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getIsReady() {
     return isReady;
@@ -641,6 +688,8 @@ public class ContractNftAuctionUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Flag used for paging")
+  @JsonProperty(JSON_PROPERTY_FLAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlag() {
     return flag;

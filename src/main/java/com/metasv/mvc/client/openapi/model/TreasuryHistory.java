@@ -15,39 +15,42 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * treasury transaction history
  */
 @ApiModel(description = "treasury transaction history")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  TreasuryHistory.JSON_PROPERTY_TXID,
+  TreasuryHistory.JSON_PROPERTY_OUTCOME,
+  TreasuryHistory.JSON_PROPERTY_TIMESTAMP,
+  TreasuryHistory.JSON_PROPERTY_REASON,
+  TreasuryHistory.JSON_PROPERTY_ANNOUNCEMENT_URL
+})
+@JsonTypeName("TreasuryHistory")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class TreasuryHistory {
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_OUTCOME = "outcome";
-  @SerializedName(SERIALIZED_NAME_OUTCOME)
+  public static final String JSON_PROPERTY_OUTCOME = "outcome";
   private Long outcome;
 
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public static final String SERIALIZED_NAME_REASON = "reason";
-  @SerializedName(SERIALIZED_NAME_REASON)
+  public static final String JSON_PROPERTY_REASON = "reason";
   private String reason;
 
-  public static final String SERIALIZED_NAME_ANNOUNCEMENT_URL = "announcementUrl";
-  @SerializedName(SERIALIZED_NAME_ANNOUNCEMENT_URL)
+  public static final String JSON_PROPERTY_ANNOUNCEMENT_URL = "announcementUrl";
   private String announcementUrl;
 
 
@@ -63,6 +66,8 @@ public class TreasuryHistory {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "treasury transaction txid.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -86,6 +91,8 @@ public class TreasuryHistory {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "treasury transaction spent outcome in satoshi.")
+  @JsonProperty(JSON_PROPERTY_OUTCOME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getOutcome() {
     return outcome;
@@ -109,6 +116,8 @@ public class TreasuryHistory {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "treasury transaction timestamp.")
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTimestamp() {
     return timestamp;
@@ -132,6 +141,8 @@ public class TreasuryHistory {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Reason for treasury transaction.")
+  @JsonProperty(JSON_PROPERTY_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getReason() {
     return reason;
@@ -155,6 +166,8 @@ public class TreasuryHistory {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Announcement link for treasury transaction.")
+  @JsonProperty(JSON_PROPERTY_ANNOUNCEMENT_URL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAnnouncementUrl() {
     return announcementUrl;

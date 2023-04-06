@@ -4,7 +4,6 @@
   "modelPackage": "com.metasv.mvc.client.openapi.model",
   "configPackage": "com.metasv.mvc.client.openapi.config",
   "invokerPackage": "com.metasv.mvc.client.openapi",
-  "dateLibrary": "legacy",
   "artifactDescription": "Java Client SDK for MetaSV API.",
   "artifactUrl": "https://github.com/metasv/metasv-mvc-sdk-java",
   "artifactVersion": "3.0.4",
@@ -13,5 +12,6 @@
   "developerOrganizationUrl": "https://mvc.metasv.com/",
   "groupId": "com.metasv.mvc",
   "licenseName": "MIT Lisense",
-  "licenseUrl": "https://github.com/bitcoin-sv/bitcoin-sv/blob/master/LICENSE"
+  "licenseUrl": "https://opensource.org/license/mit/",
+  "library": "webclient"
 }

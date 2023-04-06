@@ -15,55 +15,58 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * spent status and value info of the output with detailed output script.
  */
 @ApiModel(description = "spent status and value info of the output with detailed output script.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  OutputInfoDetail.JSON_PROPERTY_TXID,
+  OutputInfoDetail.JSON_PROPERTY_INDEX,
+  OutputInfoDetail.JSON_PROPERTY_SCRIPT,
+  OutputInfoDetail.JSON_PROPERTY_ADDRESS,
+  OutputInfoDetail.JSON_PROPERTY_VALUE,
+  OutputInfoDetail.JSON_PROPERTY_SPENT,
+  OutputInfoDetail.JSON_PROPERTY_SPENT_TXID,
+  OutputInfoDetail.JSON_PROPERTY_SPENT_INDEX,
+  OutputInfoDetail.JSON_PROPERTY_SPENT_HEIGHT
+})
+@JsonTypeName("OutputInfoDetail")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class OutputInfoDetail {
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private Integer index;
 
-  public static final String SERIALIZED_NAME_SCRIPT = "script";
-  @SerializedName(SERIALIZED_NAME_SCRIPT)
+  public static final String JSON_PROPERTY_SCRIPT = "script";
   private String script;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;
 
-  public static final String SERIALIZED_NAME_SPENT = "spent";
-  @SerializedName(SERIALIZED_NAME_SPENT)
+  public static final String JSON_PROPERTY_SPENT = "spent";
   private Boolean spent;
 
-  public static final String SERIALIZED_NAME_SPENT_TXID = "spentTxid";
-  @SerializedName(SERIALIZED_NAME_SPENT_TXID)
+  public static final String JSON_PROPERTY_SPENT_TXID = "spentTxid";
   private String spentTxid;
 
-  public static final String SERIALIZED_NAME_SPENT_INDEX = "spentIndex";
-  @SerializedName(SERIALIZED_NAME_SPENT_INDEX)
+  public static final String JSON_PROPERTY_SPENT_INDEX = "spentIndex";
   private Integer spentIndex;
 
-  public static final String SERIALIZED_NAME_SPENT_HEIGHT = "spentHeight";
-  @SerializedName(SERIALIZED_NAME_SPENT_HEIGHT)
+  public static final String JSON_PROPERTY_SPENT_HEIGHT = "spentHeight";
   private Long spentHeight;
 
 
@@ -79,6 +82,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "txid that this output is in.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -102,6 +107,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "index of this output in the tx.")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getIndex() {
     return index;
@@ -125,6 +132,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "output scrypt in hex format")
+  @JsonProperty(JSON_PROPERTY_SCRIPT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScript() {
     return script;
@@ -148,6 +157,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "parsed address of this output, empty for non standard.")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -171,6 +182,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "value of this output")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getValue() {
     return value;
@@ -194,6 +207,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "this output is spent or not, true if spent")
+  @JsonProperty(JSON_PROPERTY_SPENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getSpent() {
     return spent;
@@ -217,6 +232,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "txid that spent this output")
+  @JsonProperty(JSON_PROPERTY_SPENT_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSpentTxid() {
     return spentTxid;
@@ -240,6 +257,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "vin index of the spent tx")
+  @JsonProperty(JSON_PROPERTY_SPENT_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getSpentIndex() {
     return spentIndex;
@@ -263,6 +282,8 @@ public class OutputInfoDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "height of the spent tx(-1 if unconfirmed, 0 if unspent)")
+  @JsonProperty(JSON_PROPERTY_SPENT_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSpentHeight() {
     return spentHeight;

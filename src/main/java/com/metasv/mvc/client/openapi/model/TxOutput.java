@@ -15,35 +15,38 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Parsed outputs from raw tx.
  */
 @ApiModel(description = "Parsed outputs from raw tx.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  TxOutput.JSON_PROPERTY_INDEX,
+  TxOutput.JSON_PROPERTY_VALUE,
+  TxOutput.JSON_PROPERTY_ADDRESS,
+  TxOutput.JSON_PROPERTY_LOCK_SCRIPT
+})
+@JsonTypeName("TxOutput")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class TxOutput {
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private Integer index;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_LOCK_SCRIPT = "lockScript";
-  @SerializedName(SERIALIZED_NAME_LOCK_SCRIPT)
+  public static final String JSON_PROPERTY_LOCK_SCRIPT = "lockScript";
   private String lockScript;
 
 
@@ -59,6 +62,8 @@ public class TxOutput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Output index of the tx.")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getIndex() {
     return index;
@@ -82,6 +87,8 @@ public class TxOutput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Bitcoin Value in this output.")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getValue() {
     return value;
@@ -105,6 +112,8 @@ public class TxOutput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Parsed address from output")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -128,6 +137,8 @@ public class TxOutput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Hex formatted lockScript")
+  @JsonProperty(JSON_PROPERTY_LOCK_SCRIPT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLockScript() {
     return lockScript;

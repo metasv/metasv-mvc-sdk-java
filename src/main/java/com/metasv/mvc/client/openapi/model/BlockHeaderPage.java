@@ -15,51 +15,54 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * block header saved by partition page
  */
 @ApiModel(description = "block header saved by partition page")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  BlockHeaderPage.JSON_PROPERTY_HEIGHT,
+  BlockHeaderPage.JSON_PROPERTY_BLOCK_HASH,
+  BlockHeaderPage.JSON_PROPERTY_TIMESTAMP,
+  BlockHeaderPage.JSON_PROPERTY_MEDIAN_TIME,
+  BlockHeaderPage.JSON_PROPERTY_REWARD,
+  BlockHeaderPage.JSON_PROPERTY_MINER,
+  BlockHeaderPage.JSON_PROPERTY_TX_COUNT,
+  BlockHeaderPage.JSON_PROPERTY_SIZE
+})
+@JsonTypeName("BlockHeaderPage")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class BlockHeaderPage {
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_BLOCK_HASH = "blockHash";
-  @SerializedName(SERIALIZED_NAME_BLOCK_HASH)
+  public static final String JSON_PROPERTY_BLOCK_HASH = "blockHash";
   private String blockHash;
 
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
-  public static final String SERIALIZED_NAME_MEDIAN_TIME = "medianTime";
-  @SerializedName(SERIALIZED_NAME_MEDIAN_TIME)
+  public static final String JSON_PROPERTY_MEDIAN_TIME = "medianTime";
   private Long medianTime;
 
-  public static final String SERIALIZED_NAME_REWARD = "reward";
-  @SerializedName(SERIALIZED_NAME_REWARD)
+  public static final String JSON_PROPERTY_REWARD = "reward";
   private Long reward;
 
-  public static final String SERIALIZED_NAME_MINER = "miner";
-  @SerializedName(SERIALIZED_NAME_MINER)
+  public static final String JSON_PROPERTY_MINER = "miner";
   private String miner;
 
-  public static final String SERIALIZED_NAME_TX_COUNT = "txCount";
-  @SerializedName(SERIALIZED_NAME_TX_COUNT)
+  public static final String JSON_PROPERTY_TX_COUNT = "txCount";
   private Integer txCount;
 
-  public static final String SERIALIZED_NAME_SIZE = "size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
+  public static final String JSON_PROPERTY_SIZE = "size";
   private Long size;
 
 
@@ -75,6 +78,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block height.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -98,6 +103,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block hash.")
+  @JsonProperty(JSON_PROPERTY_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBlockHash() {
     return blockHash;
@@ -121,6 +128,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block timestamp.")
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTimestamp() {
     return timestamp;
@@ -144,6 +153,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "current median time")
+  @JsonProperty(JSON_PROPERTY_MEDIAN_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getMedianTime() {
     return medianTime;
@@ -167,6 +178,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Miner total rewards, including miner fee.")
+  @JsonProperty(JSON_PROPERTY_REWARD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getReward() {
     return reward;
@@ -190,6 +203,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Guessed miner name.")
+  @JsonProperty(JSON_PROPERTY_MINER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMiner() {
     return miner;
@@ -213,6 +228,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total txs count included in the block.")
+  @JsonProperty(JSON_PROPERTY_TX_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTxCount() {
     return txCount;
@@ -236,6 +253,8 @@ public class BlockHeaderPage {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Size of the block")
+  @JsonProperty(JSON_PROPERTY_SIZE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSize() {
     return size;

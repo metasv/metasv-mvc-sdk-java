@@ -15,59 +15,62 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Tx simple info for block tx list.
  */
 @ApiModel(description = "Tx simple info for block tx list.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  BlockTx.JSON_PROPERTY_TXID,
+  BlockTx.JSON_PROPERTY_HEIGHT,
+  BlockTx.JSON_PROPERTY_BLOCK_HASH,
+  BlockTx.JSON_PROPERTY_SIZE,
+  BlockTx.JSON_PROPERTY_INPUT_COUNT,
+  BlockTx.JSON_PROPERTY_OUTPUT_COUNT,
+  BlockTx.JSON_PROPERTY_LOCK_TIME,
+  BlockTx.JSON_PROPERTY_FEE,
+  BlockTx.JSON_PROPERTY_CONFIRMATIONS,
+  BlockTx.JSON_PROPERTY_TIMESTAMP
+})
+@JsonTypeName("BlockTx")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class BlockTx {
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_BLOCK_HASH = "blockHash";
-  @SerializedName(SERIALIZED_NAME_BLOCK_HASH)
+  public static final String JSON_PROPERTY_BLOCK_HASH = "blockHash";
   private String blockHash;
 
-  public static final String SERIALIZED_NAME_SIZE = "size";
-  @SerializedName(SERIALIZED_NAME_SIZE)
+  public static final String JSON_PROPERTY_SIZE = "size";
   private Long size;
 
-  public static final String SERIALIZED_NAME_INPUT_COUNT = "inputCount";
-  @SerializedName(SERIALIZED_NAME_INPUT_COUNT)
+  public static final String JSON_PROPERTY_INPUT_COUNT = "inputCount";
   private Integer inputCount;
 
-  public static final String SERIALIZED_NAME_OUTPUT_COUNT = "outputCount";
-  @SerializedName(SERIALIZED_NAME_OUTPUT_COUNT)
+  public static final String JSON_PROPERTY_OUTPUT_COUNT = "outputCount";
   private Integer outputCount;
 
-  public static final String SERIALIZED_NAME_LOCK_TIME = "lockTime";
-  @SerializedName(SERIALIZED_NAME_LOCK_TIME)
+  public static final String JSON_PROPERTY_LOCK_TIME = "lockTime";
   private Long lockTime;
 
-  public static final String SERIALIZED_NAME_FEE = "fee";
-  @SerializedName(SERIALIZED_NAME_FEE)
+  public static final String JSON_PROPERTY_FEE = "fee";
   private Long fee;
 
-  public static final String SERIALIZED_NAME_CONFIRMATIONS = "confirmations";
-  @SerializedName(SERIALIZED_NAME_CONFIRMATIONS)
+  public static final String JSON_PROPERTY_CONFIRMATIONS = "confirmations";
   private Long confirmations;
 
-  public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
-  @SerializedName(SERIALIZED_NAME_TIMESTAMP)
+  public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   private Long timestamp;
 
 
@@ -83,6 +86,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Transaction hash.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -106,6 +111,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block height of this tx.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -129,6 +136,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Hash of the block")
+  @JsonProperty(JSON_PROPERTY_BLOCK_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBlockHash() {
     return blockHash;
@@ -152,6 +161,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "transaction size")
+  @JsonProperty(JSON_PROPERTY_SIZE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSize() {
     return size;
@@ -175,6 +186,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Input count in this transaction")
+  @JsonProperty(JSON_PROPERTY_INPUT_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getInputCount() {
     return inputCount;
@@ -198,6 +211,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Output count in this transaction.")
+  @JsonProperty(JSON_PROPERTY_OUTPUT_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getOutputCount() {
     return outputCount;
@@ -221,6 +236,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Lock time of this transaction")
+  @JsonProperty(JSON_PROPERTY_LOCK_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getLockTime() {
     return lockTime;
@@ -244,6 +261,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Trasaction fee.")
+  @JsonProperty(JSON_PROPERTY_FEE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getFee() {
     return fee;
@@ -267,6 +286,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Confirmations of this transaction, -1 if unconfirmed.")
+  @JsonProperty(JSON_PROPERTY_CONFIRMATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getConfirmations() {
     return confirmations;
@@ -290,6 +311,8 @@ public class BlockTx {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block timestamp for the transaction, confirmed tx only.")
+  @JsonProperty(JSON_PROPERTY_TIMESTAMP)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTimestamp() {
     return timestamp;

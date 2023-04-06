@@ -15,36 +15,39 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.metasv.mvc.client.openapi.model.BlockTx;
 import com.metasv.mvc.client.openapi.model.TxInput;
 import com.metasv.mvc.client.openapi.model.TxOutput;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Parsed tx info
  */
 @ApiModel(description = "Parsed tx info")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  TxDetail.JSON_PROPERTY_TX_DETAIL,
+  TxDetail.JSON_PROPERTY_INPUTS,
+  TxDetail.JSON_PROPERTY_OUTPUTS
+})
+@JsonTypeName("TxDetail")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class TxDetail {
-  public static final String SERIALIZED_NAME_TX_DETAIL = "txDetail";
-  @SerializedName(SERIALIZED_NAME_TX_DETAIL)
+  public static final String JSON_PROPERTY_TX_DETAIL = "txDetail";
   private BlockTx txDetail;
 
-  public static final String SERIALIZED_NAME_INPUTS = "inputs";
-  @SerializedName(SERIALIZED_NAME_INPUTS)
+  public static final String JSON_PROPERTY_INPUTS = "inputs";
   private List<TxInput> inputs = null;
 
-  public static final String SERIALIZED_NAME_OUTPUTS = "outputs";
-  @SerializedName(SERIALIZED_NAME_OUTPUTS)
+  public static final String JSON_PROPERTY_OUTPUTS = "outputs";
   private List<TxOutput> outputs = null;
 
 
@@ -60,6 +63,8 @@ public class TxDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TX_DETAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BlockTx getTxDetail() {
     return txDetail;
@@ -79,7 +84,7 @@ public class TxDetail {
 
   public TxDetail addInputsItem(TxInput inputsItem) {
     if (this.inputs == null) {
-      this.inputs = new ArrayList<TxInput>();
+      this.inputs = new ArrayList<>();
     }
     this.inputs.add(inputsItem);
     return this;
@@ -91,6 +96,8 @@ public class TxDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INPUTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<TxInput> getInputs() {
     return inputs;
@@ -110,7 +117,7 @@ public class TxDetail {
 
   public TxDetail addOutputsItem(TxOutput outputsItem) {
     if (this.outputs == null) {
-      this.outputs = new ArrayList<TxOutput>();
+      this.outputs = new ArrayList<>();
     }
     this.outputs.add(outputsItem);
     return this;
@@ -122,6 +129,8 @@ public class TxDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_OUTPUTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<TxOutput> getOutputs() {
     return outputs;

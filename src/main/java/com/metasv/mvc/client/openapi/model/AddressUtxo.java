@@ -15,43 +15,46 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Utxos by address(or addresses) order by height asc.
  */
 @ApiModel(description = "Utxos by address(or addresses) order by height asc.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  AddressUtxo.JSON_PROPERTY_FLAG,
+  AddressUtxo.JSON_PROPERTY_ADDRESS,
+  AddressUtxo.JSON_PROPERTY_TXID,
+  AddressUtxo.JSON_PROPERTY_OUT_INDEX,
+  AddressUtxo.JSON_PROPERTY_VALUE,
+  AddressUtxo.JSON_PROPERTY_HEIGHT
+})
+@JsonTypeName("AddressUtxo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class AddressUtxo {
-  public static final String SERIALIZED_NAME_FLAG = "flag";
-  @SerializedName(SERIALIZED_NAME_FLAG)
+  public static final String JSON_PROPERTY_FLAG = "flag";
   private String flag;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_OUT_INDEX = "outIndex";
-  @SerializedName(SERIALIZED_NAME_OUT_INDEX)
+  public static final String JSON_PROPERTY_OUT_INDEX = "outIndex";
   private Integer outIndex;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
 
@@ -67,6 +70,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "paging flag")
+  @JsonProperty(JSON_PROPERTY_FLAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlag() {
     return flag;
@@ -90,6 +95,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address of the utxo")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -113,6 +120,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "txid of the utxo")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -136,6 +145,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "output index in the tx")
+  @JsonProperty(JSON_PROPERTY_OUT_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getOutIndex() {
     return outIndex;
@@ -159,6 +170,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Value of the utxo")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getValue() {
     return value;
@@ -182,6 +195,8 @@ public class AddressUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Height of the utxo, -1 if not confirmed")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;

@@ -15,43 +15,46 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Parsed inputs from raw tx. Use output api to get value and spent info.
  */
 @ApiModel(description = "Parsed inputs from raw tx. Use output api to get value and spent info.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  TxInput.JSON_PROPERTY_INDEX,
+  TxInput.JSON_PROPERTY_UTXO_TXID,
+  TxInput.JSON_PROPERTY_UTXO_INDEX,
+  TxInput.JSON_PROPERTY_ADDRESS,
+  TxInput.JSON_PROPERTY_VALUE,
+  TxInput.JSON_PROPERTY_UNLOCK_SCRIPT
+})
+@JsonTypeName("TxInput")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class TxInput {
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
+  public static final String JSON_PROPERTY_INDEX = "index";
   private Integer index;
 
-  public static final String SERIALIZED_NAME_UTXO_TXID = "utxoTxid";
-  @SerializedName(SERIALIZED_NAME_UTXO_TXID)
+  public static final String JSON_PROPERTY_UTXO_TXID = "utxoTxid";
   private String utxoTxid;
 
-  public static final String SERIALIZED_NAME_UTXO_INDEX = "utxoIndex";
-  @SerializedName(SERIALIZED_NAME_UTXO_INDEX)
+  public static final String JSON_PROPERTY_UTXO_INDEX = "utxoIndex";
   private Integer utxoIndex;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;
 
-  public static final String SERIALIZED_NAME_UNLOCK_SCRIPT = "unlockScript";
-  @SerializedName(SERIALIZED_NAME_UNLOCK_SCRIPT)
+  public static final String JSON_PROPERTY_UNLOCK_SCRIPT = "unlockScript";
   private String unlockScript;
 
 
@@ -67,6 +70,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Input index of the tx.")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getIndex() {
     return index;
@@ -90,6 +95,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The outpoint utxo txid that this input spent")
+  @JsonProperty(JSON_PROPERTY_UTXO_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUtxoTxid() {
     return utxoTxid;
@@ -113,6 +120,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The outpoint utxo index that this input spent")
+  @JsonProperty(JSON_PROPERTY_UTXO_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getUtxoIndex() {
     return utxoIndex;
@@ -136,6 +145,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Parsed address from pubkey(P2PKH input only).")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -159,6 +170,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "satoshi value of this input.")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getValue() {
     return value;
@@ -182,6 +195,8 @@ public class TxInput {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The hex of the input script.")
+  @JsonProperty(JSON_PROPERTY_UNLOCK_SCRIPT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUnlockScript() {
     return unlockScript;

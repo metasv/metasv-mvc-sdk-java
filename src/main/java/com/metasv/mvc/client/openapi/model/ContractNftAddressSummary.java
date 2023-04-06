@@ -15,47 +15,50 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Get nft summary(count group by genesis) for specific address.
  */
 @ApiModel(description = "Get nft summary(count group by genesis) for specific address.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractNftAddressSummary.JSON_PROPERTY_CODE_HASH,
+  ContractNftAddressSummary.JSON_PROPERTY_GENESIS,
+  ContractNftAddressSummary.JSON_PROPERTY_SENSIBLE_ID,
+  ContractNftAddressSummary.JSON_PROPERTY_META_TXID,
+  ContractNftAddressSummary.JSON_PROPERTY_META_OUTPUT_INDEX,
+  ContractNftAddressSummary.JSON_PROPERTY_TOKEN_SUPPLY,
+  ContractNftAddressSummary.JSON_PROPERTY_COUNT
+})
+@JsonTypeName("ContractNftAddressSummary")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractNftAddressSummary {
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_SENSIBLE_ID = "sensibleId";
-  @SerializedName(SERIALIZED_NAME_SENSIBLE_ID)
+  public static final String JSON_PROPERTY_SENSIBLE_ID = "sensibleId";
   private String sensibleId;
 
-  public static final String SERIALIZED_NAME_META_TXID = "metaTxid";
-  @SerializedName(SERIALIZED_NAME_META_TXID)
+  public static final String JSON_PROPERTY_META_TXID = "metaTxid";
   private String metaTxid;
 
-  public static final String SERIALIZED_NAME_META_OUTPUT_INDEX = "metaOutputIndex";
-  @SerializedName(SERIALIZED_NAME_META_OUTPUT_INDEX)
+  public static final String JSON_PROPERTY_META_OUTPUT_INDEX = "metaOutputIndex";
   private Integer metaOutputIndex;
 
-  public static final String SERIALIZED_NAME_TOKEN_SUPPLY = "tokenSupply";
-  @SerializedName(SERIALIZED_NAME_TOKEN_SUPPLY)
+  public static final String JSON_PROPERTY_TOKEN_SUPPLY = "tokenSupply";
   private Long tokenSupply;
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
+  public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;
 
 
@@ -71,6 +74,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Codehash of this NFT series.")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -94,6 +99,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Genesis of this NFT series..")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -117,6 +124,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SensibleId of the token")
+  @JsonProperty(JSON_PROPERTY_SENSIBLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSensibleId() {
     return sensibleId;
@@ -140,6 +149,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The metanet tx describing the nft.")
+  @JsonProperty(JSON_PROPERTY_META_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMetaTxid() {
     return metaTxid;
@@ -163,6 +174,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Symbol of the token.")
+  @JsonProperty(JSON_PROPERTY_META_OUTPUT_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMetaOutputIndex() {
     return metaOutputIndex;
@@ -186,6 +199,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The total supply of this NFT.")
+  @JsonProperty(JSON_PROPERTY_TOKEN_SUPPLY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getTokenSupply() {
     return tokenSupply;
@@ -209,6 +224,8 @@ public class ContractNftAddressSummary {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The count of this nft that the address owns.")
+  @JsonProperty(JSON_PROPERTY_COUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getCount() {
     return count;

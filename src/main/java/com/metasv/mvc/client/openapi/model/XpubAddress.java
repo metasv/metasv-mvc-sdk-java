@@ -15,35 +15,38 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Address detail in the wallet
  */
 @ApiModel(description = "Address detail in the wallet")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  XpubAddress.JSON_PROPERTY_XPUB,
+  XpubAddress.JSON_PROPERTY_ADDRESS,
+  XpubAddress.JSON_PROPERTY_ADDRESS_TYPE,
+  XpubAddress.JSON_PROPERTY_ADDRESS_INDEX
+})
+@JsonTypeName("XpubAddress")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class XpubAddress {
-  public static final String SERIALIZED_NAME_XPUB = "xpub";
-  @SerializedName(SERIALIZED_NAME_XPUB)
+  public static final String JSON_PROPERTY_XPUB = "xpub";
   private String xpub;
 
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_ADDRESS_TYPE = "addressType";
-  @SerializedName(SERIALIZED_NAME_ADDRESS_TYPE)
+  public static final String JSON_PROPERTY_ADDRESS_TYPE = "addressType";
   private Integer addressType;
 
-  public static final String SERIALIZED_NAME_ADDRESS_INDEX = "addressIndex";
-  @SerializedName(SERIALIZED_NAME_ADDRESS_INDEX)
+  public static final String JSON_PROPERTY_ADDRESS_INDEX = "addressIndex";
   private Integer addressIndex;
 
 
@@ -59,6 +62,8 @@ public class XpubAddress {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "xpub in the query")
+  @JsonProperty(JSON_PROPERTY_XPUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getXpub() {
     return xpub;
@@ -82,6 +87,8 @@ public class XpubAddress {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address in the query")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -105,6 +112,8 @@ public class XpubAddress {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address type, 0 for receive address, 1 for change address. path is {{addressType}}/{{addressIndex}}")
+  @JsonProperty(JSON_PROPERTY_ADDRESS_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getAddressType() {
     return addressType;
@@ -128,6 +137,8 @@ public class XpubAddress {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address index. Address path in the xpub is {{addressType}}/{{addressIndex}}")
+  @JsonProperty(JSON_PROPERTY_ADDRESS_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getAddressIndex() {
     return addressIndex;

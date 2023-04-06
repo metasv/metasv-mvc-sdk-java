@@ -15,35 +15,38 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Request object to register(or delete) a new xpub
  */
 @ApiModel(description = "Request object to register(or delete) a new xpub")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  XpubRequest.JSON_PROPERTY_XPUB,
+  XpubRequest.JSON_PROPERTY_SKIP_HEIGHT,
+  XpubRequest.JSON_PROPERTY_INIT_RECEIVE_INDEX,
+  XpubRequest.JSON_PROPERTY_INIT_CHANGE_INDEX
+})
+@JsonTypeName("XpubRequest")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class XpubRequest {
-  public static final String SERIALIZED_NAME_XPUB = "xpub";
-  @SerializedName(SERIALIZED_NAME_XPUB)
+  public static final String JSON_PROPERTY_XPUB = "xpub";
   private String xpub;
 
-  public static final String SERIALIZED_NAME_SKIP_HEIGHT = "skipHeight";
-  @SerializedName(SERIALIZED_NAME_SKIP_HEIGHT)
+  public static final String JSON_PROPERTY_SKIP_HEIGHT = "skipHeight";
   private Long skipHeight;
 
-  public static final String SERIALIZED_NAME_INIT_RECEIVE_INDEX = "initReceiveIndex";
-  @SerializedName(SERIALIZED_NAME_INIT_RECEIVE_INDEX)
+  public static final String JSON_PROPERTY_INIT_RECEIVE_INDEX = "initReceiveIndex";
   private Integer initReceiveIndex;
 
-  public static final String SERIALIZED_NAME_INIT_CHANGE_INDEX = "initChangeIndex";
-  @SerializedName(SERIALIZED_NAME_INIT_CHANGE_INDEX)
+  public static final String JSON_PROPERTY_INIT_CHANGE_INDEX = "initChangeIndex";
   private Integer initChangeIndex;
 
 
@@ -59,6 +62,8 @@ public class XpubRequest {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The xpub to register.")
+  @JsonProperty(JSON_PROPERTY_XPUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getXpub() {
     return xpub;
@@ -82,6 +87,8 @@ public class XpubRequest {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Skip transactions before this height. Default is 0. Ignore this while deleting xpub.")
+  @JsonProperty(JSON_PROPERTY_SKIP_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSkipHeight() {
     return skipHeight;
@@ -105,6 +112,8 @@ public class XpubRequest {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Set the init maxReceiveIndex to {initReceiveIndex}(less than 5000) before the initial crawl , default is 200. This could increase cost.")
+  @JsonProperty(JSON_PROPERTY_INIT_RECEIVE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getInitReceiveIndex() {
     return initReceiveIndex;
@@ -128,6 +137,8 @@ public class XpubRequest {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Set the init maxChangeIndex(less than 5000) before the initial crawl , default is 200. This could increase cost.")
+  @JsonProperty(JSON_PROPERTY_INIT_CHANGE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getInitChangeIndex() {
     return initChangeIndex;

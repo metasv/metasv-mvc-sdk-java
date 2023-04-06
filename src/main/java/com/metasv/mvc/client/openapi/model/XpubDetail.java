@@ -15,51 +15,54 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Registered Xpub detail
  */
 @ApiModel(description = "Registered Xpub detail")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  XpubDetail.JSON_PROPERTY_XPUB,
+  XpubDetail.JSON_PROPERTY_RECEIVE_INDEX,
+  XpubDetail.JSON_PROPERTY_MAX_RECEIVE_INDEX,
+  XpubDetail.JSON_PROPERTY_CHANGE_INDEX,
+  XpubDetail.JSON_PROPERTY_MAX_CHANGE_INDEX,
+  XpubDetail.JSON_PROPERTY_MODE,
+  XpubDetail.JSON_PROPERTY_SKIP_HEIGHT,
+  XpubDetail.JSON_PROPERTY_PROCESS_HEIGHT
+})
+@JsonTypeName("XpubDetail")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class XpubDetail {
-  public static final String SERIALIZED_NAME_XPUB = "xpub";
-  @SerializedName(SERIALIZED_NAME_XPUB)
+  public static final String JSON_PROPERTY_XPUB = "xpub";
   private String xpub;
 
-  public static final String SERIALIZED_NAME_RECEIVE_INDEX = "receiveIndex";
-  @SerializedName(SERIALIZED_NAME_RECEIVE_INDEX)
+  public static final String JSON_PROPERTY_RECEIVE_INDEX = "receiveIndex";
   private Integer receiveIndex;
 
-  public static final String SERIALIZED_NAME_MAX_RECEIVE_INDEX = "maxReceiveIndex";
-  @SerializedName(SERIALIZED_NAME_MAX_RECEIVE_INDEX)
+  public static final String JSON_PROPERTY_MAX_RECEIVE_INDEX = "maxReceiveIndex";
   private Integer maxReceiveIndex;
 
-  public static final String SERIALIZED_NAME_CHANGE_INDEX = "changeIndex";
-  @SerializedName(SERIALIZED_NAME_CHANGE_INDEX)
+  public static final String JSON_PROPERTY_CHANGE_INDEX = "changeIndex";
   private Integer changeIndex;
 
-  public static final String SERIALIZED_NAME_MAX_CHANGE_INDEX = "maxChangeIndex";
-  @SerializedName(SERIALIZED_NAME_MAX_CHANGE_INDEX)
+  public static final String JSON_PROPERTY_MAX_CHANGE_INDEX = "maxChangeIndex";
   private Integer maxChangeIndex;
 
-  public static final String SERIALIZED_NAME_MODE = "mode";
-  @SerializedName(SERIALIZED_NAME_MODE)
+  public static final String JSON_PROPERTY_MODE = "mode";
   private Integer mode;
 
-  public static final String SERIALIZED_NAME_SKIP_HEIGHT = "skipHeight";
-  @SerializedName(SERIALIZED_NAME_SKIP_HEIGHT)
+  public static final String JSON_PROPERTY_SKIP_HEIGHT = "skipHeight";
   private Long skipHeight;
 
-  public static final String SERIALIZED_NAME_PROCESS_HEIGHT = "processHeight";
-  @SerializedName(SERIALIZED_NAME_PROCESS_HEIGHT)
+  public static final String JSON_PROPERTY_PROCESS_HEIGHT = "processHeight";
   private Long processHeight;
 
 
@@ -75,6 +78,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "String encoded extended pubkey (xpub)")
+  @JsonProperty(JSON_PROPERTY_XPUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getXpub() {
     return xpub;
@@ -98,6 +103,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Next unused receive index, path /0/index")
+  @JsonProperty(JSON_PROPERTY_RECEIVE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getReceiveIndex() {
     return receiveIndex;
@@ -121,6 +128,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Max lookahead receive index.")
+  @JsonProperty(JSON_PROPERTY_MAX_RECEIVE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxReceiveIndex() {
     return maxReceiveIndex;
@@ -144,6 +153,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Next unused change index, path /1/index")
+  @JsonProperty(JSON_PROPERTY_CHANGE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getChangeIndex() {
     return changeIndex;
@@ -167,6 +178,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Max lookahead change index.")
+  @JsonProperty(JSON_PROPERTY_MAX_CHANGE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxChangeIndex() {
     return maxChangeIndex;
@@ -190,6 +203,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Current xpub process mode, 0 means preparing(not ready), 1 means synchronizing(ready)")
+  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMode() {
     return mode;
@@ -213,6 +228,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Skip blocks before skipHeight while searching transactions. This will speed up sync time.")
+  @JsonProperty(JSON_PROPERTY_SKIP_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSkipHeight() {
     return skipHeight;
@@ -236,6 +253,8 @@ public class XpubDetail {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Xpub current processed height.")
+  @JsonProperty(JSON_PROPERTY_PROCESS_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getProcessHeight() {
     return processHeight;

@@ -15,59 +15,62 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Xpub transaction history
  */
 @ApiModel(description = "Xpub transaction history")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  XPubTransaction.JSON_PROPERTY_XPUB,
+  XPubTransaction.JSON_PROPERTY_TXID,
+  XPubTransaction.JSON_PROPERTY_MAX_RECEIVE_INDEX,
+  XPubTransaction.JSON_PROPERTY_MAX_CHANGE_INDEX,
+  XPubTransaction.JSON_PROPERTY_INCOME,
+  XPubTransaction.JSON_PROPERTY_OUTCOME,
+  XPubTransaction.JSON_PROPERTY_HEIGHT,
+  XPubTransaction.JSON_PROPERTY_BLOCK_INDEX,
+  XPubTransaction.JSON_PROPERTY_BLOCK_TIME,
+  XPubTransaction.JSON_PROPERTY_FLAG
+})
+@JsonTypeName("XPubTransaction")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class XPubTransaction {
-  public static final String SERIALIZED_NAME_XPUB = "xpub";
-  @SerializedName(SERIALIZED_NAME_XPUB)
+  public static final String JSON_PROPERTY_XPUB = "xpub";
   private String xpub;
 
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_MAX_RECEIVE_INDEX = "maxReceiveIndex";
-  @SerializedName(SERIALIZED_NAME_MAX_RECEIVE_INDEX)
+  public static final String JSON_PROPERTY_MAX_RECEIVE_INDEX = "maxReceiveIndex";
   private Integer maxReceiveIndex;
 
-  public static final String SERIALIZED_NAME_MAX_CHANGE_INDEX = "maxChangeIndex";
-  @SerializedName(SERIALIZED_NAME_MAX_CHANGE_INDEX)
+  public static final String JSON_PROPERTY_MAX_CHANGE_INDEX = "maxChangeIndex";
   private Integer maxChangeIndex;
 
-  public static final String SERIALIZED_NAME_INCOME = "income";
-  @SerializedName(SERIALIZED_NAME_INCOME)
+  public static final String JSON_PROPERTY_INCOME = "income";
   private Long income;
 
-  public static final String SERIALIZED_NAME_OUTCOME = "outcome";
-  @SerializedName(SERIALIZED_NAME_OUTCOME)
+  public static final String JSON_PROPERTY_OUTCOME = "outcome";
   private Long outcome;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_BLOCK_INDEX = "blockIndex";
-  @SerializedName(SERIALIZED_NAME_BLOCK_INDEX)
+  public static final String JSON_PROPERTY_BLOCK_INDEX = "blockIndex";
   private Integer blockIndex;
 
-  public static final String SERIALIZED_NAME_BLOCK_TIME = "blockTime";
-  @SerializedName(SERIALIZED_NAME_BLOCK_TIME)
+  public static final String JSON_PROPERTY_BLOCK_TIME = "blockTime";
   private Long blockTime;
 
-  public static final String SERIALIZED_NAME_FLAG = "flag";
-  @SerializedName(SERIALIZED_NAME_FLAG)
+  public static final String JSON_PROPERTY_FLAG = "flag";
   private String flag;
 
 
@@ -83,6 +86,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "query xpub")
+  @JsonProperty(JSON_PROPERTY_XPUB)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getXpub() {
     return xpub;
@@ -106,6 +111,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Txid for this transaction.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -129,6 +136,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Max lookahead receive index when processing this transaction.")
+  @JsonProperty(JSON_PROPERTY_MAX_RECEIVE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxReceiveIndex() {
     return maxReceiveIndex;
@@ -152,6 +161,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Max lookahead change index when processing this transaction.")
+  @JsonProperty(JSON_PROPERTY_MAX_CHANGE_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getMaxChangeIndex() {
     return maxChangeIndex;
@@ -175,6 +186,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total received satoshis(Including all address)")
+  @JsonProperty(JSON_PROPERTY_INCOME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getIncome() {
     return income;
@@ -198,6 +211,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Total spent satoshis(Including all address)")
+  @JsonProperty(JSON_PROPERTY_OUTCOME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getOutcome() {
     return outcome;
@@ -221,6 +236,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Height for this transaction. -1 for unconfirmed")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -244,6 +261,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block index for this transaction, -1 for unconfirmed")
+  @JsonProperty(JSON_PROPERTY_BLOCK_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getBlockIndex() {
     return blockIndex;
@@ -267,6 +286,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Block timestamp for this transaction, if unconfirmed, the time is first seen time.")
+  @JsonProperty(JSON_PROPERTY_BLOCK_TIME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getBlockTime() {
     return blockTime;
@@ -290,6 +311,8 @@ public class XPubTransaction {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Paging flag, format blockTimestamp_blockIndex")
+  @JsonProperty(JSON_PROPERTY_FLAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlag() {
     return flag;

@@ -15,79 +15,82 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Contract fungible token Utxo belongs to the specified address
  */
 @ApiModel(description = "Contract fungible token Utxo belongs to the specified address")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractFtUtxo.JSON_PROPERTY_ADDRESS,
+  ContractFtUtxo.JSON_PROPERTY_CODE_HASH,
+  ContractFtUtxo.JSON_PROPERTY_GENESIS,
+  ContractFtUtxo.JSON_PROPERTY_NAME,
+  ContractFtUtxo.JSON_PROPERTY_SYMBOL,
+  ContractFtUtxo.JSON_PROPERTY_SENSIBLE_ID,
+  ContractFtUtxo.JSON_PROPERTY_DECIMAL,
+  ContractFtUtxo.JSON_PROPERTY_TXID,
+  ContractFtUtxo.JSON_PROPERTY_TX_INDEX,
+  ContractFtUtxo.JSON_PROPERTY_VALUE,
+  ContractFtUtxo.JSON_PROPERTY_VALUE_STRING,
+  ContractFtUtxo.JSON_PROPERTY_SATOSHI,
+  ContractFtUtxo.JSON_PROPERTY_SATOSHI_STRING,
+  ContractFtUtxo.JSON_PROPERTY_HEIGHT,
+  ContractFtUtxo.JSON_PROPERTY_FLAG
+})
+@JsonTypeName("ContractFtUtxo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractFtUtxo {
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
+  public static final String JSON_PROPERTY_ADDRESS = "address";
   private String address;
 
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String SERIALIZED_NAME_SYMBOL = "symbol";
-  @SerializedName(SERIALIZED_NAME_SYMBOL)
+  public static final String JSON_PROPERTY_SYMBOL = "symbol";
   private String symbol;
 
-  public static final String SERIALIZED_NAME_SENSIBLE_ID = "sensibleId";
-  @SerializedName(SERIALIZED_NAME_SENSIBLE_ID)
+  public static final String JSON_PROPERTY_SENSIBLE_ID = "sensibleId";
   private String sensibleId;
 
-  public static final String SERIALIZED_NAME_DECIMAL = "decimal";
-  @SerializedName(SERIALIZED_NAME_DECIMAL)
+  public static final String JSON_PROPERTY_DECIMAL = "decimal";
   private Integer decimal;
 
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_TX_INDEX = "txIndex";
-  @SerializedName(SERIALIZED_NAME_TX_INDEX)
+  public static final String JSON_PROPERTY_TX_INDEX = "txIndex";
   private Integer txIndex;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private Long value;
 
-  public static final String SERIALIZED_NAME_VALUE_STRING = "valueString";
-  @SerializedName(SERIALIZED_NAME_VALUE_STRING)
+  public static final String JSON_PROPERTY_VALUE_STRING = "valueString";
   private String valueString;
 
-  public static final String SERIALIZED_NAME_SATOSHI = "satoshi";
-  @SerializedName(SERIALIZED_NAME_SATOSHI)
+  public static final String JSON_PROPERTY_SATOSHI = "satoshi";
   private Long satoshi;
 
-  public static final String SERIALIZED_NAME_SATOSHI_STRING = "satoshiString";
-  @SerializedName(SERIALIZED_NAME_SATOSHI_STRING)
+  public static final String JSON_PROPERTY_SATOSHI_STRING = "satoshiString";
   private String satoshiString;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_FLAG = "flag";
-  @SerializedName(SERIALIZED_NAME_FLAG)
+  public static final String JSON_PROPERTY_FLAG = "flag";
   private String flag;
 
 
@@ -103,6 +106,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Address string of this utxo")
+  @JsonProperty(JSON_PROPERTY_ADDRESS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAddress() {
     return address;
@@ -126,6 +131,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Codehash of this utxo.")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -149,6 +156,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Genesis of this utxo.")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -172,6 +181,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Name of the token.")
+  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -195,6 +206,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Symbol of the token.")
+  @JsonProperty(JSON_PROPERTY_SYMBOL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSymbol() {
     return symbol;
@@ -218,6 +231,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SensibleId of the token")
+  @JsonProperty(JSON_PROPERTY_SENSIBLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSensibleId() {
     return sensibleId;
@@ -241,6 +256,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The decimal position.")
+  @JsonProperty(JSON_PROPERTY_DECIMAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getDecimal() {
     return decimal;
@@ -264,6 +281,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Txid for this utxo.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -287,6 +306,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Output index for the Utxo.")
+  @JsonProperty(JSON_PROPERTY_TX_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTxIndex() {
     return txIndex;
@@ -310,6 +331,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Token value of the utxo(Irrelavant to satoshi value).")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getValue() {
     return value;
@@ -333,6 +356,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Token value of the utxo(In string format)")
+  @JsonProperty(JSON_PROPERTY_VALUE_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getValueString() {
     return valueString;
@@ -356,6 +381,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(Irrelavant to token value)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSatoshi() {
     return satoshi;
@@ -379,6 +406,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(In string format)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSatoshiString() {
     return satoshiString;
@@ -402,6 +431,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The height of this utxo, -1 for unconfirmed utxo.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -425,6 +456,8 @@ public class ContractFtUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Flag used for paging")
+  @JsonProperty(JSON_PROPERTY_FLAG)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFlag() {
     return flag;

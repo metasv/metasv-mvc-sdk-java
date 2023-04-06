@@ -15,55 +15,58 @@ package com.metasv.mvc.client.openapi.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Contract unique Utxo indexed by codeHash and genesis.
  */
 @ApiModel(description = "Contract unique Utxo indexed by codeHash and genesis.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-05T16:08:10.437416+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ContractUniqueUtxo.JSON_PROPERTY_TXID,
+  ContractUniqueUtxo.JSON_PROPERTY_TX_INDEX,
+  ContractUniqueUtxo.JSON_PROPERTY_CODE_HASH,
+  ContractUniqueUtxo.JSON_PROPERTY_GENESIS,
+  ContractUniqueUtxo.JSON_PROPERTY_SENSIBLE_ID,
+  ContractUniqueUtxo.JSON_PROPERTY_HEIGHT,
+  ContractUniqueUtxo.JSON_PROPERTY_CUSTOM_DATA,
+  ContractUniqueUtxo.JSON_PROPERTY_SATOSHI,
+  ContractUniqueUtxo.JSON_PROPERTY_SATOSHI_STRING
+})
+@JsonTypeName("ContractUniqueUtxo")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]")
 public class ContractUniqueUtxo {
-  public static final String SERIALIZED_NAME_TXID = "txid";
-  @SerializedName(SERIALIZED_NAME_TXID)
+  public static final String JSON_PROPERTY_TXID = "txid";
   private String txid;
 
-  public static final String SERIALIZED_NAME_TX_INDEX = "txIndex";
-  @SerializedName(SERIALIZED_NAME_TX_INDEX)
+  public static final String JSON_PROPERTY_TX_INDEX = "txIndex";
   private Integer txIndex;
 
-  public static final String SERIALIZED_NAME_CODE_HASH = "codeHash";
-  @SerializedName(SERIALIZED_NAME_CODE_HASH)
+  public static final String JSON_PROPERTY_CODE_HASH = "codeHash";
   private String codeHash;
 
-  public static final String SERIALIZED_NAME_GENESIS = "genesis";
-  @SerializedName(SERIALIZED_NAME_GENESIS)
+  public static final String JSON_PROPERTY_GENESIS = "genesis";
   private String genesis;
 
-  public static final String SERIALIZED_NAME_SENSIBLE_ID = "sensibleId";
-  @SerializedName(SERIALIZED_NAME_SENSIBLE_ID)
+  public static final String JSON_PROPERTY_SENSIBLE_ID = "sensibleId";
   private String sensibleId;
 
-  public static final String SERIALIZED_NAME_HEIGHT = "height";
-  @SerializedName(SERIALIZED_NAME_HEIGHT)
+  public static final String JSON_PROPERTY_HEIGHT = "height";
   private Long height;
 
-  public static final String SERIALIZED_NAME_CUSTOM_DATA = "customData";
-  @SerializedName(SERIALIZED_NAME_CUSTOM_DATA)
+  public static final String JSON_PROPERTY_CUSTOM_DATA = "customData";
   private String customData;
 
-  public static final String SERIALIZED_NAME_SATOSHI = "satoshi";
-  @SerializedName(SERIALIZED_NAME_SATOSHI)
+  public static final String JSON_PROPERTY_SATOSHI = "satoshi";
   private Long satoshi;
 
-  public static final String SERIALIZED_NAME_SATOSHI_STRING = "satoshiString";
-  @SerializedName(SERIALIZED_NAME_SATOSHI_STRING)
+  public static final String JSON_PROPERTY_SATOSHI_STRING = "satoshiString";
   private String satoshiString;
 
 
@@ -79,6 +82,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Txid for this utxo.")
+  @JsonProperty(JSON_PROPERTY_TXID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxid() {
     return txid;
@@ -102,6 +107,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Output index for the Utxo.")
+  @JsonProperty(JSON_PROPERTY_TX_INDEX)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getTxIndex() {
     return txIndex;
@@ -125,6 +132,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Codehash of this utxo.")
+  @JsonProperty(JSON_PROPERTY_CODE_HASH)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCodeHash() {
     return codeHash;
@@ -148,6 +157,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Genesis of this utxo.")
+  @JsonProperty(JSON_PROPERTY_GENESIS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGenesis() {
     return genesis;
@@ -171,6 +182,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "SensibleId of the token")
+  @JsonProperty(JSON_PROPERTY_SENSIBLE_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSensibleId() {
     return sensibleId;
@@ -194,6 +207,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The height of this utxo, -1 for unconfirmed utxo.")
+  @JsonProperty(JSON_PROPERTY_HEIGHT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getHeight() {
     return height;
@@ -217,6 +232,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The hex encoded customData")
+  @JsonProperty(JSON_PROPERTY_CUSTOM_DATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCustomData() {
     return customData;
@@ -240,6 +257,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(Irrelavant to token value)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getSatoshi() {
     return satoshi;
@@ -263,6 +282,8 @@ public class ContractUniqueUtxo {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Mvc value of the utxo(In string format)")
+  @JsonProperty(JSON_PROPERTY_SATOSHI_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSatoshiString() {
     return satoshiString;
