@@ -2,9 +2,9 @@
 
 MetaSV for MVC API Spec
 
-- API version: 3.0.4
+- API version: 3.0.5
 
-- Build date: 2023-04-06T11:46:13.148624+09:00[Asia/Tokyo]
+- Build date: 2023-04-06T11:49:07.594678+09:00[Asia/Tokyo]
 
 API definition for MetaSV provided apis
 
@@ -42,7 +42,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.metasv.mvc</groupId>
   <artifactId>openapi-java-client</artifactId>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -52,7 +52,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.metasv.mvc:openapi-java-client:3.0.4"
+compile "com.metasv.mvc:openapi-java-client:3.0.5"
 ```
 
 ### Others
@@ -65,7 +65,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/openapi-java-client-3.0.4.jar`
+- `target/openapi-java-client-3.0.5.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

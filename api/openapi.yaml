@@ -8,7 +8,7 @@ info:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   title: MetaSV for MVC API Spec
-  version: 3.0.4
+  version: 3.0.5
 servers:
 - url: https://api-mvc-testnet.metasv.com
 - url: https://api-mvc.metasv.com

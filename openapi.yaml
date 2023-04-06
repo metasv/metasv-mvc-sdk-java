@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: MetaSV for MVC API Spec
   description: API definition for MetaSV provided apis
-  version: 3.0.4
+  version: 3.0.5
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
