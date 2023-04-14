@@ -3,15 +3,15 @@ info:
   contact:
     email: heqiming@metasv.com
     name: MetaSV team
-  description: API definition for MetaSV provided apis
+  description: API definition for MicrovisionChain provided apis
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
-  title: MetaSV for MVC API Spec
-  version: 3.0.5
+  title: MVC API Spec
+  version: 3.0.6
 servers:
-- url: https://api-mvc-testnet.metasv.com
-- url: https://api-mvc.metasv.com
+- url: https://testnet.mvcapi.com
+- url: https://mainnet.mvcapi.com
 tags:
 - description: block related apis
   name: block
@@ -1237,178 +1237,6 @@ paths:
               schema:
                 items:
                   $ref: '#/components/schemas/ContractNftSellUtxo'
-                maxItems: 300
-                type: array
-          description: Get contract nft sell utxo success.
-        "401":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ErrorResponse'
-                type: array
-          description: Access token is missing or invalid
-      security:
-      - bearerAuth: []
-      summary: Get all contract nft token utxos by codeHash and genesisId.
-      tags:
-      - contract
-      x-accepts: application/json
-  /contract/nft/sellV2/address/{address}/utxo:
-    get:
-      parameters:
-      - description: Owner address.
-        explode: false
-        in: path
-        name: address
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Filter by contract code hash
-        explode: true
-        in: query
-        name: codeHash
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Filter by contract genesis
-        explode: true
-        in: query
-        name: genesis
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The flag of the last query Item(Paging flag)
-        explode: true
-        in: query
-        name: flag
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
-                maxItems: 300
-                type: array
-          description: Get contract nft sell utxo success.
-        "401":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ErrorResponse'
-                type: array
-          description: Access token is missing or invalid
-      security:
-      - bearerAuth: []
-      summary: Get all contract sell sell utxos for specific address.
-      tags:
-      - contract
-      x-accepts: application/json
-  /contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo:
-    get:
-      parameters:
-      - description: Code hash of the token.
-        explode: false
-        in: path
-        name: codeHash
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Contract genesis
-        explode: false
-        in: path
-        name: genesis
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Find exact token Index.
-        explode: true
-        in: query
-        name: tokenIndex
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - description: Token index not bigger than this(include this).
-        explode: true
-        in: query
-        name: max
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      - description: Token index not less than this(include this).
-        explode: true
-        in: query
-        name: min
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
-                maxItems: 300
-                type: array
-          description: Get contract nft sell utxo success.
-        "401":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ErrorResponse'
-                type: array
-          description: Access token is missing or invalid
-      security:
-      - bearerAuth: []
-      summary: Get all contract nft token utxos by codeHash and genesisId.
-      tags:
-      - contract
-      x-accepts: application/json
-  /contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo:
-    get:
-      parameters:
-      - description: Code hash of the token.
-        explode: false
-        in: path
-        name: codeHash
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Nft id of this auction.
-        explode: false
-        in: path
-        name: nftId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ContractNftAuctionUtxo'
                 maxItems: 300
                 type: array
           description: Get contract nft sell utxo success.
@@ -2677,28 +2505,6 @@ components:
       type: object
     ContractNftSellV2Utxo:
       description: Contract nft sell v2 Utxo belongs to the specified address
-      example:
-        satoshi: 5
-        metaTxid: metaTxid
-        address: address
-        flag: flag
-        metaOutputIndex: 7
-        codeHash: codeHash
-        sellerAddressPkh: sellerAddressPkh
-        isReady: true
-        contractAddress: contractAddress
-        txid: txid
-        nftId: nftId
-        tokenIndex: 6
-        sensibleId: sensibleId
-        feeRate: 5
-        genesis: genesis
-        price: 1
-        tokenSupply: 9
-        satoshiString: satoshiString
-        feeAddressPkh: feeAddressPkh
-        txIndex: 0
-        height: 2
       properties:
         address:
           description: Address string of this utxo
@@ -2772,30 +2578,6 @@ components:
       type: object
     ContractNftAuctionUtxo:
       description: Contract nft auction Utxo belongs to the specified address
-      example:
-        bidMvcPrice: 6
-        satoshi: 3
-        address: address
-        bidTimestamp: 1
-        flag: flag
-        codeHash: codeHash
-        isReady: true
-        txid: txid
-        nftId: nftId
-        contractAddress: contractAddress
-        sensibleId: sensibleId
-        feeRate: 2
-        startMvcPrice: 9
-        senderAddressPkh: senderAddressPkh
-        genesis: genesis
-        feeAmount: 5
-        nftCodeHash: nftCodeHash
-        bidderAddressPkh: bidderAddressPkh
-        satoshiString: satoshiString
-        feeAddressPkh: feeAddressPkh
-        endTimestamp: 5
-        txIndex: 0
-        height: 7
       properties:
         address:
           description: Address string of this utxo

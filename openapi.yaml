@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: MetaSV for MVC API Spec
-  description: API definition for MetaSV provided apis
-  version: 3.0.5
+  title: MVC API Spec
+  description: API definition for MicrovisionChain provided apis
+  version: 3.0.6
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -11,8 +11,8 @@ info:
     name: MetaSV team
 
 servers:
-  - url: 'https://api-mvc-testnet.metasv.com'
-  - url: 'https://api-mvc.metasv.com'
+  - url: 'https://testnet.mvcapi.com'
+  - url: 'https://mainnet.mvcapi.com'
 
 tags:
   - name: block
@@ -1020,136 +1020,6 @@ paths:
                 maxItems: 300
                 items:
                   $ref: '#/components/schemas/ContractNftSellUtxo'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  '/contract/nft/sellV2/address/{address}/utxo':
-    get:
-      security:
-        - bearerAuth: [ ]
-      tags:
-        - contract
-      summary: Get all contract sell sell utxos for specific address.
-      parameters:
-        - name: address
-          in: path
-          description: Owner address.
-          required: true
-          schema:
-            type: string
-        - name: codeHash
-          in: query
-          description: Filter by contract code hash
-          required: false
-          schema:
-            type: string
-        - name: genesis
-          in: query
-          description: Filter by contract genesis
-          required: false
-          schema:
-            type: string
-        - name: flag
-          in: query
-          description: The flag of the last query Item(Paging flag)
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Get contract nft sell utxo success.
-          content:
-            application/json:
-              schema:
-                type: array
-                maxItems: 300
-                items:
-                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  '/contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo':
-    get:
-      security:
-        - bearerAuth: [ ]
-      tags:
-        - contract
-      summary: Get all contract nft token utxos by codeHash and genesisId.
-      parameters:
-        - name: codeHash
-          in: path
-          description: Code hash of the token.
-          required: true
-          schema:
-            type: string
-        - name: genesis
-          in: path
-          description: Contract genesis
-          required: true
-          schema:
-            type: string
-        - name: tokenIndex
-          in: query
-          description: Find exact token Index.
-          required: false
-          schema:
-            type: integer
-            format: int64
-        - name: max
-          in: query
-          description: Token index not bigger than this(include this).
-          required: false
-          schema:
-            type: integer
-            format: int64
-        - name: min
-          in: query
-          description: Token index not less than this(include this).
-          required: false
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: Get contract nft sell utxo success.
-          content:
-            application/json:
-              schema:
-                type: array
-                maxItems: 300
-                items:
-                  $ref: '#/components/schemas/ContractNftSellV2Utxo'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-
-  '/contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo':
-    get:
-      security:
-        - bearerAuth: [ ]
-      tags:
-        - contract
-      summary: Get all contract nft token utxos by codeHash and genesisId.
-      parameters:
-        - name: codeHash
-          in: path
-          description: Code hash of the token.
-          required: true
-          schema:
-            type: string
-        - name: nftId
-          in: path
-          description: Nft id of this auction.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Get contract nft sell utxo success.
-          content:
-            application/json:
-              schema:
-                type: array
-                maxItems: 300
-                items:
-                  $ref: '#/components/schemas/ContractNftAuctionUtxo'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
 components:

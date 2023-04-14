@@ -1,6 +1,6 @@
 # ContractApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,13 +11,10 @@ Method | HTTP request | Description
 [**contractNftAddressAddressCountConfirmedGet**](ContractApi.md#contractNftAddressAddressCountConfirmedGet) | **GET** /contract/nft/address/{address}/count/confirmed | Get confirmed utxo count for specific nft(ignore all unconfirmed txs).
 [**contractNftAddressAddressSummaryGet**](ContractApi.md#contractNftAddressAddressSummaryGet) | **GET** /contract/nft/address/{address}/summary | Get nft summary(NFT count group by genesis) for address.
 [**contractNftAddressAddressUtxoGet**](ContractApi.md#contractNftAddressAddressUtxoGet) | **GET** /contract/nft/address/{address}/utxo | Get all contract nft token utxos for specific address.
-[**contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet**](ContractApi.md#contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet) | **GET** /contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo | Get all contract nft token utxos by codeHash and genesisId.
 [**contractNftGenesisCodeHashGenesisSummaryGet**](ContractApi.md#contractNftGenesisCodeHashGenesisSummaryGet) | **GET** /contract/nft/genesis/{codeHash}/{genesis}/summary | Get nft summary(count group by address) for specific codeHash and genesisId(result cached for 60s).
 [**contractNftGenesisCodeHashGenesisUtxoGet**](ContractApi.md#contractNftGenesisCodeHashGenesisUtxoGet) | **GET** /contract/nft/genesis/{codeHash}/{genesis}/utxo | Get all contract nft token utxos by codeHash and genesisId.
 [**contractNftSellAddressAddressUtxoGet**](ContractApi.md#contractNftSellAddressAddressUtxoGet) | **GET** /contract/nft/sell/address/{address}/utxo | Get all contract sell sell utxos for specific address.
 [**contractNftSellGenesisCodeHashGenesisUtxoGet**](ContractApi.md#contractNftSellGenesisCodeHashGenesisUtxoGet) | **GET** /contract/nft/sell/genesis/{codeHash}/{genesis}/utxo | Get all contract nft token utxos by codeHash and genesisId.
-[**contractNftSellV2AddressAddressUtxoGet**](ContractApi.md#contractNftSellV2AddressAddressUtxoGet) | **GET** /contract/nft/sellV2/address/{address}/utxo | Get all contract sell sell utxos for specific address.
-[**contractNftSellV2GenesisCodeHashGenesisUtxoGet**](ContractApi.md#contractNftSellV2GenesisCodeHashGenesisUtxoGet) | **GET** /contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo | Get all contract nft token utxos by codeHash and genesisId.
 [**contractUniqueGenesisCodeHashGenesisUtxoGet**](ContractApi.md#contractUniqueGenesisCodeHashGenesisUtxoGet) | **GET** /contract/unique/genesis/{codeHash}/{genesis}/utxo | Get contract unique utxos by codeHash and genesisId.
 
 
@@ -42,7 +39,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -115,7 +112,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -188,7 +185,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -263,7 +260,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -338,7 +335,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -411,7 +408,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -480,7 +477,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -537,77 +534,6 @@ Name | Type | Description  | Notes
 | **401** | Access token is missing or invalid |  -  |
 
 
-## contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet
-
-> List&lt;ContractNftAuctionUtxo&gt; contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet(codeHash, nftId)
-
-Get all contract nft token utxos by codeHash and genesisId.
-
-### Example
-
-```java
-// Import classes:
-import com.metasv.mvc.client.openapi.ApiClient;
-import com.metasv.mvc.client.openapi.ApiException;
-import com.metasv.mvc.client.openapi.Configuration;
-import com.metasv.mvc.client.openapi.auth.*;
-import com.metasv.mvc.client.openapi.models.*;
-import com.metasv.mvc.client.openapi.api.ContractApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        ContractApi apiInstance = new ContractApi(defaultClient);
-        String codeHash = "codeHash_example"; // String | Code hash of the token.
-        String nftId = "nftId_example"; // String | Nft id of this auction.
-        try {
-            List<ContractNftAuctionUtxo> result = apiInstance.contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet(codeHash, nftId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContractApi#contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **codeHash** | **String**| Code hash of the token. |
- **nftId** | **String**| Nft id of this auction. |
-
-### Return type
-
-[**List&lt;ContractNftAuctionUtxo&gt;**](ContractNftAuctionUtxo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Get contract nft sell utxo success. |  -  |
-| **401** | Access token is missing or invalid |  -  |
-
-
 ## contractNftGenesisCodeHashGenesisSummaryGet
 
 > List&lt;ContractNftGenesisSummary&gt; contractNftGenesisCodeHashGenesisSummaryGet(codeHash, genesis)
@@ -628,7 +554,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -699,7 +625,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -776,7 +702,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -851,7 +777,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -908,158 +834,6 @@ Name | Type | Description  | Notes
 | **401** | Access token is missing or invalid |  -  |
 
 
-## contractNftSellV2AddressAddressUtxoGet
-
-> List&lt;ContractNftSellV2Utxo&gt; contractNftSellV2AddressAddressUtxoGet(address, codeHash, genesis, flag)
-
-Get all contract sell sell utxos for specific address.
-
-### Example
-
-```java
-// Import classes:
-import com.metasv.mvc.client.openapi.ApiClient;
-import com.metasv.mvc.client.openapi.ApiException;
-import com.metasv.mvc.client.openapi.Configuration;
-import com.metasv.mvc.client.openapi.auth.*;
-import com.metasv.mvc.client.openapi.models.*;
-import com.metasv.mvc.client.openapi.api.ContractApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        ContractApi apiInstance = new ContractApi(defaultClient);
-        String address = "address_example"; // String | Owner address.
-        String codeHash = "codeHash_example"; // String | Filter by contract code hash
-        String genesis = "genesis_example"; // String | Filter by contract genesis
-        String flag = "flag_example"; // String | The flag of the last query Item(Paging flag)
-        try {
-            List<ContractNftSellV2Utxo> result = apiInstance.contractNftSellV2AddressAddressUtxoGet(address, codeHash, genesis, flag);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContractApi#contractNftSellV2AddressAddressUtxoGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **address** | **String**| Owner address. |
- **codeHash** | **String**| Filter by contract code hash | [optional]
- **genesis** | **String**| Filter by contract genesis | [optional]
- **flag** | **String**| The flag of the last query Item(Paging flag) | [optional]
-
-### Return type
-
-[**List&lt;ContractNftSellV2Utxo&gt;**](ContractNftSellV2Utxo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Get contract nft sell utxo success. |  -  |
-| **401** | Access token is missing or invalid |  -  |
-
-
-## contractNftSellV2GenesisCodeHashGenesisUtxoGet
-
-> List&lt;ContractNftSellV2Utxo&gt; contractNftSellV2GenesisCodeHashGenesisUtxoGet(codeHash, genesis, tokenIndex, max, min)
-
-Get all contract nft token utxos by codeHash and genesisId.
-
-### Example
-
-```java
-// Import classes:
-import com.metasv.mvc.client.openapi.ApiClient;
-import com.metasv.mvc.client.openapi.ApiException;
-import com.metasv.mvc.client.openapi.Configuration;
-import com.metasv.mvc.client.openapi.auth.*;
-import com.metasv.mvc.client.openapi.models.*;
-import com.metasv.mvc.client.openapi.api.ContractApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
-        
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        ContractApi apiInstance = new ContractApi(defaultClient);
-        String codeHash = "codeHash_example"; // String | Code hash of the token.
-        String genesis = "genesis_example"; // String | Contract genesis
-        Long tokenIndex = 56L; // Long | Find exact token Index.
-        Long max = 56L; // Long | Token index not bigger than this(include this).
-        Long min = 56L; // Long | Token index not less than this(include this).
-        try {
-            List<ContractNftSellV2Utxo> result = apiInstance.contractNftSellV2GenesisCodeHashGenesisUtxoGet(codeHash, genesis, tokenIndex, max, min);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContractApi#contractNftSellV2GenesisCodeHashGenesisUtxoGet");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **codeHash** | **String**| Code hash of the token. |
- **genesis** | **String**| Contract genesis |
- **tokenIndex** | **Long**| Find exact token Index. | [optional]
- **max** | **Long**| Token index not bigger than this(include this). | [optional]
- **min** | **Long**| Token index not less than this(include this). | [optional]
-
-### Return type
-
-[**List&lt;ContractNftSellV2Utxo&gt;**](ContractNftSellV2Utxo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Get contract nft sell utxo success. |  -  |
-| **401** | Access token is missing or invalid |  -  |
-
-
 ## contractUniqueGenesisCodeHashGenesisUtxoGet
 
 > List&lt;ContractUniqueUtxo&gt; contractUniqueGenesisCodeHashGenesisUtxoGet(codeHash, genesis)
@@ -1080,7 +854,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");

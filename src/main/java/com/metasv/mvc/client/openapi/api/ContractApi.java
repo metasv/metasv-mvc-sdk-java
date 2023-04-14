@@ -6,10 +6,8 @@ import com.metasv.mvc.client.openapi.model.ContractFtAddressTx;
 import com.metasv.mvc.client.openapi.model.ContractFtBalance;
 import com.metasv.mvc.client.openapi.model.ContractFtUtxo;
 import com.metasv.mvc.client.openapi.model.ContractNftAddressSummary;
-import com.metasv.mvc.client.openapi.model.ContractNftAuctionUtxo;
 import com.metasv.mvc.client.openapi.model.ContractNftGenesisSummary;
 import com.metasv.mvc.client.openapi.model.ContractNftSellUtxo;
-import com.metasv.mvc.client.openapi.model.ContractNftSellV2Utxo;
 import com.metasv.mvc.client.openapi.model.ContractNftUtxo;
 import com.metasv.mvc.client.openapi.model.ContractUniqueUtxo;
 import com.metasv.mvc.client.openapi.model.ErrorResponse;
@@ -34,7 +32,7 @@ import org.springframework.http.MediaType;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-06T11:49:07.594678+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-14T23:34:31.785376+09:00[Asia/Tokyo]")
 public class ContractApi {
     private ApiClient apiClient;
 
@@ -377,49 +375,6 @@ public class ContractApi {
         return apiClient.invokeFluxAPI("/contract/nft/address/{address}/utxo", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
     /**
-     * Get all contract nft token utxos by codeHash and genesisId.
-     * 
-     * <p><b>200</b> - Get contract nft sell utxo success.
-     * <p><b>401</b> - Access token is missing or invalid
-     * @param codeHash Code hash of the token.
-     * @param nftId Nft id of this auction.
-     * @return List&lt;ContractNftAuctionUtxo&gt;
-     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
-     */
-    public Flux<ContractNftAuctionUtxo> contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet(String codeHash, String nftId) throws WebClientResponseException {
-        Object postBody = null;
-        // verify the required parameter 'codeHash' is set
-        if (codeHash == null) {
-            throw new WebClientResponseException("Missing the required parameter 'codeHash' when calling contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // verify the required parameter 'nftId' is set
-        if (nftId == null) {
-            throw new WebClientResponseException("Missing the required parameter 'nftId' when calling contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // create path and map variables
-        final Map<String, Object> pathParams = new HashMap<String, Object>();
-
-        pathParams.put("codeHash", codeHash);
-        pathParams.put("nftId", nftId);
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        final String[] localVarAccepts = { 
-            "application/json"
-        };
-        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        final String[] localVarContentTypes = { };
-        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-
-        ParameterizedTypeReference<ContractNftAuctionUtxo> localVarReturnType = new ParameterizedTypeReference<ContractNftAuctionUtxo>() {};
-        return apiClient.invokeFluxAPI("/contract/nft/auction/codeHash/{codeHash}/nftId/{nftId}/utxo", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-    /**
      * Get nft summary(count group by address) for specific codeHash and genesisId(result cached for 60s).
      * 
      * <p><b>200</b> - Get contract nft utxo success(result cached for 60s)..
@@ -605,100 +560,6 @@ public class ContractApi {
 
         ParameterizedTypeReference<ContractNftSellUtxo> localVarReturnType = new ParameterizedTypeReference<ContractNftSellUtxo>() {};
         return apiClient.invokeFluxAPI("/contract/nft/sell/genesis/{codeHash}/{genesis}/utxo", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-    /**
-     * Get all contract sell sell utxos for specific address.
-     * 
-     * <p><b>200</b> - Get contract nft sell utxo success.
-     * <p><b>401</b> - Access token is missing or invalid
-     * @param address Owner address.
-     * @param codeHash Filter by contract code hash
-     * @param genesis Filter by contract genesis
-     * @param flag The flag of the last query Item(Paging flag)
-     * @return List&lt;ContractNftSellV2Utxo&gt;
-     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
-     */
-    public Flux<ContractNftSellV2Utxo> contractNftSellV2AddressAddressUtxoGet(String address, String codeHash, String genesis, String flag) throws WebClientResponseException {
-        Object postBody = null;
-        // verify the required parameter 'address' is set
-        if (address == null) {
-            throw new WebClientResponseException("Missing the required parameter 'address' when calling contractNftSellV2AddressAddressUtxoGet", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // create path and map variables
-        final Map<String, Object> pathParams = new HashMap<String, Object>();
-
-        pathParams.put("address", address);
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "codeHash", codeHash));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "genesis", genesis));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "flag", flag));
-
-        final String[] localVarAccepts = { 
-            "application/json"
-        };
-        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        final String[] localVarContentTypes = { };
-        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-
-        ParameterizedTypeReference<ContractNftSellV2Utxo> localVarReturnType = new ParameterizedTypeReference<ContractNftSellV2Utxo>() {};
-        return apiClient.invokeFluxAPI("/contract/nft/sellV2/address/{address}/utxo", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-    /**
-     * Get all contract nft token utxos by codeHash and genesisId.
-     * 
-     * <p><b>200</b> - Get contract nft sell utxo success.
-     * <p><b>401</b> - Access token is missing or invalid
-     * @param codeHash Code hash of the token.
-     * @param genesis Contract genesis
-     * @param tokenIndex Find exact token Index.
-     * @param max Token index not bigger than this(include this).
-     * @param min Token index not less than this(include this).
-     * @return List&lt;ContractNftSellV2Utxo&gt;
-     * @throws WebClientResponseException if an error occurs while attempting to invoke the API
-     */
-    public Flux<ContractNftSellV2Utxo> contractNftSellV2GenesisCodeHashGenesisUtxoGet(String codeHash, String genesis, Long tokenIndex, Long max, Long min) throws WebClientResponseException {
-        Object postBody = null;
-        // verify the required parameter 'codeHash' is set
-        if (codeHash == null) {
-            throw new WebClientResponseException("Missing the required parameter 'codeHash' when calling contractNftSellV2GenesisCodeHashGenesisUtxoGet", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // verify the required parameter 'genesis' is set
-        if (genesis == null) {
-            throw new WebClientResponseException("Missing the required parameter 'genesis' when calling contractNftSellV2GenesisCodeHashGenesisUtxoGet", HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), null, null, null);
-        }
-        // create path and map variables
-        final Map<String, Object> pathParams = new HashMap<String, Object>();
-
-        pathParams.put("codeHash", codeHash);
-        pathParams.put("genesis", genesis);
-
-        final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<String, String>();
-        final HttpHeaders headerParams = new HttpHeaders();
-        final MultiValueMap<String, String> cookieParams = new LinkedMultiValueMap<String, String>();
-        final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
-
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "tokenIndex", tokenIndex));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "max", max));
-        queryParams.putAll(apiClient.parameterToMultiValueMap(null, "min", min));
-
-        final String[] localVarAccepts = { 
-            "application/json"
-        };
-        final List<MediaType> localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        final String[] localVarContentTypes = { };
-        final MediaType localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-
-        ParameterizedTypeReference<ContractNftSellV2Utxo> localVarReturnType = new ParameterizedTypeReference<ContractNftSellV2Utxo>() {};
-        return apiClient.invokeFluxAPI("/contract/nft/sellV2/genesis/{codeHash}/{genesis}/utxo", HttpMethod.GET, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
     /**
      * Get contract unique utxos by codeHash and genesisId.
