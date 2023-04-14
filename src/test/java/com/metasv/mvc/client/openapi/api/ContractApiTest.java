@@ -148,20 +148,7 @@ public class ContractApiTest {
         // TODO: test validations
     }
     
-    /**
-     * Get all contract nft token utxos by codeHash and genesisId.
-     *
-     * 
-     */
-    @Test
-    public void contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGetTest()  {
-        String codeHash = null;
-        String nftId = null;
-        List<ContractNftAuctionUtxo> response = api.contractNftAuctionCodeHashCodeHashNftIdNftIdUtxoGet(codeHash, nftId).collectList().block();
 
-        // TODO: test validations
-    }
-    
     /**
      * Get nft summary(count group by address) for specific codeHash and genesisId(result cached for 60s).
      *
@@ -226,39 +213,7 @@ public class ContractApiTest {
         // TODO: test validations
     }
     
-    /**
-     * Get all contract sell sell utxos for specific address.
-     *
-     * 
-     */
-    @Test
-    public void contractNftSellV2AddressAddressUtxoGetTest()  {
-        String address = null;
-        String codeHash = null;
-        String genesis = null;
-        String flag = null;
-        List<ContractNftSellV2Utxo> response = api.contractNftSellV2AddressAddressUtxoGet(address, codeHash, genesis, flag).collectList().block();
 
-        // TODO: test validations
-    }
-    
-    /**
-     * Get all contract nft token utxos by codeHash and genesisId.
-     *
-     * 
-     */
-    @Test
-    public void contractNftSellV2GenesisCodeHashGenesisUtxoGetTest()  {
-        String codeHash = null;
-        String genesis = null;
-        Long tokenIndex = null;
-        Long max = null;
-        Long min = null;
-        List<ContractNftSellV2Utxo> response = api.contractNftSellV2GenesisCodeHashGenesisUtxoGet(codeHash, genesis, tokenIndex, max, min).collectList().block();
-
-        // TODO: test validations
-    }
-    
     /**
      * Get contract unique utxos by codeHash and genesisId.
      *
