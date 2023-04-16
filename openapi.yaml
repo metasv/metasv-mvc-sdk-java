@@ -1,18 +1,18 @@
 openapi: 3.0.3
 info:
-  title: MetaSV for MVC API Spec
-  description: API definition for MetaSV provided apis
-  version: 3.0.7
+  title: MicrovisionChain API Document
+  description: API definition for MicrovisionChain provided apis
+  version: 3.0.8
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   contact:
     email: heqiming@metasv.com
-    name: MetaSV team
+    name: MicrovisionChain team
 
 servers:
-  - url: 'https://api-mvc-testnet.metasv.com'
-  - url: 'https://api-mvc.metasv.com'
+  - url: 'https://testnet.mvcapi.com'
+  - url: 'https://mainnet.mvcapi.com'
 
 tags:
   - name: block

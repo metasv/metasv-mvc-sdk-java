@@ -1,6 +1,6 @@
 # ContractApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -39,7 +39,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -112,7 +112,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -185,7 +185,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -260,7 +260,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -335,7 +335,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -408,7 +408,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -477,7 +477,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -554,7 +554,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -625,7 +625,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -702,7 +702,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -777,7 +777,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -854,7 +854,7 @@ import com.metasv.mvc.client.openapi.api.ContractApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
+        defaultClient.setBasePath("https://testnet.mvcapi.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");

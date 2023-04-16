@@ -64,7 +64,7 @@ import com.metasv.mvc.client.openapi.auth.HttpBasicAuth;
 import com.metasv.mvc.client.openapi.auth.HttpBearerAuth;
 import com.metasv.mvc.client.openapi.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-16T16:52:15.815523+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-16T17:24:50.047362+09:00[Asia/Tokyo]")
 public class ApiClient extends JavaTimeFormatter {
     public enum CollectionFormat {
         CSV(","), TSV("\t"), SSV(" "), PIPES("|"), MULTI(null);
@@ -82,7 +82,7 @@ public class ApiClient extends JavaTimeFormatter {
     private HttpHeaders defaultHeaders = new HttpHeaders();
     private MultiValueMap<String, String> defaultCookies = new LinkedMultiValueMap<String, String>();
 
-    private String basePath = "https://api-mvc-testnet.metasv.com";
+    private String basePath = "https://testnet.mvcapi.com";
 
     private final WebClient webClient;
     private final DateFormat dateFormat;
