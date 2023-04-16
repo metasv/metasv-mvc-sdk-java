@@ -8,6 +8,7 @@ docs/AddressBalance.md
 docs/AddressTx.md
 docs/AddressUtxo.md
 docs/AsyncBroadcastResult.md
+docs/BatchBroadcastResult.md
 docs/BlockApi.md
 docs/BlockHeaderIndex.md
 docs/BlockHeaderPage.md
@@ -28,6 +29,8 @@ docs/ContractNftSellV2Utxo.md
 docs/ContractNftUtxo.md
 docs/ContractUniqueUtxo.md
 docs/ErrorResponse.md
+docs/InvalidBroadCast.md
+docs/InvalidBroadcastCollide.md
 docs/MerchantApi.md
 docs/OutpointApi.md
 docs/OutputInfo.md
@@ -81,6 +84,7 @@ src/main/java/com/metasv/mvc/client/openapi/model/AddressBalance.java
 src/main/java/com/metasv/mvc/client/openapi/model/AddressTx.java
 src/main/java/com/metasv/mvc/client/openapi/model/AddressUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/AsyncBroadcastResult.java
+src/main/java/com/metasv/mvc/client/openapi/model/BatchBroadcastResult.java
 src/main/java/com/metasv/mvc/client/openapi/model/BlockHeaderIndex.java
 src/main/java/com/metasv/mvc/client/openapi/model/BlockHeaderPage.java
 src/main/java/com/metasv/mvc/client/openapi/model/BlockTx.java
@@ -99,6 +103,8 @@ src/main/java/com/metasv/mvc/client/openapi/model/ContractNftSellV2Utxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractNftUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ContractUniqueUtxo.java
 src/main/java/com/metasv/mvc/client/openapi/model/ErrorResponse.java
+src/main/java/com/metasv/mvc/client/openapi/model/InvalidBroadCast.java
+src/main/java/com/metasv/mvc/client/openapi/model/InvalidBroadcastCollide.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfo.java
 src/main/java/com/metasv/mvc/client/openapi/model/OutputInfoDetail.java
 src/main/java/com/metasv/mvc/client/openapi/model/TreasuryHistory.java

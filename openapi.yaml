@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: MVC API Spec
-  description: API definition for MicrovisionChain provided apis
-  version: 3.0.6
+  title: MetaSV for MVC API Spec
+  description: API definition for MetaSV provided apis
+  version: 3.0.7
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
@@ -11,8 +11,8 @@ info:
     name: MetaSV team
 
 servers:
-  - url: 'https://testnet.mvcapi.com'
-  - url: 'https://mainnet.mvcapi.com'
+  - url: 'https://api-mvc-testnet.metasv.com'
+  - url: 'https://api-mvc.metasv.com'
 
 tags:
   - name: block
@@ -221,7 +221,7 @@ paths:
       tags:
         - tx
       summary: Broadcast tx to metasv fullnode.
-      description: This api will broadcast to metasv fullnode directly.
+      description: This api will broadcast to metasv fullnode directly. This endpoint use rpc sendrawtransaction.
       requestBody:
         content:
           application/json:
@@ -247,7 +247,7 @@ paths:
         - bearerAuth: [ ]
       tags:
         - tx
-      summary: Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+      summary: Broadcast a batch of tx to metasv fullnode. This endpoint use rpc sendrawtransactions.
       description: This api will broadcast to metasv fullnode directly.
       requestBody:
         content:
@@ -262,9 +262,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BroadcastResult'
+                $ref: '#/components/schemas/BatchBroadcastResult'
 
 
   '/address/{address}/balance':
@@ -1345,6 +1343,60 @@ components:
         message:
           description: return messages if broadcast failed
           type: string
+    BatchBroadcastResult:
+      type: object
+      description: Batch broadcast result
+      properties:
+        known:
+          description: Already known transactions detected during processing (if there are any)
+          type: array
+          items:
+            type: string
+        evicted:
+          description: Transactions accepted by the mempool and then evicted due to insufficient fee (if there are any)
+          type: array
+          items:
+            type: string
+        invalid:
+          description: Transactions that failed to be accepted by the mempool (if there are any)
+          type: array
+          items:
+            $ref: '#/components/schemas/InvalidBroadCast'
+    InvalidBroadCast:
+      type: object
+      description: Invalid transactions detected during validation (if there are any)
+      properties:
+        txid:
+          description: return txid if broadcast success
+          type: string
+        reject_code:
+          description: return messages if broadcast failed
+          type: integer
+        reject_reason:
+          description: return messages if broadcast failed
+          type: string
+        collideWith:
+          description: return messages if broadcast failed
+          type: array
+          items:
+            $ref: '#/components/schemas/InvalidBroadcastCollide'
+
+    InvalidBroadcastCollide:
+      type: object
+      description: This field is only present in case of double spent transaction and contains transactions we collided with
+      properties:
+        txid:
+          description: The transaction id
+          type: string
+        size:
+          description: Transaction size in bytes
+          type: integer
+        hex:
+          description: Whole transaction in hex
+          type: string
+
+
+
     AsyncBroadcastResult:
       type: object
       description: Broadcast result

@@ -2,6 +2,7 @@ package com.metasv.mvc.client.openapi.api;
 
 import com.metasv.mvc.client.openapi.ApiClient;
 
+import com.metasv.mvc.client.openapi.model.BatchBroadcastResult;
 import com.metasv.mvc.client.openapi.model.BroadcastResult;
 import com.metasv.mvc.client.openapi.model.ErrorResponse;
 import com.metasv.mvc.client.openapi.model.OutputInfoDetail;
@@ -28,7 +29,7 @@ import org.springframework.http.MediaType;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-14T23:34:31.785376+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-04-16T16:52:15.815523+09:00[Asia/Tokyo]")
 public class TxApi {
     private ApiClient apiClient;
 
@@ -50,14 +51,14 @@ public class TxApi {
     }
 
     /**
-     * Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+     * Broadcast a batch of tx to metasv fullnode. This endpoint use rpc sendrawtransactions.
      * This api will broadcast to metasv fullnode directly.
      * <p><b>200</b> - Broadcast result list, txid returned with the original order
      * @param txRaw The txRaw parameter
-     * @return List&lt;BroadcastResult&gt;
+     * @return BatchBroadcastResult
      * @throws WebClientResponseException if an error occurs while attempting to invoke the API
      */
-    public Flux<BroadcastResult> txBroadcastBatchPost(List<TxRaw> txRaw) throws WebClientResponseException {
+    public Mono<BatchBroadcastResult> txBroadcastBatchPost(List<TxRaw> txRaw) throws WebClientResponseException {
         Object postBody = txRaw;
         // create path and map variables
         final Map<String, Object> pathParams = new HashMap<String, Object>();
@@ -78,12 +79,12 @@ public class TxApi {
 
         String[] localVarAuthNames = new String[] { "bearerAuth" };
 
-        ParameterizedTypeReference<BroadcastResult> localVarReturnType = new ParameterizedTypeReference<BroadcastResult>() {};
-        return apiClient.invokeFluxAPI("/tx/broadcast/batch", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+        ParameterizedTypeReference<BatchBroadcastResult> localVarReturnType = new ParameterizedTypeReference<BatchBroadcastResult>() {};
+        return apiClient.invokeAPI("/tx/broadcast/batch", HttpMethod.POST, pathParams, queryParams, postBody, headerParams, cookieParams, formParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
     /**
      * Broadcast tx to metasv fullnode.
-     * This api will broadcast to metasv fullnode directly.
+     * This api will broadcast to metasv fullnode directly. This endpoint use rpc sendrawtransaction.
      * <p><b>201</b> - Broadcast success, txid returned
      * <p><b>403</b> - Broadcast Failed
      * @param txRaw The txRaw parameter

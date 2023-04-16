@@ -36,19 +36,6 @@ public class TxApiTest {
 
     
     /**
-     * Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
-     *
-     * This api will broadcast to metasv fullnode directly.
-     */
-    @Test
-    public void txBroadcastBatchPostTest()  {
-        List<TxRaw> txRaw = null;
-        List<BroadcastResult> response = api.txBroadcastBatchPost(txRaw).collectList().block();
-
-        // TODO: test validations
-    }
-    
-    /**
      * Broadcast tx to metasv fullnode.
      *
      * This api will broadcast to metasv fullnode directly.

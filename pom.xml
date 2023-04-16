@@ -5,7 +5,7 @@
     <artifactId>openapi-java-client</artifactId>
     <packaging>jar</packaging>
     <name>openapi-java-client</name>
-    <version>3.0.6</version>
+    <version>3.0.7</version>
     <url>https://github.com/metasv/metasv-mvc-sdk-java</url>
     <description>Java Client SDK for MetaSV API.</description>
     <scm>

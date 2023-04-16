@@ -1,10 +1,10 @@
 # TxApi
 
-All URIs are relative to *https://testnet.mvcapi.com*
+All URIs are relative to *https://api-mvc-testnet.metasv.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**txBroadcastBatchPost**](TxApi.md#txBroadcastBatchPost) | **POST** /tx/broadcast/batch | Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+[**txBroadcastBatchPost**](TxApi.md#txBroadcastBatchPost) | **POST** /tx/broadcast/batch | Broadcast a batch of tx to metasv fullnode. This endpoint use rpc sendrawtransactions.
 [**txBroadcastPost**](TxApi.md#txBroadcastPost) | **POST** /tx/broadcast | Broadcast tx to metasv fullnode.
 [**txTxidGet**](TxApi.md#txTxidGet) | **GET** /tx/{txid} | Get transaction detail by specific txid.
 [**txTxidRawGet**](TxApi.md#txTxidRawGet) | **GET** /tx/{txid}/raw | Get transaction raw hex by specific txid.
@@ -15,9 +15,9 @@ Method | HTTP request | Description
 
 ## txBroadcastBatchPost
 
-> List&lt;BroadcastResult&gt; txBroadcastBatchPost(txRaw)
+> BatchBroadcastResult txBroadcastBatchPost(txRaw)
 
-Broadcast a batch of tx to metasv fullnode. The tx will be processed one by one.
+Broadcast a batch of tx to metasv fullnode. This endpoint use rpc sendrawtransactions.
 
 This api will broadcast to metasv fullnode directly.
 
@@ -35,7 +35,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -44,7 +44,7 @@ public class Example {
         TxApi apiInstance = new TxApi(defaultClient);
         List<TxRaw> txRaw = Arrays.asList(); // List<TxRaw> | 
         try {
-            List<BroadcastResult> result = apiInstance.txBroadcastBatchPost(txRaw);
+            BatchBroadcastResult result = apiInstance.txBroadcastBatchPost(txRaw);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TxApi#txBroadcastBatchPost");
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;BroadcastResult&gt;**](BroadcastResult.md)
+[**BatchBroadcastResult**](BatchBroadcastResult.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 Broadcast tx to metasv fullnode.
 
-This api will broadcast to metasv fullnode directly.
+This api will broadcast to metasv fullnode directly. This endpoint use rpc sendrawtransaction.
 
 ### Example
 
@@ -105,7 +105,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -176,7 +176,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -247,7 +247,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -316,7 +316,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -387,7 +387,7 @@ import com.metasv.mvc.client.openapi.api.TxApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");

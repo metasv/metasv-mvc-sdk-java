@@ -1,6 +1,6 @@
 # BlockApi
 
-All URIs are relative to *https://testnet.mvcapi.com*
+All URIs are relative to *https://api-mvc-testnet.metasv.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import com.metasv.mvc.client.openapi.api.BlockApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -99,7 +99,7 @@ import com.metasv.mvc.client.openapi.api.BlockApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
@@ -167,7 +167,7 @@ import com.metasv.mvc.client.openapi.api.BlockApi;
 public class Example {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("https://testnet.mvcapi.com");
+        defaultClient.setBasePath("https://api-mvc-testnet.metasv.com");
         
         // Configure HTTP bearer authorization: bearerAuth
         HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
